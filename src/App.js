@@ -1,20 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
+const title = "Let's learn React together!!";
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          I just edited this content !
-        </p>
-        <p>
-          I edited this content too !!
-        </p>
-        <p>
-          I edited this content too. +1!!
-        </p>
+        {title}
+        <p>I just edited this content !</p>
+        <p>I edited this content too !!</p>
+        <p>I edited this content too. +1!!</p>
         <a
           className="App-link"
           href="https://reactjs.org"
