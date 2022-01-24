@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 
-const title = "Let's learn React together!!";
+const title = "Let's learn React together!";
 function App() {
   return (
     <div className="App">
