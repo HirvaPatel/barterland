@@ -13,7 +13,7 @@ function App() {
           I edited this content too !!
         </p>
         <p>
-          I edited this content too. +1!!
+          I edited this content too.  +1!!
         </p>
         <a
           className="App-link"
