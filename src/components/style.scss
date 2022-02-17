@@ -1,0 +1,47 @@
+#logo {
+  border-color: white;
+  border-radius: 200%;
+}
+
+#userProfile {
+  margin-right: 20px;
+  margin-left: 10px;
+}
+
+.subNav {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 20px 0px 20px;
+  .search {
+    margin-left: 20px;
+    margin: 10px 0px 20px 10px;
+    display: flex;
+    justify-content: center;
+    width: 85%;
+  }
+
+  .sortBy {
+    width: 25%;
+    float: right;
+  }
+}
+
+.productContainer {
+  display: table;
+  width: 100%;
+  height: 100%;
+  margin: 0px 10px 0px 10px;
+}
+
+.sidebar {
+  display: table-cell;
+  width: 15%;
+  vertical-align: top;
+}
+
+#products {
+  display: flex;
+  width: 100%;
+  vertical-align: top;
+  border-left: 2px rgb(173, 173, 173) solid;
+}
