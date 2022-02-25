@@ -1,148 +1,65 @@
-@charset "UTF-8";
-
-@import url('https://fonts.googleapis.com/css?family=Rajdhani:400,700&display=swap');
-
-.container1 {
-  height: 12vh;
-  text-align: justify;
+.containerform {
+  max-width: 384px;
+  background-color: rgb(243 239 239);
+  padding: 13px 43px;
+  border-radius: 34px;
   overflow: hidden;
-  padding-top: 24px;
-  padding-left: 21px;
-  background-color: #faf8f8;
-  box-shadow: inset 0 0 10px rgb(98 44 57 / 60%);
-}
-.field1{
-  text-align: justify;
-  display: inline-block;
-  margin-top: 7px;
-  padding: 1px;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
-  margin-left: 8em;
+  margin: 221px;
+  margin-left: 664px;
 }
 
-.field2{
-  text-align: justify;
-  display: inline-block;
-  margin-top: 7px;
-  padding: 1px;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
-  margin-left: 8em;
-}
-.field3{
-  text-align: justify;
-  display: inline-block;
-  margin-top: 7px;
-  padding: 1px;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
-  margin-left: 8em;
-}
-
-.field4{
-  text-align: justify;
-  display: inline-block;
-  margin-top: 7px;
-  padding: 1px;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
-}
-
-.container1 a{
-  
-  padding: 13px;
-  background-color: rgb(195, 225, 236);
-  font-size: 25px;
-  border-radius: 4px;
-  text-decoration: none;
-  float: right;
-  color: #1D2A78;
-  text-align: center;
-  margin-left: 140px;
-  
-}
-
-.container1 a.logo {
-  font-size: 25px;
-  font-weight: bold;
-}
-
-.container1 a.logo1 {
-  font-size: 25px;
-  font-weight: bold;
-  background-color: inherit;
-}
-.container1 a:hover {
-  background-color: rgb(197, 157, 157);
-  color: #3777b6;
-  cursor: pointer;
-}
-
-.container1 .field4 a:hover {
-  background-color: inherit;  
-  cursor: pointer;
-}
-
-
-.header-right {
-  float: right;
-}
-
-.image1{
-  width: 17%;
-  padding: 1px;  
-
-}
-
-.container6 {
-    float: right;
-    justify-content: left;
-    max-width: 514px;
-    background-color: rgb(164, 163, 214);
-    padding: 163px 30px;
-    border-radius: 40px;
-    overflow: hidden;
-    margin: 60px;
+.content{
+  max-width: fit-content;
+  padding: 18px;
 }
 
 .title{
   font-size: 30px;
   font-weight: 500;
+  text-align: center;
   position: relative;
+  padding-top: 16px;
 }
 
+.button-body{
+    text-align: center;
+    font: normal normal bold 14px/35px Rajdhani !important;
+    letter-spacing: 2.1px !important;
+    color: #090971 !important;
+    background-color: #F5D200;
+    padding: -2em;
+    margin-left: 35em;
+    width: 113px;
+    margin-left: 3em;
+    margin-top: -31px;
+    size: 7px;
+    font-family: 'cursive',sans-serif;
+    padding-bottom: 5px;
+    background-color: #F5D200;
+}
+
+
 .title1{
-  font-size: 34px;
+    font-size: 34px;
     font-weight: 500;
     position: relative;
     margin-left: 128px;
 
 }
 
-.button-body{
-    padding: 1em;
-    margin-left: 7em;
-    width: 22em;
-    font-size: 15px;
-    color: #0d2f8b;
-    font-family: 'cursive',sans-serif;
-
-}
-
 .content form .userdata{
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 20px 0 12px 0;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 20px 88px 6px -3px;
+    padding-top: 27px;
+    padding-left: 42px;
 }
-form .userdata .inputvalue{
-  margin-bottom: 15px;
+
+form .userdata .inputvalue {
+  margin-bottom: 40px;
 }
+
 .userdata .inputvalue label{
   display: block;
   font-weight: 500;
@@ -167,10 +84,11 @@ form .inputvalue span.inputdetails{
     width: 39em;
     font-size: 19px;
     color: #0a1e55;
-    font-family: 'cursive',sans-serif;
+    cursor: pointer;
 }
 .userdata .excistingvalue{
   margin-top: 20px;
+  cursor: pointer;
 }
 
 
@@ -178,242 +96,96 @@ form .inputvalue span.inputdetails{
   margin-left: 10em;
   width: 39em;
   font-size: 19px;
-  color: #572187;
-  font-family: 'cursive',sans-serif;
+  color: #0a1e55;
+  
 }
 
 .userdata .inputvalue input{
-  height: 50px;
-  width: 102%;
-  outline: none;
-  font-size: 22px;
-  border-radius: 10px;
-  padding-left: 5px;
-  border: 1px solid #ccc;
-  border-bottom-width: 2px;
-  transition: all 0.3s ease;
+  height: 54px;
+    width: 121%;
+    outline: none;
+    font-size: 22px;
+    border-radius: 14px;
+    padding-left: 14px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
 }
 .userdata .inputvalue input:focus,
 .userdata .inputvalue input:valid{
   border-color: #7559b6;
-  font-size: 17px;
+  font-size: 16px;
   
 }
- form .buttonContainer{
-   height: 45px;
-   margin: 35px 0
- }
-
-.container3 {
-    display: flex;
-    text-align: justify;
-    overflow: hidden;
-    background-color: #ffffff;
-    width: 98%;
-    padding: 30px 20px;
-    border-radius: 4px;
-    border: 0px solid rgb(192, 162, 162);
-  }
+form .buttonContainer {
+  height: 0px;
+  margin: 33px 70px;
+  margin-top: 10px
   
-  .container6-parent {
-   float:right;
-    text-align: justify;
-    overflow: hidden;
-    background-color: #ffffff;
-    width: 98%;
-    padding: 30px 20px;
-    border-radius: 4px;
-    border: 0px solid rgb(192, 162, 162);
-  }
-  
-.pack{
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin: 0em;
-    width: 1093px;
-    object-fit: contain;
-    background-color: #ffffff;
 }
 
-.pack1{
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin: 0em;
-  width: 1093px;
-  object-fit: contain;
-  background-color: #ffffff;
+.excistingvalue {
+  margin-left: 47px;
+  padding-top: 19px;
+  cursor: pointer;
 }
 
-
-.image{
-    width: 30%;
-    padding: 22px;  
-    object-fit: contain;
-    display: block; 
-    max-width: 70%;
- 
+.excistingvalue1 {
+  padding-top: 24px;
+  margin-left: 103px;
+  cursor: pointer;
 }
 
-.image2{
-  width: 30%;
-  padding: 22px;  
-  object-fit: contain;
-  display: block; 
-  max-width: 70%;
-
+.excistingvalue1 label{
+  padding-bottom: 33px;
+   margin-left: 5em;
+   font-size: 19px;
+   color: #0a0a0a;
 }
 
-.pack p{
-  text-align: justify;
-  width: 56%;
-  height: 34%;
-  padding: 1em;
-  color: #af1eaf;
-  font-style: italic;
+.userdata .excistingvalue{
+margin-top: 20px;
 }
-
-.pack1 p{
-  text-align: justify;
-  width: 56%;
-  height: 34%;
-  padding: 1em;
-  color: #af1eaf;
-  font-style: italic;
-}
-
-.container4 {
-    height: 10vh;
-    text-align: justify;
-    overflow: hidden;
-    padding-top: 24px;
-    padding-left: 21px;
-    background-color: #ffffff;
-    box-shadow: inset 0 0 10px rgb(98 44 57 / 60%);
-  }
-  
-.container4 a{
-  padding: 13px;
-  background-color: rgb(195, 225, 236);
-  font-size: 25px;
-  border-radius: 4px;
-  text-decoration: none;
-  float: left;
-  color: #1D2A78;
-  text-align: center; 
-  margin-left: 241px;
-  }
-    
-.container4 a:hover {
-  background-color: rgb(197, 157, 157);
-  color: #3777b6;
-    cursor: pointer;
-  }  
-
-  .excistingvalue a:hover {
-    background-color: rgb(182, 103, 72);
-    color: #eaf2fa;
-      cursor: pointer;
-    }  
-
-.excistingvalue1 a:hover {
-   color: #eaf2fa;
-    cursor: pointer;
-      }  
 
 
 @media screen and (max-width: 500px) {
-  
 
-.container1 {    
-    display: flex;
-    height: 6vh;
-    padding-left: 0%;
+.containerform {    
+  max-width: 459px;
+    background-color: rgb(243 239 239);
+    padding: 64px 10px;
+    border-radius: 34px;
+    overflow: hidden;
+    margin: 21px;
+    margin-left: 17px;
+    }
+    .button-body{
+      margin-left: 1em;
+      width: 13em;
+    }
+    .userdata .inputvalue input{
+        width:324px;
+    }
+    .content{
+      max-width: fit-content;
+      padding: 1px;
+    }
+    .content form .userdata {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 9px 102px 6px -47px;
+      padding-top: 27px;
+      padding-left: 42px;
   }
 
-  .field1{
-    padding: 0%;
-    margin-left: 0%;
-  }
-
-  .field2{
-    margin-left: 0%;
-  }
-
-  .field3{
-    margin-left: 0%;
-    padding-left: 24px;
-  }
-
-  .image1 {
-    width: 30%;
-  }
-
-  .container1 a{
-    float: none;
-    margin-left: 50%;    
-  }
-
-.container2{
-  max-width: 345px;
-  float: none;
-  margin: 0%;
+  .excistingvalue {
+    margin-left: 58px;
+    padding-top: 16px;
+    font-size: large;
+}
+  .excistingvalue1{
+   margin-left: 111px;
+   font-size: 17px;
 }
 
-.title{
-  margin-left: 0%;
-}
-
-.userdata .inputvalue input{
-  width:130%
-}
-
-.button-body {
-margin-left: 0%;
-}
-
-.userdata .excistingvalue1 label {
-margin-left: 0%;
-}
-
-.userdata .excistingvalue label {
-margin-left: 0%;
-}
-
-.pack p{
-  font-size: initial;
-  width: 34%;
-}
-form .buttonContainer {
-  height: 47px;
-  margin: 0px 0;
-}
-.button-body{
-  width: 24em;
-  font-size: 13px;
-
-}
-
-.image{
-  width: 71%;
-}
-
-.image2{
-  width: 21%;
-}
-.container4 a{
-  font-size: 16px;
-  margin-left: 0%
-}
-
-
-.pack1 p{
-  text-align: justify;
-  width: 90%;
-  font-size: initial;
-  }
-
-}
+}    

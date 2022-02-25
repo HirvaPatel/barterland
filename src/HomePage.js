@@ -6,9 +6,6 @@ import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
-
-
-
 function HomePage(props) {
     let location = useLocation();
     const [isRegistered, setIsRegistered] = useState(false);
