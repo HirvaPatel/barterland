@@ -27,7 +27,7 @@ export default function LoginPage(props) {
     return (email.validinput && password.validinput)
   }
 
-    const handleSubmit = (event) => {
+      const handleSubmit = (event) => {
       event.preventDefault();
       const state = this.state;
       if (state.email.validinput === true && state.password.validinput === true) {
@@ -40,7 +40,7 @@ export default function LoginPage(props) {
   
     }
 
-    const handleChange = (event) => {
+      const handleChange = (event) => {
       let emailStateValue = email;
       let passwordStateValue = password;
       const err = []
@@ -109,9 +109,6 @@ export default function LoginPage(props) {
                 <Link to={"/comingsoon"} > <label>Wishlist</label> </Link>
             </nav>
             <nav className="box1">
-                <Link to={"/comingsoon"} state={{ data: props.userData }}></Link>
-            </nav>
-            <nav className="box1">
                <Link to={"/comingsoon"} ><label>Contact Us</label></Link>
            </nav>
            <nav className="box1">
@@ -143,7 +140,7 @@ export default function LoginPage(props) {
                 </nav>
               </nav>
               <nav className="buttonContainer">
-                <button className='button-body' id='submitbutton' disabled={disablebutton}> Submit</button>
+                <button className='button-body' id='submitbutton' disabled={!isAllInputValid}> Submit</button>
               </nav>
               <nav className="excistingvalue1">
                   <Link to="/comingsoon">Forgot Password?</Link>
