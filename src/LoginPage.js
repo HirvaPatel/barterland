@@ -146,11 +146,11 @@ export default function LoginPage(props) {
                 <button className='button-body' id='submitbutton' disabled={disablebutton}> Submit</button>
               </nav>
               <nav className="excistingvalue1">
-                      <Link to="/comingsoon">Forgot Password?</Link>
-                    </nav>
-                    <nav className="excistingvalue">
-                      <label>Don't have an account? <Link to="/userregister">Sign up</Link></label>
-                    </nav>
+                  <Link to="/comingsoon">Forgot Password?</Link>
+                  </nav>
+                  <nav className="excistingvalue">
+                  <label>Don't have an account? <Link to="/userregister">Sign up</Link></label>
+                  </nav>
             </form>
           </nav>
         </nav>
