@@ -1,10 +1,6 @@
 @charset "UTF-8";
 
-body{
-  background-color: #f1f1f5;
-  font-size:1vw;
-  font-family: 'cursive',sans-serif;
-}
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:400,700&display=swap');
 
 .container1 {
   height: 12vh;
@@ -103,9 +99,7 @@ body{
 
 }
 
-
-
-.container2 {
+.container6 {
     float: right;
     justify-content: left;
     max-width: 514px;
@@ -221,7 +215,7 @@ form .inputvalue span.inputdetails{
     border: 0px solid rgb(192, 162, 162);
   }
   
-  .container2-parent {
+  .container6-parent {
    float:right;
     text-align: justify;
     overflow: hidden;

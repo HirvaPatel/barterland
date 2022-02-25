@@ -6,7 +6,7 @@ import usericon from './usericon.png';
 import exchange from './exchange.png';
 import exchange2 from './exchange2.png';
 import exchange3 from './exchange3.png';
-import './BlankPage';
+
 
 
 class LoginPage extends React.Component {
@@ -91,8 +91,8 @@ class LoginPage extends React.Component {
         </header>
 
         <section>
-          <nav className="container2-parent">
-            <nav className="container2">
+          <nav className="container6-parent">
+            <nav className="container6">
               <nav className="title1">Welcome Back!!</nav>
               <nav className="title"> Login </nav>
               <nav className="content">
@@ -114,7 +114,7 @@ class LoginPage extends React.Component {
                       </Link>
                     </nav>
                     <nav className="excistingvalue1">
-                      <Link to="/blankpage"><label>Forgot Password?</label></Link>
+                      <Link to="/comingsoon"><label>Forgot Password?</label></Link>
                     </nav>
                     <nav className="excistingvalue">
                       <label>Don't have an account? <Link to="/userregister">Sign up</Link></label>
@@ -147,10 +147,10 @@ class LoginPage extends React.Component {
 
         <footer>
           <nav className="container4">
-            <nav className="feild1"> <a href="blankpage"> About us</a> </nav>
-            <nav className="feild2"> <a href="blankpage"> Contact us</a> </nav>
-            <nav className="feild3"> <a href="blankpage"> Feedback </a> </nav>
-            <nav className="feild4"> <a href="blankpage"> Ratings </a> </nav>
+            <nav className="feild1"> <a href="comingsoon"> About us</a> </nav>
+            <nav className="feild2"> <a href="comingsoon"> Contact us</a> </nav>
+            <nav className="feild3"> <a href="comingsoon"> Feedback </a> </nav>
+            <nav className="feild4"> <a href="comingsoon"> Ratings </a> </nav>
           </nav>
         </footer></>
 
