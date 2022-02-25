@@ -96,6 +96,23 @@ export default function LoginPage(props) {
 
     return (
       <nav>
+      <header>
+        <nav className="container">
+            <nav className="box1">
+                <Link to={"/"} ><label className="logo">BarterLand</label> </Link>
+            </nav>
+            <nav className="box2">
+                {/* <Link to={"/comingsoon"} target="_blank" rel="noopener noreferrer" > <label>Location</label> </Link> */}
+                <Link to={"/comingsoon"} > <label>Location</label> </Link>
+            </nav>
+            <nav className="box1">
+                <Link to={"/comingsoon"} > <label>Wishlist</label> </Link>
+            </nav>
+            <nav className="box1">
+                <Link to={"/comingsoon"} state={{ data: props.userData }}></Link>
+            </nav>
+        </nav>
+    </header>
         <title> Login Form </title>
         <nav className="containerform">
           <nav className="title">Login Form</nav>
@@ -125,6 +142,44 @@ export default function LoginPage(props) {
             </form>
           </nav>
         </nav>
+        <footer>
+                <nav>
+
+                    <nav className="container3">
+                        <nav className="box3">
+                            <Link to={"/comingsoon"} ><label>About U</label></Link>
+                        </nav>
+                        <nav className="box3">
+                            <Link to={"/comingsoon"} ><label>Contact Us</label></Link>
+                        </nav>
+                        <nav className="box3">
+                            <Link to={"/comingsoon"} ><label>Give Feedback</label></Link>
+                        </nav>
+                        <nav className="box3">
+                            <Link to={"/comingsoon"} ><label>Report an issue</label></Link>
+                        </nav>
+                        <nav className="box3">
+                            <Link to={"/comingsoon"} ><label>Read Our blogs</label></Link>
+                        </nav>
+                        <nav className="box3">
+                            <Link to={"/comingsoon"} ><label>Meet out team</label></Link>
+                        </nav>
+                        <nav className="box3">
+                            <Link to={"/comingsoon"} ><label>Rate Us</label></Link>
+                        </nav>
+                    </nav>
+                </nav>
+                <nav className="container4">
+                    <nav className="backtotop">
+                        <Link to={"/home"} ><label>Back to top</label></Link>
+                    </nav>
+                    <nav className="logo-box"><Link to={"/home"} ><label>BarterLand</label></Link></nav>
+                    <section className="box5">
+                        <label> Developed by Humans </label>
+                    </section>
+                </nav>
+
+            </footer>
       </nav>
 
     );
