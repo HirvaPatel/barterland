@@ -5,30 +5,18 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function RegisterForm(props) {
+export default function ForgotPassword(props) {
 
   const [disablebutton, setdisablebutton] = useState(false);
   let navigate = useNavigate();
 
-  const [firstname, setFirstNameValue] = useState(
+  const [securityanswer, setSecurityAnswerValue] = useState(
     {
-    value: '', validateinput: false,  error: []
-   
-  }); 
-
-   const [lastname, setLastNameValue] = useState(
-    {
-    value: '', validateinput: false,  error: []
-
-    }); 
-
-   const [email, setEmailValue] = useState(
-    {
-
-      value: '', validinput: false, error: [] 
-
+  
+        value: '', validinput: false, error: []
+  
     });
-
+  
    const [password, setPasswordValue] = useState(
     {
 
@@ -41,16 +29,11 @@ export default function RegisterForm(props) {
         value: '', validinput: false, error: []
   
     });
-    const [securityanswer, setSecurityAnswerValue] = useState(
-      {
-    
-          value: '', validinput: false, error: []
-    
-      });
+   
 
 
   function isAllInputValid() {
-    return (email.validinput && password.validinput && confirmpassword.validinput && firstname.validateinput && lastname.validateinput && securityanswer.validinput)
+    return (password.validinput && confirmpassword.validinput && securityanswer.validinput)
   }
 
       const handleSubmit = (event) => {
@@ -67,10 +50,7 @@ export default function RegisterForm(props) {
     }
 
       const handleChange = (event) => {
-      let emailStateValue = email;
       let passwordStateValue = password;
-      let firstnameStateValue = firstname;
-      let lastnameStateValue = lastname;
       let confirmpasswordStateValue = confirmpassword;
       let securityanswerStateValue = securityanswer;
 
@@ -78,47 +58,6 @@ export default function RegisterForm(props) {
       const { name, value } = event.target;
 
       switch (name) {
-
-      case 'firstname':
-        firstnameStateValue.value = value;
-       
-        if (!validateFirstName(value)) {
-          firstnameStateValue.validinput = false;
-          err.push('Alphabets are only allowed');
-          firstnameStateValue.error = err;
-          break;
-
-        }
-        firstnameStateValue.error = [];
-        firstnameStateValue.validinput = true;
-        break;
-
-      case 'lastname':
-        lastnameStateValue.value = value;
-        if (!validateLastName(value)) {
-
-          lastnameStateValue.validinput = false;
-          err.push('Alphabets are only allowed')
-          lastnameStateValue.error = err;
-          break;
-
-        }
-        lastnameStateValue.error = [];
-        lastnameStateValue.validinput = true;
-        break;
-
-        case 'email':
-          emailStateValue.value = value;
-          if (!validateEmail(value)) {
-            err.push('invalid email!')
-            emailStateValue.validinput = false;
-            emailStateValue.error = err;
-            break;
-          }
-
-          emailStateValue.error = [];
-          emailStateValue.validinput = true;
-          break;
 
         case 'password':
           passwordStateValue.value = value;
@@ -171,27 +110,6 @@ export default function RegisterForm(props) {
 
       }));
 
-      setEmailValue(prevState => ({
-        ...prevState, value: emailStateValue.value,
-        validinput: emailStateValue.validinput,
-        error: emailStateValue.error
-
-      }));
-
-      setFirstNameValue(prevState => ({
-        ...prevState, value: firstnameStateValue.value,
-        validinput: firstnameStateValue.validinput,
-        error: firstnameStateValue.error
-
-      }));
-
-      setLastNameValue(prevState => ({
-        ...prevState, value: lastnameStateValue.value,
-        validinput: lastnameStateValue.validinput,
-        error: lastnameStateValue.error
-
-      }));
-
       setConfirmPasswordValue(prevState => ({
         ...prevState, value: confirmpasswordStateValue.value,
         validinput: confirmpasswordStateValue.validinput,
@@ -238,24 +156,19 @@ export default function RegisterForm(props) {
     </header>
         <title> Login Form </title>
         <nav className="containerform">
-          <nav className="title">Registration Form</nav>
+          <nav className="title">Reset Password Form</nav>
           <nav className="content">
             <form onSubmit={handleSubmit}>
               <nav className="userdata">
               <nav className="inputvalue">
-                  <label className="inputdetails">FirstName</label>
-                  <input type="text" name="firstname" value={firstname.value} onChange={handleChange} id="firstname" placeholder="Enter your firstname" />
-                  <label className="errorvalues">{firstname.error.join()}</label>
-                </nav>
-                <nav className="inputvalue">
-                  <label className="inputdetails">LastName</label>
-                  <input type="text" name="lastname" value={lastname.value} onChange={handleChange} id="lastname" placeholder="Enter your last name" />
-                  <label className="errorvalues">{lastname.error.join()}</label>
-                </nav>
-                <nav className="inputvalue">
-                  <label className="inputdetails">Email</label>
-                  <input type="text" name="email" value={email.value} onChange={handleChange} id="email" placeholder="Enter your email" />
-                  <label className="errorvalues">{email.error.join()}</label>
+                  <label className="inputdetails">Security Question</label>
+                  <input type="text" name="securityanswer"></input> 
+                  
+              </nav>
+              <nav className="inputvalue">
+                  <label className="inputdetails">Security Answer</label>
+                  <input type="text" name="securityanswer" value={securityanswer.value} onChange={handleChange} id="securityanswer" placeholder="Enter your Security Answer" />
+                  <label className="errorvalues">{securityanswer.error.join()}</label>
                 </nav>
                 <nav className="inputvalue">
                   <label className="inputdetails">Password</label>
@@ -267,25 +180,9 @@ export default function RegisterForm(props) {
                   <input type="password" name="confirmpassword" value={confirmpassword.value} onChange={handleChange} id="confirmpassword" placeholder="Confirm your password" />
                   <label className="errorvalues">{confirmpassword.error.join()}</label>
                 </nav>
-                <nav>
-                  <label className="inputdetails">Select your Security Question</label>
-                  <select id="security" className="selection">
-                  <option value="en" selected>Name of your favourite color</option>
-                  <option value="es">Name of your first pet</option>
-                  <option value="pt">Name of your school</option>
-                  </select>
-              </nav>
-              <nav className="inputvalue">
-                  <label className="inputdetails">Security Answer</label>
-                  <input type="text" name="securityanswer" value={securityanswer.value} onChange={handleChange} id="securityanswer" placeholder="Enter your Security Answer" />
-                  <label className="errorvalues">{securityanswer.error.join()}</label>
-                </nav>
               <nav className="buttonContainer">
                 <button className='button-body1' id='submitbutton' disabled={!isAllInputValid}> Submit</button>
               </nav>
-                  <nav className="excistingvalue2">
-                  <label>Already have an account?<Link to="/loginpage">Login in</Link></label>
-                  </nav>
               </nav>
             </form>
           </nav>

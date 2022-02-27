@@ -143,7 +143,7 @@ export default function LoginPage(props) {
                 <button className='button-body' id='submitbutton' disabled={!isAllInputValid}> Submit</button>
               </nav>
               <nav className="excistingvalue1">
-                  <Link to="/comingsoon">Forgot Password?</Link>
+                  <Link to="/forgotpassword">Forgot Password?</Link>
                   </nav>
                   <nav className="excistingvalue">
                   <label>Don't have an account? <Link to="/userregister">Sign up</Link></label>
