@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './HomePage';
 import ComingSoonPage from './ComingSoonPage';
-import LoginPage from './LoginPage';
-import RegisterForm from './RegisterForm';
+import LoginPage from './Authentication/LoginPage';
+import RegisterForm from './Authentication/RegisterForm';
 import UserProfilePage  from './UserProfilePage';
 export default function RoutingConfig(props) {
 

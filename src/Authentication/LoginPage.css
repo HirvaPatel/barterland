@@ -36,6 +36,7 @@
     font-family: 'cursive',sans-serif;
     padding-bottom: 5px;
     background-color: #F5D200;
+    border: none;
 }
 
 
@@ -124,8 +125,8 @@ form .buttonContainer {
 }
 
 .excistingvalue {
-  margin-left: 47px;
-  padding-top: 19px;
+  margin-left: 111px;
+  padding-top: 33px;
   cursor: pointer;
 }
 
@@ -189,3 +190,5 @@ margin-top: 20px;
 }
 
 }    
+
+

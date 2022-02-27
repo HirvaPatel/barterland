@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './RegisterForm.css';
 import './LoginPage.css';
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -40,10 +41,16 @@ export default function RegisterForm(props) {
         value: '', validinput: false, error: []
   
     });
+    const [securityanswer, setSecurityAnswerValue] = useState(
+      {
+    
+          value: '', validinput: false, error: []
+    
+      });
 
 
   function isAllInputValid() {
-    return (email.validinput && password.validinput && confirmpassword.validinput && firstname.validateinput && lastname.validateinput)
+    return (email.validinput && password.validinput && confirmpassword.validinput && firstname.validateinput && lastname.validateinput && securityanswer.validinput)
   }
 
       const handleSubmit = (event) => {
@@ -65,6 +72,7 @@ export default function RegisterForm(props) {
       let firstnameStateValue = firstname;
       let lastnameStateValue = lastname;
       let confirmpasswordStateValue = confirmpassword;
+      let securityanswerStateValue = securityanswer;
 
       const err = []
       const { name, value } = event.target;
@@ -138,6 +146,20 @@ export default function RegisterForm(props) {
           confirmpasswordStateValue.validinput = true;
           break;
 
+          case 'securityanswer':
+          securityanswerStateValue.value = value;
+
+          if (!validateSecurityAnswer(value)) {
+            securityanswerStateValue.validinput = false;
+            err.push('The security answer should be atleast 5 characters in length');
+            securityanswerStateValue.error = err;
+            break;
+          }
+          securityanswerStateValue.error = [];
+          securityanswerStateValue.validinput = true;
+          break;
+
+
           default:
           break;
       }
@@ -177,6 +199,12 @@ export default function RegisterForm(props) {
 
       }));
 
+      setSecurityAnswerValue(prevState => ({
+        ...prevState, value: securityanswerStateValue.value,
+        validinput: securityanswerStateValue.validinput,
+        error: securityanswerStateValue.error
+
+      }));
 
     }
 
@@ -239,13 +267,26 @@ export default function RegisterForm(props) {
                   <input type="password" name="confirmpassword" value={confirmpassword.value} onChange={handleChange} id="confirmpassword" placeholder="Confirm your password" />
                   <label className="errorvalues">{confirmpassword.error.join()}</label>
                 </nav>
+                <nav>
+                  <label className="inputdetails">Select your Security Question</label>
+                  <select id="security" className="selection">
+                  <option value="en" selected>Name of your favourite color</option>
+                  <option value="es">Name of your first pet</option>
+                  <option value="pt">Name of your school</option>
+                  </select>
               </nav>
+              <nav className="inputvalue">
+                  <label className="inputdetails">Security Answer</label>
+                  <input type="text" name="securityanswer" value={securityanswer.value} onChange={handleChange} id="securityanswer" placeholder="Enter your Security Answer" />
+                  <label className="errorvalues">{securityanswer.error.join()}</label>
+                </nav>
               <nav className="buttonContainer">
-                <button className='button-body' id='submitbutton' disabled={!isAllInputValid}> Submit</button>
+                <button className='button-body1' id='submitbutton' disabled={!isAllInputValid}> Submit</button>
               </nav>
-                  <nav className="excistingvalue">
-                  <label>Already have an account? <Link to="/userregister">Login in</Link></label>
+                  <nav className="excistingvalue2">
+                  <label>Already have an account?<Link to="/userregister">Login in</Link></label>
                   </nav>
+              </nav>
             </form>
           </nav>
         </nav>
@@ -294,3 +335,10 @@ function validateLastName(lastname) {
 
   );
 }
+
+  function validateSecurityAnswer(securityanswer){
+    return String(securityanswer).match(/^[a-zA-Z]{5,}$/
+
+    );
+  }
+
