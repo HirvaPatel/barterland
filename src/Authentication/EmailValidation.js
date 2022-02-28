@@ -1,68 +1,43 @@
 import React, { useState } from 'react';
+import './RegisterForm.css';
 import './LoginPage.css';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function LoginPage(props) {
+export default function EmailValidation(props) {
 
   const [disablebutton, setdisablebutton] = useState(false);
   let navigate = useNavigate();
 
-  const [email, setEmailValue] = useState(
+   const [email, setEmailValue] = useState(
     {
 
-      value: '', validinput: false, error: []
+      value: '', validinput: false, error: [] 
 
     });
 
-  const [password, setPasswordValue] = useState(
-    {
-
-      value: '', validinput: false, error: []
-
-    });
 
   function isAllInputValid() {
-    return (email.validinput && password.validinput)
+    return (email.validinput)
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    setdisablebutton(true);
-    if (isAllInputValid()) {
-      setdisablebutton(false);
-      navigate("/userregister")
-      /* const user = {
-        email: email.value,
-        password: password.value
-
-      }; */
-     
-     /*  axios.post('https://tutorial4-api.herokuapp.com/api/users/login', user).then((response) => {
-       
-        if (response.data.status === true) {
-          alert('Login Successfull!!');
-          navigate("/profilelist")
-        }
-
-      }).catch((error) => {
-        console.log(error.response);
-        if (error.response.status === 400) {
-          alert(error.response.data.message);
-        } else {
-          alert('try again!');
-        }
-      }); */
-    }else{
-    setdisablebutton(true);
+      const handleSubmit = (event) => {
+      event.preventDefault();
+      const state = this.state;
+      if (state.email.validinput === true) {
+        alert('Email verified!!');
+        return true;
+      } else {
+        alert('All the fields in the form are madatory!');
+        return false;
+      }
+  
     }
-  } 
-
 
       const handleChange = (event) => {
       let emailStateValue = email;
-      let passwordStateValue = password;
+
       const err = []
       const { name, value } = event.target;
 
@@ -81,29 +56,9 @@ export default function LoginPage(props) {
           emailStateValue.validinput = true;
           break;
 
-        case 'password':
-          passwordStateValue.value = value;
-
-          if (!validatePassword(value)) {
-            passwordStateValue.validinput = false;
-            err.push('Atleast have 8 charachter, one capital letter, one number and one special character');
-            passwordStateValue.error = err;
-            break;
-          }
-          passwordStateValue.error = [];
-          passwordStateValue.validinput = true;
-          break;
-
-        default:
+          default:
           break;
       }
-
-      setPasswordValue(prevState => ({
-        ...prevState, value: passwordStateValue.value,
-        validinput: passwordStateValue.validinput,
-        error: passwordStateValue.error
-
-      }));
 
       setEmailValue(prevState => ({
         ...prevState, value: emailStateValue.value,
@@ -144,7 +99,7 @@ export default function LoginPage(props) {
     </header>
         <title> Login Form </title>
         <nav className="containerform">
-          <nav className="title">Login Form</nav>
+          {/* <nav className="title">Registration Form</nav> */}
           <nav className="content">
             <form onSubmit={handleSubmit}>
               <nav className="userdata">
@@ -153,21 +108,10 @@ export default function LoginPage(props) {
                   <input type="text" name="email" value={email.value} onChange={handleChange} id="email" placeholder="Enter your email" />
                   <label className="errorvalues">{email.error.join()}</label>
                 </nav>
-                <nav className="inputvalue">
-                  <label className="inputdetails">Password</label>
-                  <input type="password" name="password" value={password.value} onChange={handleChange} id="password" placeholder="Enter your password" />
-                  <label className="errorvalues">{password.error.join()}</label>
-                </nav>
-              </nav>
               <nav className="buttonContainer">
-                <button className='button-body' id='submitbutton' disabled={disablebutton}> Submit</button>
+                <button className='button-body1' id='submitbutton' disabled={!isAllInputValid}> Submit</button>
               </nav>
-              <nav className="excistingvalue1">
-                  <Link to="/emailvalidation">Forgot Password?</Link>
-                  </nav>
-                  <nav className="excistingvalue">
-                  <label>Don't have an account? <Link to="/userregister">Sign up</Link></label>
-                  </nav>
+              </nav>
             </form>
           </nav>
         </nav>
@@ -188,6 +132,7 @@ export default function LoginPage(props) {
     );
     }
 
+
 function validateEmail(email) {
   return String(email)
     .toLowerCase()
@@ -196,8 +141,3 @@ function validateEmail(email) {
     );
 }
 
-function validatePassword(password) {
-  return String(password).match(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/
-
-  );
-}
