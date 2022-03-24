@@ -28,8 +28,7 @@ function HomePage(props) {
     const data = userData;
 
     return (
-
-
+        
         <>
             <TitleSection isRegistered={isRegistered} userData={data} />
             <MenuSection />
@@ -88,7 +87,7 @@ function TitleSection(props) {
 
 function MenuSection(props) {
     return (
-    
+
         <nav>
             <nav className="container2">
                 <nav className="box1">
@@ -226,7 +225,7 @@ function MainSectionBox(props) {
             <h2>{props.content.title}</h2>
             <img src={iphone} alt="" className="img-ad" />
             <p>Trading my Iphone 11 for Airpods + $100</p>
-            <Link to="/comingsoon">
+            <Link to="/adpage">
                 <button className="ads-button">Trade Now</button>
             </Link>
         </main>
