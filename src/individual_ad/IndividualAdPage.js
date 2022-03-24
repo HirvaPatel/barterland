@@ -1,7 +1,7 @@
 import React from "react";
 import './IndividualAdPage.css'
 import { Link } from "react-router-dom";
-import iphone from "../iphone.jpg";
+import iphone from "../home/iphone.jpg";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";

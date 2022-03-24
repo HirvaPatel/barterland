@@ -1,14 +1,14 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from './HomePage';
-import ComingSoonPage from './ComingSoonPage';
-import LoginPage from './Authentication/LoginPage';
-import RegisterForm from './Authentication/RegisterForm';
-import UserProfilePage  from './UserProfilePage';
-import IndividualAdPage from './individual_ad/IndividualAdPage';
-import ForgotPassword from './Authentication/ForgotPassword';
-import EmailValidation from './Authentication/EmailValidation';
-import UserData from './Authentication/UserData';
+import HomePage from '../home/HomePage';
+import ComingSoonPage from '../home/ComingSoonPage';
+import LoginPage from '../Authentication/LoginPage';
+import RegisterForm from '../Authentication/RegisterForm';
+import UserProfilePage  from '../Authentication/UserProfilePage';
+import IndividualAdPage from '../individual_ad/IndividualAdPage';
+import ForgotPassword from '../Authentication/ForgotPassword';
+import EmailValidation from '../Authentication/EmailValidation';
+import UserData from '../Authentication/UserData';
 
 export default function RoutingConfig(props) {
 
