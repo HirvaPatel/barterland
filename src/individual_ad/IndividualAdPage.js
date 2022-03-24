@@ -1,12 +1,13 @@
 import React from "react";
-import './HomePage.css';
+import './IndividualAdPage.css'
 import { Link } from "react-router-dom";
-import iphone from "./iphone.jpg";
+import iphone from "../iphone.jpg";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 
-function HomePage(props) {
+function IndividualAdPage(props){
+    
     let location = useLocation();
     const [isRegistered, setIsRegistered] = useState(false);
     const [userData, setUserData] = useState()
@@ -24,21 +25,17 @@ function HomePage(props) {
             }
         }
     }, [userData])
-
     const data = userData;
 
     return (
-        
         <>
             <TitleSection isRegistered={isRegistered} userData={data} />
             <MenuSection />
-            <MainSectionGenerator />
+            <AdPageBody />
             <FooterSection />
         </>
 
-
     );
-
 
 }
 
@@ -162,76 +159,34 @@ class FooterSection extends React.Component {
     }
 }
 
-function MainSectionOneAdRow(props) {
-
+function AdPageBody(props) {
     return (
-        <main>
-            <main className="wrapper">
-                <MainSectionBox content={
-                    {
-                        'title': 'Iphone 11',
-                        'desp': 'Trading my Iphone 11 for Airpods + $100',
-                        'img': iphone
-                    }
-                } />
-
-                <MainSectionBox content={
-                    {
-                        'title': 'IPhone 12',
-                        'desp': 'Trading my Iphone 12 for IWatch + $100',
-                        'img': iphone
-                    }
-                } />
-
-                <MainSectionBox content={
-                    {
-                        'title': 'IPhone 13',
-                        'desp': 'Trading my Iphone 13 for Iphone 12 + $100',
-                        'img': iphone
-                    }
-                } />
-            </main>
-        </main>
+        <section>
+			<div className="wrapper">
+				<div className="main-box">
+					<h2>Iphone 11</h2>
+					<img src={iphone} alt="" className="img-ad" />			
+					<p><b>Description</b> <br></br>Trading My Iphone 11 for Airpods + $100</p>		
+				</div>
+				<div  className="main-box">
+					<h2> Propose a deal </h2>
+					<form>
+					<h3> Name </h3>
+					<input type='text' placeholder='Vikram' />
+					<h3> How to contact you? </h3>
+					<input type='text' placeholder='9029832222' />
+					<h3> Description </h3>
+					<textarea name="description_text" cols="35" rows="10" placeholder='Enter your proposal. Be Specific to details.'></textarea>
+					<h3> Upload Images </h3>
+					<input type='file' name='image' />
+					<h3></h3>
+					<button>Send Proposal</button>
+					<button>Reset Form</button>
+					</form>
+				</div>							
+			</div>				
+		</section>       
     );
 }
 
-class MainSectionGenerator extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            rowCount: 3,
-            returnElements: []
-        }
-    }
-
-    returnElements(count) {
-        const result = []
-        for (let i = 0; i < count; i++) {
-            result.push(<MainSectionOneAdRow key={result.length} />);
-        }
-        return result;
-    }
-
-    render() {
-        return (this.returnElements(3));
-    }
-}
-
-function MainSectionBox(props) {
-    return (
-
-        <main className="box">
-            <h2>{props.content.title}</h2>
-            <img src={iphone} alt="" className="img-ad" />
-            <p>Trading my Iphone 11 for Airpods + $100</p>
-            <Link to="/adpage">
-                <button className="ads-button">Trade Now</button>
-            </Link>
-        </main>
-    );
-}
-
-
-
-export default HomePage;
+export default IndividualAdPage;
