@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RoutingConfig from './RoutingConfig';
+import RoutingConfig from './routes/RoutingConfig';
 
 ReactDOM.render(
   <React.StrictMode>
