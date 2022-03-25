@@ -46,17 +46,23 @@ export default function RegisterForm(props) {
     
           value: '', validinput: false, error: []
     
+    });
+    const [address, setAddressValue] = useState(
+      {
+    
+          value: '', validinput: false, error: []
+    
       });
 
 
   function isAllInputValid() {
-    return (email.validinput && password.validinput && confirmpassword.validinput && firstname.validateinput && lastname.validateinput && securityanswer.validinput)
+    return (email.validinput && password.validinput && confirmpassword.validinput && firstname.validateinput && lastname.validateinput && securityanswer.validinput && address.validinput)
   }
 
       const handleSubmit = (event) => {
       event.preventDefault();
       const state = this.state;
-      if (state.email.validinput === true && state.password.validinput === true && state.firstname.validinput === true && state.lastname.validateinput === true && state.confirmpassword.validateinput ===true) {
+      if (state.email.validinput === true && state.password.validinput === true && state.firstname.validinput === true && state.lastname.validateinput === true && state.confirmpassword.validateinput ===true && state.address.validateinput === true) {
         alert('sucessfully registered!!');
         return true;
       } else {
@@ -73,6 +79,7 @@ export default function RegisterForm(props) {
       let lastnameStateValue = lastname;
       let confirmpasswordStateValue = confirmpassword;
       let securityanswerStateValue = securityanswer;
+      let AddressStateValue = address;
 
       const err = []
       const { name, value } = event.target;
@@ -159,6 +166,19 @@ export default function RegisterForm(props) {
           securityanswerStateValue.validinput = true;
           break;
 
+          case 'address':
+            AddressStateValue.value = value;
+
+          if (!validateAddress(value)) {
+            AddressStateValue.validinput = false;
+            err.push('The address must be atleast 10 characters in length');
+            AddressStateValue.error = err;
+            break;
+          }
+          AddressStateValue.error = [];
+          AddressStateValue.validinput = true;
+          break;
+
 
           default:
           break;
@@ -203,6 +223,13 @@ export default function RegisterForm(props) {
         ...prevState, value: securityanswerStateValue.value,
         validinput: securityanswerStateValue.validinput,
         error: securityanswerStateValue.error
+
+      }));
+
+      setAddressValue(prevState => ({
+        ...prevState, value: AddressStateValue.value,
+        validinput: AddressStateValue.validinput,
+        error: AddressStateValue.error
 
       }));
 
@@ -280,6 +307,11 @@ export default function RegisterForm(props) {
                   <input type="text" name="securityanswer" value={securityanswer.value} onChange={handleChange} id="securityanswer" placeholder="Enter your Security Answer" />
                   <label className="errorvalues">{securityanswer.error.join()}</label>
                 </nav>
+                <nav className="inputvalue">
+                  <label className="inputdetails">Address</label>
+                  <input type="text" name="address" value={address.value} onChange={handleChange} id="address" placeholder="Enter your Address" />
+                  <label className="errorvalues">{address.error.join()}</label>
+                </nav>
               <nav className="buttonContainer">
                 <button className='button-body1' id='submitbutton' disabled={!isAllInputValid}> Submit</button>
               </nav>
@@ -292,13 +324,12 @@ export default function RegisterForm(props) {
         </nav>
         <footer>
                 <nav className="container4">
-                    <nav className="backtotop">
-                        <Link to={"/home"} ><label>Back to top</label></Link>
-                    </nav>
-                    <nav className="logo-box"><Link to={"/home"} ><label>BarterLand</label></Link></nav>
-                    <section className="box5">
-                        <label> Developed by Humans </label>
-                    </section>
+                <nav className="box1">
+                <Link to={"/comingsoon"} > <label>Discussion Forum</label> </Link>
+            </nav>
+            <nav className="box1">
+               <Link to={"/comingsoon"} ><label>Complaints</label></Link>
+           </nav>
                 </nav>
 
             </footer>
@@ -337,8 +368,13 @@ function validateLastName(lastname) {
 }
 
   function validateSecurityAnswer(securityanswer){
-    return String(securityanswer).match(/^[a-zA-Z]{5,}$/
+    return String(securityanswer).match(/^[a-zA-Z0-9]{5,}$/
 
     );
   }
 
+  function validateAddress(address){
+    return String(address).match(/^[a-zA-Z0-9]{5,}$/
+
+    );
+  }

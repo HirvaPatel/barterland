@@ -31,7 +31,6 @@ export default function LoginPage(props) {
     event.preventDefault();
     setdisablebutton(true);
     if (isAllInputValid()) {
-      setdisablebutton(false);
       navigate("/userregister")
       /* const user = {
         email: email.value,
@@ -173,13 +172,12 @@ export default function LoginPage(props) {
         </nav>
         <footer>
                 <nav className="container4">
-                    <nav className="backtotop">
-                        <Link to={"/home"} ><label>Back to top</label></Link>
-                    </nav>
-                    <nav className="logo-box"><Link to={"/home"} ><label>BarterLand</label></Link></nav>
-                    <section className="box5">
-                        <label> Developed by Humans </label>
-                    </section>
+                <nav className="box1">
+                <Link to={"/comingsoon"} > <label>Discussion Forum</label> </Link>
+            </nav>
+            <nav className="box1">
+               <Link to={"/comingsoon"} ><label>Complaints</label></Link>
+           </nav>
                 </nav>
 
             </footer>

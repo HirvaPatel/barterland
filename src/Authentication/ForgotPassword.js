@@ -189,13 +189,12 @@ export default function ForgotPassword(props) {
         </nav>
         <footer>
                 <nav className="container4">
-                    <nav className="backtotop">
-                        <Link to={"/home"} ><label>Back to top</label></Link>
-                    </nav>
-                    <nav className="logo-box"><Link to={"/home"} ><label>BarterLand</label></Link></nav>
-                    <section className="box5">
-                        <label> Developed by Humans </label>
-                    </section>
+                <nav className="box1">
+                <Link to={"/comingsoon"} > <label>Discussion Forum</label> </Link>
+            </nav>
+            <nav className="box1">
+               <Link to={"/comingsoon"} ><label>Complaints</label></Link>
+           </nav>
                 </nav>
 
             </footer>
@@ -205,30 +204,8 @@ export default function ForgotPassword(props) {
     }
 
 
-function validateEmail(email) {
-  return String(email)
-    .toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-}
-
 function validatePassword(password) {
   return String(password).match(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/
-
-  );
-}
-
-function validateFirstName(firstname) {
-  return String(firstname).match(
-    /^[A-Za-z ]+$/
-
-  );
-}
-
-function validateLastName(lastname) {
-  return String(lastname).match(
-    /^[A-Za-z ]+$/
 
   );
 }

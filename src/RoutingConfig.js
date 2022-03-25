@@ -15,7 +15,7 @@ export default function RoutingConfig(props) {
 
         <Router>
             <Routes>
-                <Route exact path="/" element={<UserData />} ></Route>
+                <Route exact path="/" element={<LoginPage />} ></Route>
                 <Route exact path="/home" element={<HomePage />}></Route>
                 <Route exact path="/loginpage" element={<LoginPage />} ></Route>
                 <Route exact path="/forgotpassword" element={<ForgotPassword />} ></Route>
