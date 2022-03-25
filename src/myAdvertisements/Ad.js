@@ -2,8 +2,9 @@ import React from "react";
 import { Checkbox } from "@material-ui/core";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
+import "./MyAds.css";
 
-export class Product extends React.Component {
+export class Ad extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -30,25 +31,15 @@ export class Product extends React.Component {
             ></image>
           </svg>
           <div className="card-body">
-            <p className="card-text">{productData.productName}</p>
-            <p className="card-category">{productData.category}</p>
-            <div className="d-flex justify-content-between align-items-center">
-              <p>
-                <a
-                  className="btn btn-secondary"
-                  data-bs-toggle="collapse"
-                  href="#collapseExample"
-                  role="button"
-                  aria-expanded="false"
-                  aria-controls="collapseExample"
-                >
-                  Description
-                </a>
-              </p>
-              <div class="collapse" id="collapseExample">
-                <div class="card card-body">{productData.description}</div>
+            <h2 className="card-text">{productData.productName}</h2>
+            <div className="adDetail">
+              <p className="card-category">{productData.category}</p>
+              <div className="Favorite">
+                <Checkbox
+                  icon={<FavoriteBorder />}
+                  checkedIcon={<Favorite />}
+                />
               </div>
-              <Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} />
             </div>
           </div>
         </div>
