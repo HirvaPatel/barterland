@@ -51,8 +51,9 @@ export default function LoginPage(props) {
 
           ReactSession.setStoreType("localStorage");
 
-          ReactSession.set("useridvalue", response.data.user_id); 
-          ReactSession.set("emailvalue",response.data.email);
+          ReactSession.set("user_id", response.data.user_id); 
+          ReactSession.set("email",response.data.email);
+          ReactSession.set("first_name",response.data.first_name);
 
 
           navigate("/home");

@@ -39,8 +39,8 @@ export default function ForgotPassword(props) {
   const securityquestionvalue = ReactSession.get("securityquestionvalue");
   console.log(securityquestionvalue);
 
-  const emailvalue = ReactSession.get("emailvalue");
-  console.log(emailvalue);
+  const email = ReactSession.get("email");
+  console.log(email);
 
   function isAllInputValid() {
     return (password.validinput && confirmpassword.validinput && securityanswer.validinput)
@@ -53,7 +53,7 @@ export default function ForgotPassword(props) {
 
       const user = {
         
-        email: emailvalue,
+        email: email,
         security_ans: securityanswer.value,
         password: password.value
 

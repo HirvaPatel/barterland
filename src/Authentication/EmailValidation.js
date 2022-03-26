@@ -48,7 +48,7 @@ export default function EmailValidation(props) {
           ReactSession.setStoreType("localStorage");
 
           ReactSession.set("securityquestionvalue", response.data.security_ques); 
-          ReactSession.set("emailvalue",response.data.email);
+  
           
           navigate("/forgotpassword");
         }

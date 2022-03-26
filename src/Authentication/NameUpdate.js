@@ -28,8 +28,8 @@ export default function NameUpdate(props) {
     });
 
  
-    const useridvalue = ReactSession.get("useridvalue");
-    console.log(useridvalue);
+    const user_id = ReactSession.get("user_id");
+    console.log(user_id);
 
 
 
@@ -44,7 +44,7 @@ export default function NameUpdate(props) {
     
       const user = {
 
-        user_id: useridvalue,
+        user_id: user_id,
         first_name: firstname.value,
         last_name: lastname.value,
        

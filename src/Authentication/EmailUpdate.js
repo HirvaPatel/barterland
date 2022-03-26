@@ -21,8 +21,8 @@ export default function EmailUpdate(props) {
 
     });
 
-    const useridvalue = ReactSession.get("useridvalue");
-    console.log(useridvalue);
+    const user_id = ReactSession.get("user_id");
+    console.log(user_id);
 
   function isAllInputValid() {
     return (email.validinput)
@@ -35,7 +35,7 @@ export default function EmailUpdate(props) {
     
       const user = {
 
-        user_id: useridvalue,
+        user_id: user_id,
         email: email.value
 
       };
