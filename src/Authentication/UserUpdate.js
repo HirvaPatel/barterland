@@ -18,37 +18,36 @@ export default function UserUpdate(props) {
       <br></br>
       <br></br>
       <nav>
-    
-            <nav className="buttonContainer">
-            <Link to='/emailupdate'>
+
+        <nav className="buttonContainer">
+          <Link to='/emailupdate'>
             <button className='button-body' id='submitbutton' > Update Email</button>
-            </Link>
-            </nav>
-            <br></br>
+          </Link>
+        </nav>
+        <br></br>
 
-            <nav className="buttonContainer">
-            <Link to='/passwordupdate'>
+        <nav className="buttonContainer">
+          <Link to='/passwordupdate'>
             <button className='button-body' id='submitbutton' > Update Password</button>
-            </Link>
-            </nav>
-            <br></br>
+          </Link>
+        </nav>
+        <br></br>
 
-            <nav className="buttonContainer">
-            <Link to='/addressupdate'>
+        <nav className="buttonContainer">
+          <Link to='/addressupdate'>
             <button className='button-body' id='submitbutton'> Update Address</button>
-            </Link>
-            </nav>
-            <br></br>
+          </Link>
+        </nav>
+        <br></br>
 
-            <nav className="buttonContainer">
-            <Link to='/nameupdate'>
+        <nav className="buttonContainer">
+          <Link to='/nameupdate'>
             <button className='button-body' id='submitbutton'> Update Name</button>
-            </Link>
-            </nav>
-            <br></br>
-            <br></br>
-            
-           
+          </Link>
+        </nav>
+        <br></br>
+        <br></br>
+
       </nav>
       <FooterSection />
     </>
