@@ -8,7 +8,7 @@ export default function MenuSection(props) {
         <nav>
             <nav className="container2">
                 <nav className="box1">
-                    <Link to={"/comingsoon"} > <label>Categories</label></Link>
+                    <Link to={"/home/mydeals"} > <label>My Deals</label></Link>
                 </nav>
                 <nav className="box1">
                     <Link to={"/comingsoon"} >   <label>Post Ads</label></Link>
