@@ -1,6 +1,6 @@
 import React from "react";
 import './IndividualAdPage.css'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -252,7 +252,24 @@ function AdPageBody(props) {
         });
     }
 
+    const handleRedirectRegister = (e) => {
+        e.preventDefault();
+        navigate("/userregister");
+    }
+
+    const handleRedirectLogin = (e) => {
+        e.preventDefault();
+        navigate("/loginpage");
+    }
+
     const renderForm = () => {
+
+        if (false) {
+            return (<><h2>Login or Register to propose a Deal!</h2>
+                <button onClick={(e) => handleRedirectRegister(e)}>Register</button>
+                <button onClick={(e) => handleRedirectLogin(e)}>Login</button>
+            </>);
+        }
 
         if (ad.isDealProposed === false || updateDeal === true) {
             return (
@@ -324,7 +341,7 @@ function AdPageBody(props) {
                     <h3> <b>Title: </b> {ad.proposedDeal.deal_details.title} </h3>
                     <h3> <b>Description: </b>{ad.proposedDeal.deal_details.description} </h3>
                     <button onClick={(e) => handleUpdate(e)}>Update Deal</button>
-                    <button onClick={(e) => handleDelete(e)}>Delete Deal</button>
+                    <button onClick={(e) => { if (window.confirm('Delete this deal?')) { handleDelete(e); } }}>Delete Deal</button>
                 </>
 
             );

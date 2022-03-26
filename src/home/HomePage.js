@@ -71,7 +71,7 @@ function HomePage(props) {
 function MainSectionOneAdRow(props) {
 
 
-    const ads = props.ads;   
+    const ads = props.ads;
 
     return (
         <main>
@@ -110,7 +110,7 @@ class MainSectionGenerator extends React.Component {
     returnElements() {
         const ads = this.props.ads
         const result = []
-        if (ads) {           
+        if (ads) {
             let j = 0;
             for (let i = 0; i < Math.floor(ads.length / 3); i = i + 1) {
                 const subAds = ads.slice(j, j + 3);
@@ -118,6 +118,15 @@ class MainSectionGenerator extends React.Component {
                 result.push(<MainSectionOneAdRow ads={subAds} key={result.length} />);
             }
         }
+
+        if (result.length < 1) {
+            return (
+                <main className="box">
+                    <h2>No Ads to display!</h2>
+                </main >
+            );
+        }
+
         return result;
     }
 
@@ -128,7 +137,7 @@ class MainSectionGenerator extends React.Component {
 }
 
 function MainSectionBox(props) {
-    const ad_details = props.ad_details;    
+    const ad_details = props.ad_details;
     const nextPage = '/post/' + ad_details.ad_id;
     return (
 
