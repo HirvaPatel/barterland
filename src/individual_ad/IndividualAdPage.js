@@ -103,13 +103,13 @@ function AdPageBody(props) {
     const [updateDeal, setUpdateDeal] = useState(false);
 
     useEffect(() => {
-        if (dealProposed === true) {            
+        if (dealProposed === true) {
             window.location.reload();
         }
     }, [dealProposed]);
 
     useEffect(() => {
-       
+
     }, [updateDeal]);
 
     function handleChange(event) {
@@ -173,7 +173,7 @@ function AdPageBody(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+
         let errors = validation;
         if (!isEmpty(errors.Name) || !isEmpty(errors.mobile) || !isEmpty(errors.title) || !isEmpty(errors.location) || !isEmpty(errors.description)) {
             alert('Invalid Inputs ! Please fix the errors!');
@@ -237,9 +237,23 @@ function AdPageBody(props) {
         setUpdateDeal(true);
     }
 
+    const handleDelete = (e) => {
+        e.preventDefault();
+        const ad_id = ad.data.ad_id;
+        const deal_id = ad.proposedDeal.deal_id;
 
-    const renderForm = () => {        
-        
+        const url = process.env.REACT_APP_BACKEND_URL + '/home/posts/' + ad_id + '/deals/' + deal_id;
+        axios.delete(url).then((res) => {
+            alert('Deal deleted!');
+            setUpdateDeal(true);
+        }).catch((err) => {
+            alert('Something went wrong!');
+            navigate("/home");
+        });
+    }
+
+    const renderForm = () => {
+
         if (ad.isDealProposed === false || updateDeal === true) {
             return (
                 <form
@@ -310,7 +324,7 @@ function AdPageBody(props) {
                     <h3> <b>Title: </b> {ad.proposedDeal.deal_details.title} </h3>
                     <h3> <b>Description: </b>{ad.proposedDeal.deal_details.description} </h3>
                     <button onClick={(e) => handleUpdate(e)}>Update Deal</button>
-                    <button>Delete Deal</button>
+                    <button onClick={(e) => handleDelete(e)}>Delete Deal</button>
                 </>
 
             );

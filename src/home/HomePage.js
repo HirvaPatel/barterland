@@ -8,6 +8,7 @@ import TitleSection from "./TitleSection";
 import MenuSection from "./MenuSection";
 import FooterSection from "./FooterSection";
 import axios from "axios";
+import { ReactSession } from 'react-client-session';
 
 
 
@@ -51,6 +52,9 @@ function HomePage(props) {
             <div className="loader"></div>
         );
     }
+
+    // const useridvalue = ReactSession.get("useridvalue");
+    // console.log(useridvalue);
 
     return (
 
