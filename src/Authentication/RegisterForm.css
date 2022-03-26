@@ -1,4 +1,4 @@
-select#security {
+select#securityquestion {
     font-size: 18px;
     margin-bottom: 34px;
     text-size-adjust: 7;
@@ -45,4 +45,5 @@ select#security {
     padding-bottom: 5px;
     background-color: #F5D200;
     border: none;
+    cursor: pointer;
 }

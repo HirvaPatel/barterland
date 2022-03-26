@@ -4,84 +4,123 @@ import './LoginPage.css';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import TitleSection from '../home/TitleSection';
+import MenuSection from '../home/MenuSection';
+import FooterSection from '../home/FooterSection';
 
 export default function RegisterForm(props) {
 
   const [disablebutton, setdisablebutton] = useState(false);
+
   let navigate = useNavigate();
 
   const [firstname, setFirstNameValue] = useState(
     {
-    value: '', validateinput: false,  error: []
-   
-  }); 
-
-   const [lastname, setLastNameValue] = useState(
-    {
-    value: '', validateinput: false,  error: []
-
-    }); 
-
-   const [email, setEmailValue] = useState(
-    {
-
-      value: '', validinput: false, error: [] 
+      value: '', validinput: false, error: []
 
     });
 
-   const [password, setPasswordValue] = useState(
+  const [lastname, setLastNameValue] = useState(
+    {
+      value: '', validinput: false, error: []
+
+    });
+
+  const [email, setEmailValue] = useState(
     {
 
       value: '', validinput: false, error: []
 
     });
-    const [confirmpassword, setConfirmPasswordValue] = useState(
+
+  const [password, setPasswordValue] = useState(
     {
-  
-        value: '', validinput: false, error: []
-  
+
+      value: '', validinput: false, error: []
+
     });
-    const [securityanswer, setSecurityAnswerValue] = useState(
+  const [confirmpassword, setConfirmPasswordValue] = useState(
+    {
+
+      value: '', validinput: false, error: []
+
+    });
+  const [securityquestion, setSecurityQuestionValue] = useState(
       {
-    
-          value: '', validinput: false, error: []
-    
+  
+        value: "default", validinput: false
+  
       });
+  const [securityanswer, setSecurityAnswerValue] = useState(
+    {
+
+      value: '', validinput: false, error: []
+
+    });
+
+  const [address, setAddressValue] = useState(
+    {
+
+      value: '', validinput: false, error: []
+
+    });
 
 
   function isAllInputValid() {
-    return (email.validinput && password.validinput && confirmpassword.validinput && firstname.validateinput && lastname.validateinput && securityanswer.validinput)
+    return (email.validinput && password.validinput && confirmpassword.validinput && firstname.validinput && lastname.validinput && securityanswer.validinput && address.validinput && securityquestion.validinput)
   }
 
-      const handleSubmit = (event) => {
-      event.preventDefault();
-      const state = this.state;
-      if (state.email.validinput === true && state.password.validinput === true && state.firstname.validinput === true && state.lastname.validateinput === true && state.confirmpassword.validateinput ===true) {
-        alert('sucessfully registered!!');
-        return true;
-      } else {
-        alert('All the fields in the form are madatory!');
-        return false;
-      }
-  
-    }
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setdisablebutton(true);
+    if (isAllInputValid()) {
+    
+      const user = {
+        first_name: firstname.value,
+        last_name: lastname.value,
+        email: email.value,
+        password: password.value,
+        security_ques: securityquestion.value,
+        security_ans: securityanswer.value,
+        address: address.value
+      };
+      axios.post('http://0.0.0.0:8080/api/register', user).then((response) => {
 
-      const handleChange = (event) => {
-      let emailStateValue = email;
-      let passwordStateValue = password;
-      let firstnameStateValue = firstname;
-      let lastnameStateValue = lastname;
-      let confirmpasswordStateValue = confirmpassword;
-      let securityanswerStateValue = securityanswer;
+        console.log(response.data);
+        if (response.data.success) {
+          alert('Registration Successfull!!');
+          navigate("/loginpage");
+        }
+      }).catch((error) => {
+        console.log(error.response);
+        if (error.response.status === 400) {
+          alert(error.response.data.message);
+        } else {
+          alert('something went wrong please try again!');
+        }
+      });
+    } 
+      setdisablebutton(false);
+  }
 
-      const err = []
-      const { name, value } = event.target;
+  const handleChange = (event) => {
+    let emailStateValue = email;
+    let passwordStateValue = password;
+    let firstnameStateValue = firstname;
+    let lastnameStateValue = lastname;
+    let confirmpasswordStateValue = confirmpassword;
+    let securityanswerStateValue = securityanswer;
+    let addressStateValue = address;
+    let securityquestionStateValue = securityquestion;
 
-      switch (name) {
+    const err = []
+    const { name, value } = event.target;
+
+    switch (name) {
 
       case 'firstname':
         firstnameStateValue.value = value;
-       
+
         if (!validateFirstName(value)) {
           firstnameStateValue.validinput = false;
           err.push('Alphabets are only allowed');
@@ -107,205 +146,204 @@ export default function RegisterForm(props) {
         lastnameStateValue.validinput = true;
         break;
 
-        case 'email':
-          emailStateValue.value = value;
-          if (!validateEmail(value)) {
-            err.push('invalid email!')
-            emailStateValue.validinput = false;
-            emailStateValue.error = err;
-            break;
-          }
-
-          emailStateValue.error = [];
-          emailStateValue.validinput = true;
+      case 'email':
+        emailStateValue.value = value;
+        if (!validateEmail(value)) {
+          err.push('invalid email!')
+          emailStateValue.validinput = false;
+          emailStateValue.error = err;
           break;
+        }
 
-        case 'password':
-          passwordStateValue.value = value;
+        emailStateValue.error = [];
+        emailStateValue.validinput = true;
+        break;
 
-          if (!validatePassword(value)) {
-            passwordStateValue.validinput = false;
-            err.push('Atleast have 8 charachter, one capital letter, one number and one special character');
-            passwordStateValue.error = err;
-            break;
-          }
-          passwordStateValue.error = [];
-          passwordStateValue.validinput = true;
+      case 'password':
+        passwordStateValue.value = value;
+
+        if (!validatePassword(value)) {
+          passwordStateValue.validinput = false;
+          err.push('Atleast have 8 charachter, one capital letter, one number and one special character');
+          passwordStateValue.error = err;
           break;
+        }
+        passwordStateValue.error = [];
+        passwordStateValue.validinput = true;
+        break;
 
-          case 'confirmpassword':
-          confirmpasswordStateValue.value = value;
+      case 'confirmpassword':
+        confirmpasswordStateValue.value = value;
 
-          if (!validatePassword(value)) {
-            confirmpasswordStateValue.validinput = false;
-            err.push('Atleast have 8 charachter, one capital letter, one number and one special character');
-            confirmpasswordStateValue.error = err;
-            break;
-          }
-          confirmpasswordStateValue.error = [];
-          confirmpasswordStateValue.validinput = true;
+        if (value !== password.value) {
+          confirmpasswordStateValue.validinput = false;
+          err.push('Passwords dont match');
+          confirmpasswordStateValue.error = err;
           break;
+        }
+        confirmpasswordStateValue.error = [];
+        confirmpasswordStateValue.validinput = true;
+        break;
 
-          case 'securityanswer':
-          securityanswerStateValue.value = value;
-
-          if (!validateSecurityAnswer(value)) {
-            securityanswerStateValue.validinput = false;
-            err.push('The security answer should be atleast 5 characters in length');
-            securityanswerStateValue.error = err;
-            break;
-          }
-          securityanswerStateValue.error = [];
-          securityanswerStateValue.validinput = true;
+        case 'securityquestion':
+          securityquestionStateValue.value = value;
+          console.log(securityquestionStateValue.value)
+          securityquestionStateValue.validinput = true;
           break;
 
 
-          default:
+      case 'securityanswer':
+        securityanswerStateValue.value = value;
+
+        if (!validateSecurityAnswer(value)) {
+          securityanswerStateValue.validinput = false;
+          err.push('The security answer should be atleast 5 characters in length');
+          securityanswerStateValue.error = err;
           break;
-      }
+        }
+        securityanswerStateValue.error = [];
+        securityanswerStateValue.validinput = true;
+        break;
 
-      setPasswordValue(prevState => ({
-        ...prevState, value: passwordStateValue.value,
-        validinput: passwordStateValue.validinput,
-        error: passwordStateValue.error
+      case 'address':
+        addressStateValue.value = value;
+        addressStateValue.error = [];
+        addressStateValue.validinput = true;
+        break;
 
-      }));
-
-      setEmailValue(prevState => ({
-        ...prevState, value: emailStateValue.value,
-        validinput: emailStateValue.validinput,
-        error: emailStateValue.error
-
-      }));
-
-      setFirstNameValue(prevState => ({
-        ...prevState, value: firstnameStateValue.value,
-        validinput: firstnameStateValue.validinput,
-        error: firstnameStateValue.error
-
-      }));
-
-      setLastNameValue(prevState => ({
-        ...prevState, value: lastnameStateValue.value,
-        validinput: lastnameStateValue.validinput,
-        error: lastnameStateValue.error
-
-      }));
-
-      setConfirmPasswordValue(prevState => ({
-        ...prevState, value: confirmpasswordStateValue.value,
-        validinput: confirmpasswordStateValue.validinput,
-        error: confirmpasswordStateValue.error
-
-      }));
-
-      setSecurityAnswerValue(prevState => ({
-        ...prevState, value: securityanswerStateValue.value,
-        validinput: securityanswerStateValue.validinput,
-        error: securityanswerStateValue.error
-
-      }));
-
+       
+      default:
+        break;
     }
 
-    return (
-      <nav>
-      <header>
-        <nav className="container">
-            <nav className="box1">
-                <Link to={"/"} ><label className="logo">BarterLand</label> </Link>
-            </nav>
-            <nav className="box1">
-                {/* <Link to={"/comingsoon"} target="_blank" rel="noopener noreferrer" > <label>Location</label> </Link> */}
-                <Link to={"/comingsoon"} > <label>Location</label> </Link>
-            </nav>
-            <nav className="box1">
-                <Link to={"/comingsoon"} > <label>Wishlist</label> </Link>
-            </nav>
-            <nav className="box1">
-               <Link to={"/comingsoon"} ><label>Contact Us</label></Link>
-           </nav>
-           <nav className="box1">
-               <Link to={"/comingsoon"} ><label>About Us</label></Link>
-           </nav>
-           <nav className="box1">
-               <Link to={"/comingsoon"} ><label>Read our Blog</label></Link>
-           </nav>
-           <nav className="box1">
-               <Link to={"/comingsoon"} ><label>Rate Us</label></Link>
-           </nav>
-        </nav>
-    </header>
-        <title> Login Form </title>
-        <nav className="containerform">
-          <nav className="title">Registration Form</nav>
-          <nav className="content">
-            <form onSubmit={handleSubmit}>
-              <nav className="userdata">
-              <nav className="inputvalue">
-                  <label className="inputdetails">FirstName</label>
-                  <input type="text" name="firstname" value={firstname.value} onChange={handleChange} id="firstname" placeholder="Enter your firstname" />
-                  <label className="errorvalues">{firstname.error.join()}</label>
-                </nav>
-                <nav className="inputvalue">
-                  <label className="inputdetails">LastName</label>
-                  <input type="text" name="lastname" value={lastname.value} onChange={handleChange} id="lastname" placeholder="Enter your last name" />
-                  <label className="errorvalues">{lastname.error.join()}</label>
-                </nav>
-                <nav className="inputvalue">
-                  <label className="inputdetails">Email</label>
-                  <input type="text" name="email" value={email.value} onChange={handleChange} id="email" placeholder="Enter your email" />
-                  <label className="errorvalues">{email.error.join()}</label>
-                </nav>
-                <nav className="inputvalue">
-                  <label className="inputdetails">Password</label>
-                  <input type="password" name="password" value={password.value} onChange={handleChange} id="password" placeholder="Enter your password" />
-                  <label className="errorvalues">{password.error.join()}</label>
-                </nav>
-                <nav className="inputvalue">
-                  <label className="inputdetails">ConfirmPassword</label>
-                  <input type="password" name="confirmpassword" value={confirmpassword.value} onChange={handleChange} id="confirmpassword" placeholder="Confirm your password" />
-                  <label className="errorvalues">{confirmpassword.error.join()}</label>
-                </nav>
-                <nav>
-                  <label className="inputdetails">Select your Security Question</label>
-                  <select id="security" className="selection">
-                  <option value="en" selected>Name of your favourite color</option>
-                  <option value="es">Name of your first pet</option>
-                  <option value="pt">Name of your school</option>
-                  </select>
-              </nav>
-              <nav className="inputvalue">
-                  <label className="inputdetails">Security Answer</label>
-                  <input type="text" name="securityanswer" value={securityanswer.value} onChange={handleChange} id="securityanswer" placeholder="Enter your Security Answer" />
-                  <label className="errorvalues">{securityanswer.error.join()}</label>
-                </nav>
-              <nav className="buttonContainer">
-                <button className='button-body1' id='submitbutton' disabled={!isAllInputValid}> Submit</button>
-              </nav>
-                  <nav className="excistingvalue2">
-                  <label>Already have an account?<Link to="/loginpage">Login in</Link></label>
-                  </nav>
-              </nav>
-            </form>
-          </nav>
-        </nav>
-        <footer>
-                <nav className="container4">
-                    <nav className="backtotop">
-                        <Link to={"/home"} ><label>Back to top</label></Link>
-                    </nav>
-                    <nav className="logo-box"><Link to={"/home"} ><label>BarterLand</label></Link></nav>
-                    <section className="box5">
-                        <label> Developed by Humans </label>
-                    </section>
-                </nav>
+    setPasswordValue(prevState => ({
+      ...prevState, value: passwordStateValue.value,
+      validinput: passwordStateValue.validinput,
+      error: passwordStateValue.error
 
-            </footer>
+    }));
+
+    setEmailValue(prevState => ({
+      ...prevState, value: emailStateValue.value,
+      validinput: emailStateValue.validinput,
+      error: emailStateValue.error
+
+    }));
+
+    setFirstNameValue(prevState => ({
+      ...prevState, value: firstnameStateValue.value,
+      validinput: firstnameStateValue.validinput,
+      error: firstnameStateValue.error
+
+    }));
+
+    setLastNameValue(prevState => ({
+      ...prevState, value: lastnameStateValue.value,
+      validinput: lastnameStateValue.validinput,
+      error: lastnameStateValue.error
+
+    }));
+
+    setConfirmPasswordValue(prevState => ({
+      ...prevState, value: confirmpasswordStateValue.value,
+      validinput: confirmpasswordStateValue.validinput,
+      error: confirmpasswordStateValue.error
+
+    }));
+
+    setSecurityQuestionValue(prevState => ({
+      ...prevState, value: securityquestionStateValue.value,
+      validinput: securityquestionStateValue.validinput
+    }));
+
+    setSecurityAnswerValue(prevState => ({
+      ...prevState, value: securityanswerStateValue.value,
+      validinput: securityanswerStateValue.validinput,
+      error: securityanswerStateValue.error
+
+    }));
+
+    setAddressValue(prevState => ({
+      ...prevState, value: addressStateValue.value,
+      validinput: addressStateValue.validinput,
+      error: addressStateValue.error
+
+    }));
+
+    
+
+  }
+
+  return (
+
+    <>
+      <TitleSection />
+      <MenuSection />
+      <title> Login Form </title>
+      <nav className="containerform">
+        <nav className="title">Registration Form</nav>
+        <nav className="content">
+          <form onSubmit={handleSubmit}>
+            <nav className="userdata">
+              <nav className="inputvalue">
+                <label className="inputdetails">FirstName</label>
+                <input type="text" name="firstname" value={firstname.value} onChange={handleChange} id="firstname" placeholder="Enter your firstname" />
+                <label className="errorvalues">{firstname.error.join()}</label>
+              </nav>
+              <nav className="inputvalue">
+                <label className="inputdetails">LastName</label>
+                <input type="text" name="lastname" value={lastname.value} onChange={handleChange} id="lastname" placeholder="Enter your last name" />
+                <label className="errorvalues">{lastname.error.join()}</label>
+              </nav>
+              <nav className="inputvalue">
+                <label className="inputdetails">Email</label>
+                <input type="text" name="email" value={email.value} onChange={handleChange} id="email" placeholder="Enter your email" />
+                <label className="errorvalues">{email.error.join()}</label>
+              </nav>
+              <nav className="inputvalue">
+                <label className="inputdetails">Password</label>
+                <input type="password" name="password" value={password.value} onChange={handleChange} id="password" placeholder="Enter your password" />
+                <label className="errorvalues">{password.error.join()}</label>
+              </nav>
+              <nav className="inputvalue">
+                <label className="inputdetails">ConfirmPassword</label>
+                <input type="password" name="confirmpassword" value={confirmpassword.value} onChange={handleChange} id="confirmpassword" placeholder="Confirm your password" />
+                <label className="errorvalues">{confirmpassword.error.join()}</label>
+              </nav>
+              <nav>
+                <label className="inputdetails">Select your Security Question</label>
+                <select id="securityquestion" className="selection" name="securityquestion" value ={securityquestion.value} onChange={handleChange} >
+                  <option value="DEFAULT">Choose your question</option>
+                  <option value="Name of your favourite color">Name of your favourite color</option> 
+                  <option value="Name of your first pet">Name of your first pet</option> 
+                  <option value="Name of your school">Name of your school</option>
+                </select>
+              </nav>
+              <nav className="inputvalue">
+                <label className="inputdetails">Security Answer</label>
+                <input type="text" name="securityanswer" value={securityanswer.value} onChange={handleChange} id="securityanswer" placeholder="Enter your Security Answer" />
+                <label className="errorvalues">{securityanswer.error.join()}</label>
+              </nav>
+              <nav className="inputvalue">
+                <label className="inputdetails">Address</label>
+                <input type="text" name="address" value={address.value} onChange={handleChange} id="address" placeholder="Enter your Address" />
+                <label className="errorvalues">{address.error.join()}</label>
+              </nav>
+              <nav className="buttonContainer">
+                <button className='button-body1' id='submitbutton' disabled={disablebutton}> Submit</button>
+              </nav>
+              <nav className="excistingvalue2">
+                <label>Already have an account?<Link to="/loginpage">Login in</Link></label>
+              </nav>
+            </nav>
+          </form>
+        </nav>
       </nav>
 
-    );
-    }
+      <FooterSection />
+    </>
+  );
+}
 
 
 function validateEmail(email) {
@@ -336,9 +374,8 @@ function validateLastName(lastname) {
   );
 }
 
-  function validateSecurityAnswer(securityanswer){
-    return String(securityanswer).match(/^[a-zA-Z]{5,}$/
+function validateSecurityAnswer(securityanswer) {
+  return String(securityanswer).match(/^[a-zA-Z0-9]{5,}$/
 
-    );
-  }
-
+  );
+}

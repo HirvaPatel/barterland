@@ -39,7 +39,7 @@ export default function TitleSection(props) {
                 <Link to={"/comingsoon"} > <label>Wishlist</label> </Link>
             </nav>
             <nav className="box1">
-                <Link to={"/comingsoon"} state={{ data: props.userData }}><label>{linkName}</label></Link>
+                <Link to={"/userregister"} state={{ data: props.userData }}><label>{linkName}</label></Link>
             </nav>
         </nav>
     </header>);
