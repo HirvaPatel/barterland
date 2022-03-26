@@ -28,8 +28,8 @@ export default function NameUpdate(props) {
     });
 
  
-    const useridvalue = ReactSession.get("useridvalue");
-    console.log(useridvalue);
+    const user_id = ReactSession.get("user_id");
+    console.log(user_id);
 
 
 
@@ -44,9 +44,9 @@ export default function NameUpdate(props) {
     
       const user = {
 
-        user_id: useridvalue,
-        first_name: firstname.value,
-        last_name: lastname.value,
+        user_id: user_id,
+        first_name: firstname.value.toLowerCase(),
+        last_name: lastname.value.toLowerCase(),
        
       };
       axios.post('http://0.0.0.0:8080/api/updatename', user).then((response) => {
@@ -161,14 +161,14 @@ export default function NameUpdate(props) {
 
 
 function validateFirstName(firstname) {
-  return String(firstname).match(
+  return String(firstname).toLowerCase().match(
     /^[A-Za-z ]+$/
 
   );
 }
 
 function validateLastName(lastname) {
-  return String(lastname).match(
+  return String(lastname).toLowerCase().match(
     /^[A-Za-z ]+$/
 
   );
