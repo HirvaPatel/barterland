@@ -20,7 +20,7 @@ export default function MenuSection(props) {
                     <Link to={"/comingsoon"} >   <label>My Ads</label></Link>
                 </nav>
                 <nav className="box1">
-                    <Link to={"/comingsoon"} >   <label>Blogs</label></Link>
+                    <Link to={"/userupdate"} >   <label>Blogs</label></Link>
                 </nav>
                 <nav className="box1">
                     <Link to={"/comingsoon"} >   <label>Feedback</label></Link>

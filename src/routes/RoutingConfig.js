@@ -8,7 +8,13 @@ import UserProfilePage  from '../Authentication/UserProfilePage';
 import IndividualAdPage from '../individual_ad/IndividualAdPage';
 import ForgotPassword from '../Authentication/ForgotPassword';
 import EmailValidation from '../Authentication/EmailValidation';
-import UserData from '../Authentication/UserData';
+import UserData from '../Authentication/EmailUpdate';
+import UserUpdate from '../Authentication/UserUpdate';
+import EmailUpdate from '../Authentication/EmailUpdate';
+import PasswordUpdate from '../Authentication/PasswordUpdate';
+import AddressUpdate from '../Authentication/AddressUpdate';
+import NameUpdate from '../Authentication/NameUpdate';
+
 
 export default function RoutingConfig(props) {
 
@@ -26,6 +32,13 @@ export default function RoutingConfig(props) {
                 <Route exact path="/emailvalidation" element={<EmailValidation/>}></Route>
                 <Route exact path="/comingsoon" element={<ComingSoonPage />}></Route>
                 <Route exact path="/adpage" element={<IndividualAdPage />}></Route>
+                <Route exact path="/userupdate"element={<UserUpdate />}></Route>
+                <Route exact path="/emailupdate"element={<EmailUpdate />}></Route>
+                <Route exact path="/passwordupdate"element={<PasswordUpdate />}></Route>
+                <Route exact path="/addressupdate"element={<AddressUpdate />}></Route>
+                <Route exact path="/nameupdate"element={<NameUpdate />}></Route>
+
+
             </Routes>
         </Router>
     );

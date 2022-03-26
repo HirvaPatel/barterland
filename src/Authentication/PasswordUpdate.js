@@ -9,20 +9,20 @@ import MenuSection from '../home/MenuSection';
 import FooterSection from '../home/FooterSection';
 import { ReactSession } from 'react-client-session';
 
-export default function ForgotPassword(props) {
+export default function PasswordUpdate(props) {
 
   const [disablebutton, setdisablebutton] = useState(false);
 
   let navigate = useNavigate();
 
-  const [securityanswer, setSecurityAnswerValue] = useState(
+  const [oldpassword, setOldPasswordValue] = useState(
     {
 
       value: '', validinput: false, error: []
 
     });
 
-  const [password, setPasswordValue] = useState(
+  const [newpassword, setNewPasswordValue] = useState(
     {
 
       value: '', validinput: false, error: []
@@ -35,36 +35,31 @@ export default function ForgotPassword(props) {
 
     });
 
-  
-  const securityquestionvalue = ReactSession.get("securityquestionvalue");
-  console.log(securityquestionvalue);
-
-  const emailvalue = ReactSession.get("emailvalue");
-  console.log(emailvalue);
+    const useridvalue = ReactSession.get("useridvalue");
+    console.log(useridvalue);
+ 
 
   function isAllInputValid() {
-    return (password.validinput && confirmpassword.validinput && securityanswer.validinput)
+    return (oldpassword.validinput && newpassword.validinput && confirmpassword.validinput)
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setdisablebutton(true);
     if (isAllInputValid()) {
-
+    
       const user = {
-        
-        email: emailvalue,
-        security_ans: securityanswer.value,
-        password: password.value
-
+        user_id: useridvalue,
+        oldpassword: oldpassword.value,
+        newpassword: newpassword.value,
       };
 
-      axios.post('http://0.0.0.0:8080/api/forgotpassword', user).then((response) => {
+      axios.post('http://0.0.0.0:8080/api/updatepassword', user).then((response) => {
 
         console.log(response.data);
         if (response.data.success) {
           alert(response.data.message);
-          navigate("/loginpage");
+          navigate("/userupdate");
         }
       }).catch((error) => {
         console.log(error.response);
@@ -78,109 +73,102 @@ export default function ForgotPassword(props) {
       setdisablebutton(false);
   }
 
-
   const handleChange = (event) => {
-    let passwordStateValue = password;
+    let oldpasswordStateValue = oldpassword;
+    let newpasswordStateValue = newpassword;
     let confirmpasswordStateValue = confirmpassword;
-    let securityanswerStateValue = securityanswer;
 
     const err = []
     const { name, value } = event.target;
 
     switch (name) {
 
-      case 'password':
-        passwordStateValue.value = value;
-
+      case 'oldpassword':
+        oldpasswordStateValue.value = value;
         if (!validatePassword(value)) {
-          passwordStateValue.validinput = false;
-          err.push('Atleast have 8 charachter, one capital letter, one number and one special character');
-          passwordStateValue.error = err;
+          err.push('Atleast have 8 charachter, one capital letter, one number and one special character!')
+          oldpasswordStateValue.validinput = false;
+          oldpasswordStateValue.error = err;
           break;
         }
-        passwordStateValue.error = [];
-        passwordStateValue.validinput = true;
+
+        oldpasswordStateValue.error = [];
+        oldpasswordStateValue.validinput = true;
+        break;
+
+      case 'newpassword':
+        newpasswordStateValue.value = value;
+
+        if (!validatePassword(value)) {
+          newpasswordStateValue.validinput = false;
+          err.push('Atleast have 8 charachter, one capital letter, one number and one special character');
+          newpasswordStateValue.error = err;
+          break;
+        }
+        newpasswordStateValue.error = [];
+        newpasswordStateValue.validinput = true;
         break;
 
       case 'confirmpassword':
         confirmpasswordStateValue.value = value;
 
-        if (value !== password.value) {
+        if (value !== newpassword.value) {
           confirmpasswordStateValue.validinput = false;
-          err.push('Password does not matc');
+          err.push('Passwords dont match');
           confirmpasswordStateValue.error = err;
           break;
         }
         confirmpasswordStateValue.error = [];
         confirmpasswordStateValue.validinput = true;
         break;
-
-      case 'securityanswer':
-        securityanswerStateValue.value = value;
-
-        if (!validateSecurityAnswer(value)) {
-          securityanswerStateValue.validinput = false;
-          err.push('The security answer should be atleast 5 characters in length');
-          securityanswerStateValue.error = err;
-          break;
-        }
-        securityanswerStateValue.error = [];
-        securityanswerStateValue.validinput = true;
-        break;
-
-
+       
       default:
         break;
     }
 
-    setPasswordValue(prevState => ({
-      ...prevState, value: passwordStateValue.value,
-      validinput: passwordStateValue.validinput,
-      error: passwordStateValue.error
+    setOldPasswordValue(prevState => ({
+      ...prevState, value: oldpasswordStateValue.value,
+      validinput: oldpasswordStateValue.validinput,
+      error: oldpasswordStateValue.error
 
     }));
+
+    setNewPasswordValue(prevState => ({
+      ...prevState, value: newpasswordStateValue.value,
+      validinput: newpasswordStateValue.validinput,
+      error: newpasswordStateValue.error
+
+    })); 
 
     setConfirmPasswordValue(prevState => ({
       ...prevState, value: confirmpasswordStateValue.value,
       validinput: confirmpasswordStateValue.validinput,
       error: confirmpasswordStateValue.error
 
-    }));
-
-    setSecurityAnswerValue(prevState => ({
-      ...prevState, value: securityanswerStateValue.value,
-      validinput: securityanswerStateValue.validinput,
-      error: securityanswerStateValue.error
-
-    }));
+    }));    
 
   }
 
   return (
 
     <>
-      <TitleSection  />
+      <TitleSection />
       <MenuSection />
-
       <title> Login Form </title>
       <nav className="containerform">
-        <nav className="title">Reset Password Form</nav>
+        <nav className="title">Update Password Form</nav>
         <nav className="content">
           <form onSubmit={handleSubmit}>
             <nav className="userdata">
               <nav className="inputvalue">
-                <label className="inputdetails">Security Question</label>
-                <input type="text" name="securityquestion" value = {securityquestionvalue} readOnly></input>
+                <label className="inputdetails">OldPassword</label>
+                <input type="password" name="oldpassword" value={oldpassword.value} onChange={handleChange} id="oldpassword" placeholder="Enter your old password" />
+                <label className="errorvalues">{oldpassword.error.join()}</label>
               </nav>
               <nav className="inputvalue">
-                <label className="inputdetails">Security Answer</label>
-                <input type="text" name="securityanswer" value={securityanswer.value} onChange={handleChange} id="securityanswer" placeholder="Enter your Security Answer" />
-                <label className="errorvalues">{securityanswer.error.join()}</label>
-              </nav>
-              <nav className="inputvalue">
-                <label className="inputdetails">Password</label>
-                <input type="password" name="password" value={password.value} onChange={handleChange} id="password" placeholder="Enter your new password" />
-                <label className="errorvalues">{password.error.join()}</label>
+                <label className="inputdetails">NewPassword</label>
+                <input type="password" name="newpassword" value={newpassword.value} onChange={handleChange} id="newpassword" placeholder="Enter your password" />
+                <label className="errorvalues">{newpassword.error.join()}</label>
               </nav>
               <nav className="inputvalue">
                 <label className="inputdetails">ConfirmPassword</label>
@@ -188,19 +176,26 @@ export default function ForgotPassword(props) {
                 <label className="errorvalues">{confirmpassword.error.join()}</label>
               </nav>
               <nav className="buttonContainer">
-                <button className='button-body1' id='submitbutton' disabled={disablebutton}> Submit</button>
+                <button className='button-body1' id='submitbutton' disabled={disablebutton}> Update</button>
               </nav>
             </nav>
           </form>
         </nav>
       </nav>
+
       <FooterSection />
     </>
-
-
   );
 }
 
+
+function validateEmail(email) {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+}
 
 function validatePassword(password) {
   return String(password).match(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/
@@ -208,9 +203,22 @@ function validatePassword(password) {
   );
 }
 
-function validateSecurityAnswer(securityanswer) {
-  return String(securityanswer).match(/^[a-zA-Z]{5,}$/
+function validateFirstName(firstname) {
+  return String(firstname).match(
+    /^[A-Za-z ]+$/
 
   );
 }
 
+function validateLastName(lastname) {
+  return String(lastname).match(
+    /^[A-Za-z ]+$/
+
+  );
+}
+
+function validateSecurityAnswer(securityanswer) {
+  return String(securityanswer).match(/^[a-zA-Z0-9]{5,}$/
+
+  );
+}
