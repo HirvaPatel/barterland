@@ -36,7 +36,7 @@ export default function TitleSection(props) {
                 <Link to={"/comingsoon"} > <button className="ads-button" disabled={searchValue === '' ? true : false} type="submit">Search</button></Link>
             </nav>
             <nav className="box1">
-                <Link to={"/comingsoon"} > <label>Wishlist</label> </Link>
+                <Link to={"/wishlist"} > <label>Wishlist</label> </Link>
             </nav>
             <nav className="box1">
                 <Link to={"/comingsoon"} state={{ data: props.userData }}><label>{linkName}</label></Link>
