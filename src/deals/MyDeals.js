@@ -17,7 +17,6 @@ export default function MyDeals(props) {
     useEffect(() => {
 
         const user_id = window.localStorage.getItem('user_id');
-        console.log(user_id);
 
         let config = {
             headers: {
@@ -85,8 +84,9 @@ function DealsList(props) {
 
 function Deal(props) {
 
-    const deal = props.deal.deals[0];
-    console.log(deal);
+    const dealsList = props.deal.deals;
+    const deal = props.deal.deals[dealsList.length - 1];
+
     const ad_id = props.deal.ad_id;
     const toLink = '/post/' + ad_id;
 

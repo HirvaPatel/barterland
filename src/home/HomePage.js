@@ -39,7 +39,7 @@ function HomePage(props) {
             console.log(err.response);
         });
 
-        window.localStorage.setItem('user_id', '12');
+        window.localStorage.setItem('user_id', '11');
 
     }, []);
 
@@ -51,8 +51,6 @@ function HomePage(props) {
             <div className="loader"></div>
         );
     }
-
-    console.log(ads);
 
     return (
 
@@ -69,8 +67,7 @@ function HomePage(props) {
 function MainSectionOneAdRow(props) {
 
 
-    const ads = props.ads;
-    console.log(ads[1].ad_details.description);
+    const ads = props.ads;   
 
     return (
         <main>
@@ -109,8 +106,7 @@ class MainSectionGenerator extends React.Component {
     returnElements() {
         const ads = this.props.ads
         const result = []
-        if (ads) {
-            console.log(ads.length / 3);
+        if (ads) {           
             let j = 0;
             for (let i = 0; i < Math.floor(ads.length / 3); i = i + 1) {
                 const subAds = ads.slice(j, j + 3);
@@ -128,8 +124,7 @@ class MainSectionGenerator extends React.Component {
 }
 
 function MainSectionBox(props) {
-    const ad_details = props.ad_details;
-    console.log(ad_details.ad_details.image_url);
+    const ad_details = props.ad_details;    
     const nextPage = '/post/' + ad_details.ad_id;
     return (
 

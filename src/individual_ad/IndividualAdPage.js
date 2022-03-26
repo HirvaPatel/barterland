@@ -41,7 +41,7 @@ function IndividualAdPage(props) {
     useEffect(() => {
 
         const user_id = window.localStorage.getItem('user_id');
-        console.log(user_id);
+        // console.log(user_id);
         setUserId(user_id);
 
         let config = {
@@ -100,13 +100,17 @@ function AdPageBody(props) {
 
     let navigate = useNavigate();
     const [dealProposed, setDealProposed] = useState(false);
+    const [updateDeal, setUpdateDeal] = useState(false);
 
     useEffect(() => {
-        if (dealProposed === true) {
-            // navigate("/home");
+        if (dealProposed === true) {            
             window.location.reload();
         }
     }, [dealProposed]);
+
+    useEffect(() => {
+       
+    }, [updateDeal]);
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -169,6 +173,7 @@ function AdPageBody(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         let errors = validation;
         if (!isEmpty(errors.Name) || !isEmpty(errors.mobile) || !isEmpty(errors.title) || !isEmpty(errors.location) || !isEmpty(errors.description)) {
             alert('Invalid Inputs ! Please fix the errors!');
@@ -218,10 +223,24 @@ function AdPageBody(props) {
         return;
     };
 
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        const inputs = {
+            Name: ad.proposedDeal.deal_details.name,
+            mobile: ad.proposedDeal.deal_details.mobile,
+            title: ad.proposedDeal.deal_details.title,
+            location: ad.proposedDeal.deal_details.location,
+            description: ad.proposedDeal.deal_details.description
+        }
+        setInputValue(inputs);
+        setDealProposed(false);
+        setUpdateDeal(true);
+    }
 
 
-    const renderForm = () => {
-        if (ad.isDealProposed === false) {
+    const renderForm = () => {        
+        
+        if (ad.isDealProposed === false || updateDeal === true) {
             return (
                 <form
                     id='proposalDealForm'
@@ -290,7 +309,7 @@ function AdPageBody(props) {
                     <h3> <b>Location: </b> {ad.proposedDeal.deal_details.location} </h3>
                     <h3> <b>Title: </b> {ad.proposedDeal.deal_details.title} </h3>
                     <h3> <b>Description: </b>{ad.proposedDeal.deal_details.description} </h3>
-                    <button>Update Deal</button>
+                    <button onClick={(e) => handleUpdate(e)}>Update Deal</button>
                     <button>Delete Deal</button>
                 </>
 
