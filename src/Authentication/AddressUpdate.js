@@ -37,7 +37,7 @@ export default function AddressUpdate(props) {
     
       const user = {
         user_id:user_id,
-        address: address.value
+        address: address.value.toLowerCase()
       };
       axios.post('http://0.0.0.0:8080/api/updateaddress', user).then((response) => {
 

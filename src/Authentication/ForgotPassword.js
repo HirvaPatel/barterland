@@ -54,7 +54,7 @@ export default function ForgotPassword(props) {
       const user = {
         
         email: email,
-        security_ans: securityanswer.value,
+        security_ans: securityanswer.value.toLowerCase(),
         password: password.value
 
       };

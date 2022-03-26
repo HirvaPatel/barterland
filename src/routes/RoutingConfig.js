@@ -14,6 +14,7 @@ import AddressUpdate from '../Authentication/AddressUpdate';
 import NameUpdate from '../Authentication/NameUpdate';
 
 import MyDeals from '../deals/MyDeals';
+import Logout from '../Authentication/Logout';
 
 export default function RoutingConfig(props) {
 
@@ -35,6 +36,7 @@ export default function RoutingConfig(props) {
                 <Route exact path="/nameupdate" element={<NameUpdate />}></Route>
                 <Route exact path="/post/:post_id" element={<IndividualAdPage />}></Route>
                 <Route exact path="/home/mydeals" element={<MyDeals />}></Route>
+                <Route exact path="/logout" element={<Logout />}></Route>
             </Routes>
         </Router>
     );

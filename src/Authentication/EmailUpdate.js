@@ -36,7 +36,7 @@ export default function EmailUpdate(props) {
       const user = {
 
         user_id: user_id,
-        email: email.value
+        email: email.value.toLowerCase()
 
       };
 

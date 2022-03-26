@@ -45,8 +45,8 @@ export default function NameUpdate(props) {
       const user = {
 
         user_id: user_id,
-        first_name: firstname.value,
-        last_name: lastname.value,
+        first_name: firstname.value.toLowerCase(),
+        last_name: lastname.value.toLowerCase(),
        
       };
       axios.post('http://0.0.0.0:8080/api/updatename', user).then((response) => {

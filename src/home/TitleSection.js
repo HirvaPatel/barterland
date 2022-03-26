@@ -36,11 +36,13 @@ export default function TitleSection(props) {
                 <Link to={"/comingsoon"} > <button className="ads-button" disabled={searchValue === '' ? true : false} type="submit">Search</button></Link>
             </nav>
             <nav className="box1">
-                <Link to={"/comingsoon"} > <label>Wishlist</label> </Link>
+                <Link to={"/userregister"} >   <label>Register</label></Link>
             </nav>
             <nav className="box1">
-                <Link to={"/userregister"} state={{ data: props.userData }}><label>{linkName}</label></Link>
+                <Link to={"/loginpage"} >   <label>Login</label></Link>
             </nav>
+            <nav className="box1">
+                <Link to={"/logout"} >   <label>Log Out</label></Link> </nav>
         </nav>
     </header>);
 }

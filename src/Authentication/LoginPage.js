@@ -38,7 +38,7 @@ export default function LoginPage(props) {
     if (isAllInputValid()) {
     
       const user = {
-        email: email.value,
+        email: email.value.toLowerCase(),
         password: password.value
 
       };

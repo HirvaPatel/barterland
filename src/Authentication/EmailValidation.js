@@ -34,7 +34,7 @@ export default function EmailValidation(props) {
     if (isAllInputValid()) {
     
       const user = {
-        email: email.value,
+        email: email.value.toLowerCase()
       };
 
       axios.post('http://0.0.0.0:8080/api/finduser', user).then((response) => {

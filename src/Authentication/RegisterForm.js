@@ -76,13 +76,13 @@ export default function RegisterForm(props) {
     if (isAllInputValid()) {
     
       const user = {
-        first_name: firstname.value,
-        last_name: lastname.value,
-        email: email.value,
+        first_name: firstname.value.toLowerCase(),
+        last_name: lastname.value.toLowerCase(),
+        email: email.value.toLowerCase(),
         password: password.value,
         security_ques: securityquestion.value,
-        security_ans: securityanswer.value,
-        address: address.value
+        security_ans: securityanswer.value.toLowerCase(),
+        address: address.value.toLowerCase()
       };
       axios.post('http://0.0.0.0:8080/api/register', user).then((response) => {
 
