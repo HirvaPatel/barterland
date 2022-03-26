@@ -39,8 +39,8 @@ export default function ForgotPassword(props) {
   const securityquestionvalue = ReactSession.get("securityquestionvalue");
   console.log(securityquestionvalue);
 
-  const emailvalue = ReactSession.get("emailvalue");
-  console.log(emailvalue);
+  const email = ReactSession.get("email");
+  console.log(email);
 
   function isAllInputValid() {
     return (password.validinput && confirmpassword.validinput && securityanswer.validinput)
@@ -53,8 +53,8 @@ export default function ForgotPassword(props) {
 
       const user = {
         
-        email: emailvalue,
-        security_ans: securityanswer.value,
+        email: email,
+        security_ans: securityanswer.value.toLowerCase(),
         password: password.value
 
       };
@@ -209,7 +209,7 @@ function validatePassword(password) {
 }
 
 function validateSecurityAnswer(securityanswer) {
-  return String(securityanswer).match(/^[a-zA-Z]{5,}$/
+  return String(securityanswer).toLowerCase().match(/^[a-zA-Z]{5,}$/
 
   );
 }

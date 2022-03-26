@@ -4,7 +4,6 @@ import HomePage from '../home/HomePage';
 import ComingSoonPage from '../home/ComingSoonPage';
 import LoginPage from '../Authentication/LoginPage';
 import RegisterForm from '../Authentication/RegisterForm';
-import UserProfilePage from '../Authentication/UserProfilePage';
 import IndividualAdPage from '../individual_ad/IndividualAdPage';
 import ForgotPassword from '../Authentication/ForgotPassword';
 import EmailValidation from '../Authentication/EmailValidation';
@@ -15,6 +14,7 @@ import AddressUpdate from '../Authentication/AddressUpdate';
 import NameUpdate from '../Authentication/NameUpdate';
 
 import MyDeals from '../deals/MyDeals';
+import Logout from '../Authentication/Logout';
 
 export default function RoutingConfig(props) {
 
@@ -27,7 +27,6 @@ export default function RoutingConfig(props) {
                 <Route exact path="/loginpage" element={<LoginPage />} ></Route>
                 <Route exact path="/forgotpassword" element={<ForgotPassword />} ></Route>
                 <Route exact path="/userregister" element={<RegisterForm />} ></Route>
-                <Route exact path="/userprofile" element={<UserProfilePage />}></Route>
                 <Route exact path="/emailvalidation" element={<EmailValidation />}></Route>
                 <Route exact path="/comingsoon" element={<ComingSoonPage />}></Route>
                 <Route exact path="/userupdate" element={<UserUpdate />}></Route>
@@ -37,6 +36,7 @@ export default function RoutingConfig(props) {
                 <Route exact path="/nameupdate" element={<NameUpdate />}></Route>
                 <Route exact path="/post/:post_id" element={<IndividualAdPage />}></Route>
                 <Route exact path="/home/mydeals" element={<MyDeals />}></Route>
+                <Route exact path="/logout" element={<Logout />}></Route>
             </Routes>
         </Router>
     );

@@ -35,8 +35,8 @@ export default function PasswordUpdate(props) {
 
     });
 
-    const useridvalue = ReactSession.get("useridvalue");
-    console.log(useridvalue);
+    const user_id = ReactSession.get("user_id");
+    console.log(user_id);
  
 
   function isAllInputValid() {
@@ -49,7 +49,7 @@ export default function PasswordUpdate(props) {
     if (isAllInputValid()) {
     
       const user = {
-        user_id: useridvalue,
+        user_id: user_id,
         oldpassword: oldpassword.value,
         newpassword: newpassword.value,
       };
@@ -59,7 +59,7 @@ export default function PasswordUpdate(props) {
         console.log(response.data);
         if (response.data.success) {
           alert(response.data.message);
-          navigate("/userupdate");
+          navigate("/loginpage");
         }
       }).catch((error) => {
         console.log(error.response);

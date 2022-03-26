@@ -22,8 +22,8 @@ export default function AddressUpdate(props) {
 
     });
 
-    const useridvalue = ReactSession.get("useridvalue");
-    console.log(useridvalue);
+    const user_id = ReactSession.get("user_id");
+    console.log(user_id);
 
 
   function isAllInputValid() {
@@ -36,8 +36,8 @@ export default function AddressUpdate(props) {
     if (isAllInputValid()) {
     
       const user = {
-        user_id:useridvalue,
-        address: address.value
+        user_id:user_id,
+        address: address.value.toLowerCase()
       };
       axios.post('http://0.0.0.0:8080/api/updateaddress', user).then((response) => {
 
