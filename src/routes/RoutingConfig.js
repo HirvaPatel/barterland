@@ -9,6 +9,7 @@ import IndividualAdPage from '../individual_ad/IndividualAdPage';
 import ForgotPassword from '../Authentication/ForgotPassword';
 import EmailValidation from '../Authentication/EmailValidation';
 import UserData from '../Authentication/UserData';
+import MyDeals from '../deals/MyDeals';
 
 export default function RoutingConfig(props) {
 
@@ -25,7 +26,8 @@ export default function RoutingConfig(props) {
                 <Route exact path="/userprofile" element={<UserProfilePage />}></Route>
                 <Route exact path="/emailvalidation" element={<EmailValidation/>}></Route>
                 <Route exact path="/comingsoon" element={<ComingSoonPage />}></Route>
-                <Route exact path="/adpage" element={<IndividualAdPage />}></Route>
+                <Route exact path="/post/:post_id" element={<IndividualAdPage />}></Route>
+                <Route exact path="/home/mydeals" element={<MyDeals />}></Route>
             </Routes>
         </Router>
     );
