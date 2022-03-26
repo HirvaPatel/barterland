@@ -8,27 +8,21 @@ import TitleSection from "./TitleSection";
 import MenuSection from "./MenuSection";
 import FooterSection from "./FooterSection";
 import axios from "axios";
+import { ReactSession } from 'react-client-session';
 
 
 
 function HomePage(props) {
     let location = useLocation();
-    const [isRegistered, setIsRegistered] = useState(false);
-    const [userData, setUserData] = useState();
+    const [userData, setUserData] = useState({});
     const [adsList, setAdsList] = useState();
 
     useEffect(() => {
-        if (userData) {
-            return () => { }
+
+        if (userData && userData.user_id) {
+            return;
         }
-        if (location.state) {
-            let data = userData;
-            data = location.state.data;
-            setUserData(data);
-            if (location.state.data.f_name.valid) {
-                setIsRegistered(true);
-            }
-        }
+
     }, [userData]);
 
     useEffect(() => {
@@ -39,8 +33,18 @@ function HomePage(props) {
             console.log(err.response);
         });
 
-        window.localStorage.setItem('user_id', '12');
-
+        ReactSession.setStoreType("localStorage");
+        const user_id = ReactSession.get("user_id");
+        const email = ReactSession.get("email");
+        const first_name = ReactSession.get("first_name");
+        const userData = {
+            user_id: user_id,
+            email: email,
+            first_name: first_name
+        }
+        if(userData && userData.user_id){
+            setUserData(userData);
+        }        
     }, []);
 
     const data = userData;
@@ -52,12 +56,10 @@ function HomePage(props) {
         );
     }
 
-    console.log(ads);
-
     return (
 
         <>
-            <TitleSection isRegistered={isRegistered} userData={data} />
+            <TitleSection />
             <MenuSection />
             <MainSectionGenerator ads={ads} />
             <FooterSection />
@@ -70,7 +72,6 @@ function MainSectionOneAdRow(props) {
 
 
     const ads = props.ads;
-    console.log(ads[1].ad_details.description);
 
     return (
         <main>
@@ -110,7 +111,6 @@ class MainSectionGenerator extends React.Component {
         const ads = this.props.ads
         const result = []
         if (ads) {
-            console.log(ads.length / 3);
             let j = 0;
             for (let i = 0; i < Math.floor(ads.length / 3); i = i + 1) {
                 const subAds = ads.slice(j, j + 3);
@@ -118,6 +118,15 @@ class MainSectionGenerator extends React.Component {
                 result.push(<MainSectionOneAdRow ads={subAds} key={result.length} />);
             }
         }
+
+        if (result.length < 1) {
+            return (
+                <main className="box">
+                    <h2>No Ads to display!</h2>
+                </main >
+            );
+        }
+
         return result;
     }
 
@@ -129,7 +138,6 @@ class MainSectionGenerator extends React.Component {
 
 function MainSectionBox(props) {
     const ad_details = props.ad_details;
-    console.log(ad_details.ad_details.image_url);
     const nextPage = '/post/' + ad_details.ad_id;
     return (
 
