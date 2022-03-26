@@ -14,22 +14,15 @@ import { ReactSession } from 'react-client-session';
 
 function HomePage(props) {
     let location = useLocation();
-    const [isRegistered, setIsRegistered] = useState(false);
-    const [userData, setUserData] = useState();
+    const [userData, setUserData] = useState({});
     const [adsList, setAdsList] = useState();
 
     useEffect(() => {
-        if (userData) {
-            return () => { }
+
+        if (userData && userData.user_id) {
+            return;
         }
-        if (location.state) {
-            let data = userData;
-            data = location.state.data;
-            setUserData(data);
-            if (location.state.data.f_name.valid) {
-                setIsRegistered(true);
-            }
-        }
+
     }, [userData]);
 
     useEffect(() => {
@@ -40,8 +33,18 @@ function HomePage(props) {
             console.log(err.response);
         });
 
-        window.localStorage.setItem('user_id', '11');
-
+        ReactSession.setStoreType("localStorage");
+        const user_id = ReactSession.get("user_id");
+        const email = ReactSession.get("email");
+        const first_name = ReactSession.get("first_name");
+        const userData = {
+            user_id: user_id,
+            email: email,
+            first_name: first_name
+        }
+        if(userData && userData.user_id){
+            setUserData(userData);
+        }        
     }, []);
 
     const data = userData;
@@ -53,13 +56,10 @@ function HomePage(props) {
         );
     }
 
-    // const useridvalue = ReactSession.get("useridvalue");
-    // console.log(useridvalue);
-
     return (
 
         <>
-            <TitleSection isRegistered={isRegistered} userData={data} />
+            <TitleSection />
             <MenuSection />
             <MainSectionGenerator ads={ads} />
             <FooterSection />
