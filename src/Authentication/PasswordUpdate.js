@@ -59,7 +59,7 @@ export default function PasswordUpdate(props) {
         console.log(response.data);
         if (response.data.success) {
           alert(response.data.message);
-          navigate("/userupdate");
+          navigate("/loginpage");
         }
       }).catch((error) => {
         console.log(error.response);

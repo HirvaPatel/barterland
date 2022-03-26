@@ -161,14 +161,14 @@ export default function NameUpdate(props) {
 
 
 function validateFirstName(firstname) {
-  return String(firstname).match(
+  return String(firstname).toLowerCase().match(
     /^[A-Za-z ]+$/
 
   );
 }
 
 function validateLastName(lastname) {
-  return String(lastname).match(
+  return String(lastname).toLowerCase().match(
     /^[A-Za-z ]+$/
 
   );

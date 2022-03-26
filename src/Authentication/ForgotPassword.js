@@ -209,7 +209,7 @@ function validatePassword(password) {
 }
 
 function validateSecurityAnswer(securityanswer) {
-  return String(securityanswer).match(/^[a-zA-Z]{5,}$/
+  return String(securityanswer).toLowerCase().match(/^[a-zA-Z]{5,}$/
 
   );
 }

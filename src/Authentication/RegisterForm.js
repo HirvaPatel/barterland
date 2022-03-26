@@ -361,21 +361,21 @@ function validatePassword(password) {
 }
 
 function validateFirstName(firstname) {
-  return String(firstname).match(
+  return String(firstname).toLowerCase().match(
     /^[A-Za-z ]+$/
 
   );
 }
 
 function validateLastName(lastname) {
-  return String(lastname).match(
+  return String(lastname).toLowerCase().match(
     /^[A-Za-z ]+$/
 
   );
 }
 
 function validateSecurityAnswer(securityanswer) {
-  return String(securityanswer).match(/^[a-zA-Z0-9]{5,}$/
+  return String(securityanswer).toLowerCase().match(/^[a-zA-Z0-9]{5,}$/
 
   );
 }

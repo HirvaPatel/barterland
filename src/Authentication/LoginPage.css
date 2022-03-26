@@ -117,7 +117,7 @@ form .inputvalue span.inputdetails{
 .userdata .inputvalue input:focus,
 .userdata .inputvalue input:valid{
   border-color: #7559b6;
-  font-size: 16px;
+  font-size: 18px;
   
 }
 form .buttonContainer {
