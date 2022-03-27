@@ -2,18 +2,59 @@ import React from "react";
 import './HomePage.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { ReactSession } from 'react-client-session';
+import { useEffect } from "react/cjs/react.development";
+
 
 export default function TitleSection(props) {
 
     const [searchValue, setSearchValue] = useState('');
 
-    let toProfile = "/register";
-    let linkName = "Register Now"
-    if (props.isRegistered && props.userData) {
-        toProfile = "/profile";
-        if (props.userData) {
-            linkName = "Profile of " + props.userData.f_name.value;
+    const [userData, setUserData] = useState({});
+
+    useEffect(() => {
+        if (userData && userData.user_id) {
+            return;
         }
+    }, [userData]);
+
+    useEffect(() => {
+        ReactSession.setStoreType("localStorage");
+        const user_id = ReactSession.get("user_id");
+        const email = ReactSession.get("email");
+        const first_name = ReactSession.get("first_name");
+        const userData = {
+            user_id: user_id,
+            email: email,
+            first_name: first_name
+        }
+        if(userData && userData.user_id){
+            setUserData(userData);
+        }        
+    }, []);
+
+
+    function renderAuthentication() {
+        if (userData && userData.user_id && userData.first_name) {
+            const displayName = 'Profile of ' + userData.first_name;
+            return (
+                <>
+                    <nav className="box1">
+                        <Link to={"/userupdate"}>   <label>{displayName}</label></Link>
+                    </nav>
+                    <nav className="box1">
+                        <Link to={"/logout"} >   <label>Log Out</label></Link>
+                    </nav>
+                </>)
+        }
+        return (
+            <>
+                <nav className="box1">
+                    <Link to={"/userregister"}>   <label>Register</label></Link>
+                </nav><nav className="box1">
+                    <Link to={"/loginpage"}>   <label>Login</label></Link>
+                </nav>
+            </>);
     }
 
     const handleChange = (e) => {
@@ -35,14 +76,7 @@ export default function TitleSection(props) {
                 <input placeholder="Search" value={searchValue} onChange={handleChange} />
                 <Link to={"/comingsoon"} > <button className="ads-button" disabled={searchValue === '' ? true : false} type="submit">Search</button></Link>
             </nav>
-            <nav className="box1">
-                <Link to={"/userregister"} >   <label>Register</label></Link>
-            </nav>
-            <nav className="box1">
-                <Link to={"/loginpage"} >   <label>Login</label></Link>
-            </nav>
-            <nav className="box1">
-                <Link to={"/logout"} >   <label>Log Out</label></Link> </nav>
+            {renderAuthentication()}
         </nav>
     </header>);
 }

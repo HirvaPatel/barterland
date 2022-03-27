@@ -1,6 +1,6 @@
 import React from "react";
 import './IndividualAdPage.css'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -10,43 +10,45 @@ import TitleSection from "../home/TitleSection";
 import MenuSection from "../home/MenuSection";
 import FooterSection from "../home/FooterSection";
 import axios from "axios";
+import { ReactSession } from 'react-client-session';
+
 
 function IndividualAdPage(props) {
 
     let location = useLocation();
     let navigate = useNavigate();
 
-    const [isRegistered, setIsRegistered] = useState(false);
-    const [userData, setUserData] = useState();
+    const [userData, setUserData] = useState({});
     const [adDetails, setAdDetails] = useState();
 
-    const [userId, setUserId] = useState();
-
     let { post_id } = useParams();
-    useEffect(() => {
-        if (userData) {
-            return () => { }
-        }
-
-        if (location.state) {
-            let data = userData;
-            data = location.state.data;
-            setUserData(data);
-            if (location.state.data.f_name.valid) {
-                setIsRegistered(true);
-            }
-        }
-    }, [userData])
 
     useEffect(() => {
 
-        const user_id = window.localStorage.getItem('user_id');
-        console.log(user_id);
-        setUserId(user_id);
+        if (userData && userData.user_id) {
+            return;
+        }
+
+    }, [userData]);
+
+    useEffect(() => {
+
+        ReactSession.setStoreType("localStorage");
+        const user_id = ReactSession.get("user_id");
+        const email = ReactSession.get("email");
+        const first_name = ReactSession.get("first_name");
+        const userData = {
+            user_id: user_id,
+            email: email,
+            first_name: first_name
+        }
+        if (userData && userData.user_id) {
+            setUserData(userData);
+        }
 
         let config = {
             headers: {
-                user_id: user_id,
+                user_id: userData.user_id,
             }
         }
         const url = process.env.REACT_APP_BACKEND_URL + '/home/posts/' + post_id;
@@ -70,18 +72,18 @@ function IndividualAdPage(props) {
 
     return (
         <>
-            <TitleSection isRegistered={isRegistered} userData={data} />
+            <TitleSection />
             <MenuSection />
-            <AdPageBody ad={ad} post_id={post_id} user_id={userId} />
+            <AdPageBody ad={ad} post_id={post_id} userData={userData} />
             <FooterSection />
         </>
-
     );
 
 }
 
 function AdPageBody(props) {
     const ad = props.ad;
+    const userData = props.userData;
     const [inputValues, setInputValue] = useState({
         Name: "",
         mobile: "",
@@ -100,13 +102,17 @@ function AdPageBody(props) {
 
     let navigate = useNavigate();
     const [dealProposed, setDealProposed] = useState(false);
+    const [updateDeal, setUpdateDeal] = useState(false);
 
     useEffect(() => {
         if (dealProposed === true) {
-            // navigate("/home");
             window.location.reload();
         }
     }, [dealProposed]);
+
+    useEffect(() => {
+
+    }, [updateDeal]);
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -169,6 +175,7 @@ function AdPageBody(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         let errors = validation;
         if (!isEmpty(errors.Name) || !isEmpty(errors.mobile) || !isEmpty(errors.title) || !isEmpty(errors.location) || !isEmpty(errors.description)) {
             alert('Invalid Inputs ! Please fix the errors!');
@@ -176,7 +183,7 @@ function AdPageBody(props) {
         }
 
         const requestBody = {
-            "user_id": props.user_id,
+            "user_id": userData.user_id,
             "name": inputValues.Name,
             "mobile": inputValues.mobile,
             "title": inputValues.title,
@@ -218,10 +225,56 @@ function AdPageBody(props) {
         return;
     };
 
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        const inputs = {
+            Name: ad.proposedDeal.deal_details.name,
+            mobile: ad.proposedDeal.deal_details.mobile,
+            title: ad.proposedDeal.deal_details.title,
+            location: ad.proposedDeal.deal_details.location,
+            description: ad.proposedDeal.deal_details.description
+        }
+        setInputValue(inputs);
+        setDealProposed(false);
+        setUpdateDeal(true);
+    }
 
+    const handleDelete = (e) => {
+        e.preventDefault();
+        const ad_id = ad.data.ad_id;
+        const deal_id = ad.proposedDeal.deal_id;
+
+        const url = process.env.REACT_APP_BACKEND_URL + '/home/posts/' + ad_id + '/deals/' + deal_id;
+        axios.delete(url).then((res) => {
+            alert('Deal deleted!');
+            setUpdateDeal(true);
+        }).catch((err) => {
+            alert('Something went wrong!');
+            navigate("/home");
+        });
+    }
+
+    const handleRedirectRegister = (e) => {
+        e.preventDefault();
+        navigate("/userregister");
+    }
+
+    const handleRedirectLogin = (e) => {
+        e.preventDefault();
+        navigate("/loginpage");
+    }
 
     const renderForm = () => {
-        if (ad.isDealProposed === false) {
+
+        console.log(!userData || !userData.user_id);
+        if (!userData || !userData.user_id) {
+            return (<><h2>Login or Register to propose a Deal!</h2>
+                <button onClick={(e) => handleRedirectRegister(e)}>Register</button>
+                <button onClick={(e) => handleRedirectLogin(e)}>Login</button>
+            </>);
+        }
+
+        if (ad.isDealProposed === false || updateDeal === true) {
             return (
                 <form
                     id='proposalDealForm'
@@ -290,8 +343,8 @@ function AdPageBody(props) {
                     <h3> <b>Location: </b> {ad.proposedDeal.deal_details.location} </h3>
                     <h3> <b>Title: </b> {ad.proposedDeal.deal_details.title} </h3>
                     <h3> <b>Description: </b>{ad.proposedDeal.deal_details.description} </h3>
-                    <button>Update Deal</button>
-                    <button>Delete Deal</button>
+                    <button onClick={(e) => handleUpdate(e)}>Update Deal</button>
+                    <button onClick={(e) => { if (window.confirm('Delete this deal?')) { handleDelete(e); } }}>Delete Deal</button>
                 </>
 
             );

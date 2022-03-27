@@ -8,20 +8,39 @@ import MenuSection from "../home/MenuSection";
 import FooterSection from "../home/FooterSection";
 import './MyDeals.css';
 import axios from "axios";
+import { ReactSession } from 'react-client-session';
+
 
 export default function MyDeals(props) {
 
     const [deals, setDeals] = useState();
+    const [userData, setUserData] = useState({});
+
     let navigate = useNavigate();
 
     useEffect(() => {
+        if (userData && userData.user_id) {
+            return;
+        }
+    }, [userData]);
 
-        const user_id = window.localStorage.getItem('user_id');
-        console.log(user_id);
+    useEffect(() => {
+        ReactSession.setStoreType("localStorage");
+        const user_id = ReactSession.get("user_id");
+        const email = ReactSession.get("email");
+        const first_name = ReactSession.get("first_name");
+        const userData = {
+            user_id: user_id,
+            email: email,
+            first_name: first_name
+        }
+        if (userData && userData.user_id) {
+            setUserData(userData);
+        }
 
         let config = {
             headers: {
-                user_id: user_id,
+                user_id: userData.user_id,
             }
         }
         const url = process.env.REACT_APP_BACKEND_URL + '/deals/mydeals/';
@@ -31,7 +50,6 @@ export default function MyDeals(props) {
             alert('No Deals Found!');
             navigate("/home");
         });
-
     }, []);
 
     if (!deals) {
@@ -41,12 +59,13 @@ export default function MyDeals(props) {
     }
 
     const dealsArray = deals.results;
+    const data = userData;
 
     return (
         <>
             <TitleSection />
             <MenuSection />
-            <DealsList deals={dealsArray} />
+            <DealsList deals={dealsArray} userData={data} />
             <FooterSection />
         </>
     );
@@ -55,6 +74,26 @@ export default function MyDeals(props) {
 function DealsList(props) {
 
     const deals = props.deals;
+    const userData = props.userData;
+    let navigate = useNavigate();
+
+    const handleRedirectLogin = (e) => {
+        e.preventDefault();
+        navigate("/loginpage");
+    }
+
+    if (!userData || !userData.user_id) {
+        return (
+            <section>
+                <div className="wrapper-deal">
+                    <div className="main-box-deal">
+                        <h2>Login to view your Deals!</h2>
+                        <button onClick={(e) => handleRedirectLogin(e)}>Login</button>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 
     if (deals.length < 1) {
         return (
@@ -85,8 +124,9 @@ function DealsList(props) {
 
 function Deal(props) {
 
-    const deal = props.deal.deals[0];
-    console.log(deal);
+    const dealsList = props.deal.deals;
+    const deal = props.deal.deals[dealsList.length - 1];
+
     const ad_id = props.deal.ad_id;
     const toLink = '/post/' + ad_id;
 
