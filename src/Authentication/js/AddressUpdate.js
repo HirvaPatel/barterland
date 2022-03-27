@@ -3,9 +3,9 @@ import '../css/RegisterForm.css';
 import '../css/LoginPage.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TitleSection from '../../home/TitleSection';
-import MenuSection from '../../home/MenuSection';
-import FooterSection from '../../home/FooterSection';
+import TitleSection from '../../home/js/TitleSection';
+import MenuSection from '../../home/js/MenuSection';
+import FooterSection from '../../home/js/FooterSection';
 import { ReactSession } from 'react-client-session';
 
 export default function AddressUpdate(props) {
