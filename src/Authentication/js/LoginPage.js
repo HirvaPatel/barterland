@@ -100,7 +100,7 @@ export default function LoginPage(props) {
 
         if (!validatePassword(value)) {
           passwordStateValue.validinput = false;
-          err.push('Atleast have 8 charachter, one capital letter, one number and one special character');
+          err.push('Atleast have 8 characters, one capital letter and one number');
           passwordStateValue.error = err;
           break;
         }

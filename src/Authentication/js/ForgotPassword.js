@@ -93,7 +93,7 @@ export default function ForgotPassword(props) {
 
         if (!validatePassword(value)) {
           passwordStateValue.validinput = false;
-          err.push('Atleast have 8 charachter, one capital letter, one number and one special character');
+          err.push('Atleast have 8 characters, one capital letter and one number');
           passwordStateValue.error = err;
           break;
         }
@@ -106,7 +106,7 @@ export default function ForgotPassword(props) {
 
         if (value !== password.value) {
           confirmpasswordStateValue.validinput = false;
-          err.push('Password does not matc');
+          err.push('Password does not match');
           confirmpasswordStateValue.error = err;
           break;
         }
@@ -208,7 +208,7 @@ function validatePassword(password) {
 }
 
 function validateSecurityAnswer(securityanswer) {
-  return String(securityanswer).toLowerCase().match(/^[a-zA-Z]{5,}$/
+  return String(securityanswer).toLowerCase().match(/^[a-zA-Z0-9]{5,}$/
 
   );
 }
