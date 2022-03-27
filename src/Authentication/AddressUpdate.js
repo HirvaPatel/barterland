@@ -22,6 +22,8 @@ export default function AddressUpdate(props) {
 
     });
 
+    ReactSession.setStoreType("localStorage");
+
     const user_id = ReactSession.get("user_id");
     console.log(user_id);
 
@@ -44,6 +46,9 @@ export default function AddressUpdate(props) {
         console.log(response.data);
         if (response.data.success) {
           alert(response.data.message);
+
+          ReactSession.set("address",response.data.address);
+
           navigate("/userupdate");
         }
       }).catch((error) => {

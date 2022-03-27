@@ -27,6 +27,7 @@ export default function NameUpdate(props) {
 
     });
 
+    ReactSession.setStoreType("localStorage");
  
     const user_id = ReactSession.get("user_id");
     console.log(user_id);
@@ -54,6 +55,10 @@ export default function NameUpdate(props) {
         console.log(response.data);
         if (response.data.success) {
           alert(response.data.message);
+
+          ReactSession.set("first_name",response.data.first_name);
+          ReactSession.set("last_name",response.data.last_name);
+
           navigate("/userupdate");
         }
       }).catch((error) => {

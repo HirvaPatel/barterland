@@ -47,14 +47,15 @@ export default function LoginPage(props) {
 
         console.log(response.data);
         if (response.data.success) {
-          alert('Login Successfull!!');
+          alert(response.data.message);
 
           ReactSession.setStoreType("localStorage");
 
           ReactSession.set("user_id", response.data.user_id); 
           ReactSession.set("email",response.data.email);
           ReactSession.set("first_name",response.data.first_name);
-
+          ReactSession.set("last_name",response.data.last_name);
+          ReactSession.set("address",response.data.address);
 
           navigate("/home");
         }

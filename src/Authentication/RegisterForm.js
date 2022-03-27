@@ -88,7 +88,7 @@ export default function RegisterForm(props) {
 
         console.log(response.data);
         if (response.data.success) {
-          alert('Registration Successfull!!');
+          alert(response.data.message);
           navigate("/loginpage");
         }
       }).catch((error) => {
@@ -279,7 +279,6 @@ export default function RegisterForm(props) {
     <>
       <TitleSection />
       <MenuSection />
-      <title> Login Form </title>
       <nav className="containerform">
         <nav className="title">Registration Form</nav>
         <nav className="content">
