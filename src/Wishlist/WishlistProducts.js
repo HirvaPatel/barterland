@@ -12,10 +12,13 @@ import { useState, useEffect } from 'react';
 export default function WishlistProducts() {
 
     const [products, setProducts] = useState([]);
-    //const [adDetails, setAdDetails] = useState([]);
 
+
+    // method to display all the items in the wishlist
     useEffect(() => {
-        axios.get("http://localhost:8080/wishlist/user")
+        const user_id = "5c7b8740-0917-42bd-9c47-74700fa575fb";
+        let api_url = process.env.REACT_APP_BACKEND_URL + "/wishlist/user/" + user_id;
+        axios.get(api_url)
             .then((response) => {
                 setProducts(response.data.data);
             })
@@ -24,25 +27,22 @@ export default function WishlistProducts() {
             });
     }, []);
 
-    const handleClickAdd = async (e) => {
 
-        e.preventDefault();
-        const id1 = await e.target.getAttribute('id');
-        console.log(id1);
-        alert("Item added to cart!!");
-
-    };
-
+    // method to remove the item from wishlist
     const handleClickRemove = async (e) => {
 
         e.preventDefault();
         const id2 = await parseInt(e.target.getAttribute('id'));
-        console.log(id2);
 
-        let api_url = 'http://localhost:8080/wishlist/remove/' + id2;
-        console.log(api_url);
+        let api_url = process.env.REACT_APP_BACKEND_URL + '/wishlist/remove/' + id2;
 
-        axios.put(api_url)
+        let config = {
+            headers: {
+                user_id: "5c7b8740-0917-42bd-9c47-74700fa575fb"
+            }
+        };
+
+        axios.put(api_url, "", config)
             .then((response) => {
                 alert("Item removed from wishlist!!");
                 setProducts(response.data.data);
@@ -55,8 +55,9 @@ export default function WishlistProducts() {
 
     return (
         <>
+            {/* Displaying all the items */}
             <Box sx={{ p: 6 }}>
-                <h1> &nbsp; &nbsp; Wishlisted Products</h1>
+                <h1>  Wishlisted Products</h1>
                 <Grid container spacing={2} align="justify" >
                     {products.map((product, index) => {
 
@@ -78,16 +79,6 @@ export default function WishlistProducts() {
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
-                                        <Button size="small"
-                                            style={{
-                                                borderRadius: 10,
-                                                backgroundColor: "#21b6ae",
-                                                padding: "9px 18px",
-                                                fontSize: "12px"
-                                            }}
-                                            id={product.ad_id} onClick={handleClickAdd}
-                                        >Add to Cart</Button>
-
                                         <label>Remove from Wishlist<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} id={product.ad_id} onClick={handleClickRemove} defaultChecked /></label>
                                     </CardActions>
                                 </Card>
