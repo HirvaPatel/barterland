@@ -1,14 +1,14 @@
 import React from "react";
-import './IndividualAdPage.css'
+import '../css/IndividualAdPage.css'
 import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import TitleSection from "../home/TitleSection";
-import MenuSection from "../home/MenuSection";
-import FooterSection from "../home/FooterSection";
+import TitleSection from "../../home/js/TitleSection";
+import MenuSection from "../../home/js/MenuSection";
+import FooterSection from "../../home/js/FooterSection";
 import axios from "axios";
 import { ReactSession } from 'react-client-session';
 

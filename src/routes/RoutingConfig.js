@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import HomePage from '../home/HomePage';
-import ComingSoonPage from '../home/ComingSoonPage';
+import HomePage from '../home/js/HomePage';
+import ComingSoonPage from '../home/js/ComingSoonPage';
 import LoginPage from '../Authentication/LoginPage';
 import RegisterForm from '../Authentication/RegisterForm';
-import IndividualAdPage from '../individual_ad/IndividualAdPage';
+import IndividualAdPage from '../individual_ad/js/IndividualAdPage';
 import ForgotPassword from '../Authentication/ForgotPassword';
 import EmailValidation from '../Authentication/EmailValidation';
 import UserUpdate from '../Authentication/UserUpdate';
@@ -13,7 +13,7 @@ import PasswordUpdate from '../Authentication/PasswordUpdate';
 import AddressUpdate from '../Authentication/AddressUpdate';
 import NameUpdate from '../Authentication/NameUpdate';
 
-import MyDeals from '../deals/MyDeals';
+import MyDeals from '../deals/js/MyDeals';
 import Logout from '../Authentication/Logout';
 
 export default function RoutingConfig(props) {
