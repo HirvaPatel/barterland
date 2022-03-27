@@ -159,7 +159,7 @@ function MainSectionBox(props) {
 
         axios.put(api_url, "", config)
             .then((response) => {
-                alert("Item added from wishlist!!");
+                alert("Item added to wishlist!!");
             })
             .catch((error) => {
                 console.log(error);
