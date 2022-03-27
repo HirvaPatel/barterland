@@ -1,11 +1,11 @@
 import React from "react";
-import "./MyIndividualAd.css";
-import { Link } from "react-router-dom";
-import iphone from "../home/iphone.jpg";
+import "./MyIndividualAdEdit.css";
+import { Link, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Button } from "@material-ui/core";
+import axios from "axios";
 
 function MyAdEdit(props) {
   let location = useLocation();
@@ -24,7 +24,7 @@ function MyAdEdit(props) {
       //     setIsRegistered(true);
       //   }
     }
-  }, [userData]);
+  }, []);
   const data = userData;
 
   return (
@@ -219,12 +219,38 @@ class FooterSection extends React.Component {
 
 function AdEdit(props) {
   const location = useLocation();
-  const adData = location.state.adData;
+  const [adData, setAdData] = useState(location.state.adData);
 
-  const changeDesc = () => {};
-  const changeLocation = () => {};
-  const changeValuation = () => {};
-  const changeValidTill = () => {};
+  const [desc, setDesc] = useState(adData.ad_details.description);
+  const [adLocation, setAdLocation] = useState(adData.ad_details.location);
+  const [value, setValue] = useState(adData.ad_details.value);
+  const [validTill, setValidTill] = useState(adData.ad_details.valid_till);
+
+  let navigate = useNavigate();
+  const renderIndividualAd = () => {
+    navigate("/myads");
+  };
+
+  const handleEdit = () => {
+    axios
+      .put("http://localhost:8080/updatemyad", {
+        ad_id: adData.ad_id,
+        description: desc,
+        location: adLocation,
+        value: value,
+        valid_till: validTill,
+      })
+      .then((response) => {
+        setAdData(response.data.data);
+      });
+
+    alert("Advertisement Successfully Updated!!");
+    renderIndividualAd();
+  };
+  const handleDiscard = () => {
+    renderIndividualAd();
+  };
+
   return (
     <section>
       <div className="wrapper">
@@ -235,9 +261,9 @@ function AdEdit(props) {
               <h3>Description</h3>
               <input
                 type="text"
-                value={adData.description}
-                onChange={() => {
-                  changeDesc();
+                value={desc}
+                onChange={(event) => {
+                  setDesc(event.target.value);
                 }}
               />
             </div>
@@ -245,9 +271,9 @@ function AdEdit(props) {
               <h3>Location</h3>
               <input
                 type="text"
-                value={adData.location}
-                onChange={() => {
-                  changeLocation();
+                value={adLocation}
+                onChange={(event) => {
+                  setAdLocation(event.target.value);
                 }}
               />
             </div>
@@ -256,9 +282,9 @@ function AdEdit(props) {
               <h3>Valuation</h3>
               <input
                 type="text"
-                value={adData.value}
-                onChange={() => {
-                  changeValuation();
+                value={value}
+                onChange={(event) => {
+                  setValue(event.target.value);
                 }}
               />
             </div>
@@ -266,9 +292,9 @@ function AdEdit(props) {
               <h3>Valid Till</h3>
               <input
                 type="text"
-                value={adData.valid_till}
-                onChange={() => {
-                  changeValidTill();
+                value={validTill}
+                onChange={(event) => {
+                  setValidTill(event.target.value);
                 }}
               />
             </div>
@@ -281,6 +307,7 @@ function AdEdit(props) {
                 variant="contained"
                 style={{ backgroundColor: "green" }}
                 className="edit-button"
+                onClick={() => handleEdit()}
               >
                 Edit
               </Button>
@@ -288,6 +315,7 @@ function AdEdit(props) {
                 variant="outlined"
                 style={{ backgroundColor: "#A52A2A" }}
                 className="delete-button"
+                onClick={() => handleDiscard()}
               >
                 Discard
               </Button>

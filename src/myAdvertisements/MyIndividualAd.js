@@ -6,12 +6,12 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function MyIndividualAd(props) {
   let location = useLocation();
   const [isRegistered, setIsRegistered] = useState(false);
   const [userData, setUserData] = useState();
-
   useEffect(() => {
     if (userData) {
       return () => {};
@@ -219,40 +219,60 @@ class FooterSection extends React.Component {
 
 function MyAd(props) {
   const location = useLocation();
-  const adData = location.state.adData;
+  const [adData, setAdData] = useState(location.state.adData);
+  console.log("AdData: ", adData);
 
   let navigate = useNavigate();
+
   const renderEditAd = (props) => {
     let path = `edit`;
     navigate(path, { state: { adData: props } });
   };
 
+  const renderIndividualAd = () => {
+    alert("Advertisement Successfully Deleted!!");
+    navigate("/myads");
+  };
+  const handleDelete = () => {
+    console.log("Deleting the ad!!", adData.ad_id);
+    axios
+      .delete("http://localhost:8080/deletemyad", {
+        data: {
+          ad_id: adData.ad_id,
+        },
+      })
+      .then((response) => {
+        setAdData(response.data.data);
+      });
+    console.log("ad data after deleted: " + adData);
+    renderIndividualAd();
+  };
   return (
     <section>
       <div className="wrapper">
         <div className="main-box">
           <h2>{adData.productName}</h2>
-          <img src={adData.img} alt="" className="myAdImg" />
+          <img src={adData.ad_details.image_url} alt="" className="myAdImg" />
         </div>
         <div className="main-box">
           <div className="product-details">
             <h2>Product Details</h2>
             <div className="description">
               <h3>Description</h3>
-              {adData.description}
+              {adData.ad_details.description}
             </div>
             <div className="location">
               <h3>Location</h3>
-              {adData.location}
+              {adData.ad_details.location}
             </div>
 
             <div className="valuation">
               <h3>Valuation</h3>
-              {adData.value}
+              {adData.ad_details.value}
             </div>
             <div className="valid-till">
               <h3>Valid Till</h3>
-              {adData.valid_till}
+              {adData.ad_details.valid_till}
             </div>
           </div>
 
@@ -269,6 +289,7 @@ function MyAd(props) {
               variant="outlined"
               style={{ backgroundColor: "#A52A2A" }}
               className="delete-button"
+              onClick={() => handleDelete()}
             >
               Delete
             </Button>

@@ -27,13 +27,13 @@ export class Ad extends React.Component {
             <image
               width="100%"
               height="225"
-              xlinkHref={productData.img}
+              xlinkHref={productData.ad_details.image_url}
             ></image>
           </svg>
           <div className="card-body">
-            <h2 className="card-text">{productData.productName}</h2>
+            <h2 className="card-text">{productData.ad_details.title}</h2>
             <div className="adDetail">
-              <p className="card-category">{productData.category}</p>
+              <p className="card-category">{productData.ad_details.category}</p>
               <div className="Favorite">
                 <Checkbox
                   icon={<FavoriteBorder />}

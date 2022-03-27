@@ -231,18 +231,23 @@ class MainSectionGenerator extends React.Component {
 
 function MyAdvertisements(props) {
   let navigate = useNavigate();
+
+  const [adData, setAdData] = useState([]);
+
   const renderIndividualAd = (props) => {
-    console.log("My ad properties: ", props);
     let path = `myadpage`;
     navigate(path, { state: { adData: props } });
   };
-  // React.useEffect(() => {
-  //   fetch("http://localhost:8080")
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log("Database response: ", data);
-  //     });
-  // });
+  React.useEffect(() => {
+    fetch("http://localhost:8080/myads")
+      .catch((error) => {
+        console.log(error);
+      })
+      .then((res) => res.json())
+      .then((data) => {
+        setAdData(data.ads);
+      });
+  }, []);
   return (
     <main className="wrapper">
       {adData.map((product) => (
