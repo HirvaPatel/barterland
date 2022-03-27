@@ -21,6 +21,8 @@ export default function EmailUpdate(props) {
 
     });
 
+    ReactSession.setStoreType("localStorage");
+
     const user_id = ReactSession.get("user_id");
     console.log(user_id);
 
@@ -45,7 +47,9 @@ export default function EmailUpdate(props) {
         console.log(response.data);
         if (response.data.success) {
           alert(response.data.message);
-          navigate("/loginpage");
+
+          ReactSession.set("email",response.data.email);
+          navigate("/userupdate");
         }
       }).catch((error) => {
         console.log(error.response);
