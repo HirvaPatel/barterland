@@ -105,6 +105,14 @@ export default function PasswordUpdate(props) {
           newpasswordStateValue.error = err;
           break;
         }
+        
+        if (value!==oldpassword){
+          newpasswordStateValue.validinput = false;
+          err.push('New Password Cannot be same as the old password');
+          newpasswordStateValue.error = err;
+          break;
+        }
+
         newpasswordStateValue.error = [];
         newpasswordStateValue.validinput = true;
         break;
