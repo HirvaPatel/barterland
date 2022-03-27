@@ -16,6 +16,8 @@ import PasswordUpdate from '../Authentication/js/PasswordUpdate';
 import AddressUpdate from '../Authentication/js/AddressUpdate';
 import NameUpdate from '../Authentication/js/NameUpdate';
 import Logout from '../Authentication/js/Logout';
+import Wishlist from '../Wishlist/Wishlist';
+
 
 
 export default function RoutingConfig(props) {
@@ -39,9 +41,10 @@ export default function RoutingConfig(props) {
                 <Route exact path="/post/:post_id" element={<IndividualAdPage />}></Route>
                 <Route exact path="/logout" element={<Logout />}></Route>
                 <Route exact path="/home/mydeals" element={<MyDeals />}></Route>
-                
-                
-            </Routes>
-        </Router>
+                <Route exact path="/wishlist" element={<Wishlist />}></Route>
+
+
+            </Routes >
+        </Router >
     );
 }
