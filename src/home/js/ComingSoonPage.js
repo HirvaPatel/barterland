@@ -1,5 +1,5 @@
 import React from "react";
-import './ComingSoon.css'
+import '../css/ComingSoon.css'
 import FooterSection from "./FooterSection";
 import MenuSection from "./MenuSection";
 import TitleSection from "./TitleSection";

@@ -1,5 +1,5 @@
 import React from "react";
-import './HomePage.css';
+import '../css/HomePage.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ReactSession } from 'react-client-session';

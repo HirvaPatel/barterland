@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
-import TitleSection from "../home/TitleSection";
-import MenuSection from "../home/MenuSection";
-import FooterSection from "../home/FooterSection";
-import './MyDeals.css';
+import TitleSection from "../../home/js/TitleSection";
+import MenuSection from "../../home/js/MenuSection";
+import FooterSection from "../../home/js/FooterSection";
+import '../css/MyDeals.css';
 import axios from "axios";
 import { ReactSession } from 'react-client-session';
 
