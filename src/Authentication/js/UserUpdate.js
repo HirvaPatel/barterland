@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TitleSection from '../home/TitleSection';
-import MenuSection from '../home/MenuSection';
-import FooterSection from '../home/FooterSection';
+import TitleSection from '../../home/TitleSection';
+import MenuSection from '../../home/MenuSection';
+import FooterSection from '../../home/FooterSection';
 import { ReactSession } from 'react-client-session';
-import './UserUpdate.css';
+import '../css/UserUpdate.css';
 
 
 
@@ -31,7 +31,8 @@ export default function UserUpdate(props) {
         user_id: user_id
       };
 
-      axios.post('http://0.0.0.0:8080/api/delete', user).then((response) => {
+      const url= process.env.REACT_APP_BACKEND_URL + '/api/delete';
+      axios.post(url, user).then((response) => {
 
         console.log(response.data);
         if (response.data.success) {
@@ -52,15 +53,6 @@ export default function UserUpdate(props) {
      
   }
   
-
-
-  
-
-
-
-
-
-
 
   return (
 
