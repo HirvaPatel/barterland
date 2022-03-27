@@ -34,9 +34,9 @@ export default function PasswordUpdate(props) {
 
     });
 
-    const user_id = ReactSession.get("user_id");
-    console.log(user_id);
- 
+  const user_id = ReactSession.get("user_id");
+  console.log(user_id);
+
 
   function isAllInputValid() {
     return (oldpassword.validinput && newpassword.validinput && confirmpassword.validinput)
@@ -46,14 +46,14 @@ export default function PasswordUpdate(props) {
     event.preventDefault();
     setdisablebutton(true);
     if (isAllInputValid()) {
-    
+
       const user = {
         user_id: user_id,
         oldpassword: oldpassword.value,
         newpassword: newpassword.value,
       };
 
-      const url= process.env.REACT_APP_BACKEND_URL + '/api/updatepassword';
+      const url = process.env.REACT_APP_BACKEND_URL + '/api/updatepassword';
       axios.post(url, user).then((response) => {
 
         console.log(response.data);
@@ -69,8 +69,8 @@ export default function PasswordUpdate(props) {
           alert(error.response.data.message);
         }
       });
-    } 
-      setdisablebutton(false);
+    }
+    setdisablebutton(false);
   }
 
   const handleChange = (event) => {
@@ -86,7 +86,7 @@ export default function PasswordUpdate(props) {
       case 'oldpassword':
         oldpasswordStateValue.value = value;
         if (!validatePassword(value)) {
-          err.push('Atleast have 8 charachter, one capital letter, one number and one special character!')
+          err.push('Atleast have 8 character, one capital letter and one number')
           oldpasswordStateValue.validinput = false;
           oldpasswordStateValue.error = err;
           break;
@@ -98,16 +98,14 @@ export default function PasswordUpdate(props) {
 
       case 'newpassword':
         newpasswordStateValue.value = value;
-
+        
         if (!validatePassword(value)) {
           newpasswordStateValue.validinput = false;
-          err.push('Atleast have 8 charachter, one capital letter, one number and one special character');
+          err.push('Atleast have 8 characters, one capital letter and one number');
           newpasswordStateValue.error = err;
           break;
-        }
-        
-        if (value!==oldpassword){
-          newpasswordStateValue.validinput = false;
+        } else if (value === oldpassword.value) {
+          newpasswordStateValue.validinput = false;          
           err.push('New Password Cannot be same as the old password');
           newpasswordStateValue.error = err;
           break;
@@ -129,7 +127,7 @@ export default function PasswordUpdate(props) {
         confirmpasswordStateValue.error = [];
         confirmpasswordStateValue.validinput = true;
         break;
-       
+
       default:
         break;
     }
@@ -146,14 +144,14 @@ export default function PasswordUpdate(props) {
       validinput: newpasswordStateValue.validinput,
       error: newpasswordStateValue.error
 
-    })); 
+    }));
 
     setConfirmPasswordValue(prevState => ({
       ...prevState, value: confirmpasswordStateValue.value,
       validinput: confirmpasswordStateValue.validinput,
       error: confirmpasswordStateValue.error
 
-    }));    
+    }));
 
   }
 
