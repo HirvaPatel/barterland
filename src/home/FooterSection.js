@@ -11,7 +11,7 @@ export default class FooterSection extends React.Component {
 
                     <nav className="container3">
                         <nav className="box3">
-                            <Link to={"/comingsoon"} ><label>About U</label></Link>
+                            <Link to={"/comingsoon"} ><label>About Us</label></Link>
                         </nav>
                         <nav className="box3">
                             <Link to={"/comingsoon"} ><label>Contact Us</label></Link>

@@ -2,19 +2,21 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from '../home/HomePage';
 import ComingSoonPage from '../home/ComingSoonPage';
-import LoginPage from '../Authentication/LoginPage';
-import RegisterForm from '../Authentication/RegisterForm';
+import LoginPage from '../Authentication/js/LoginPage';
+import RegisterForm from '../Authentication/js/RegisterForm';
 import IndividualAdPage from '../individual_ad/IndividualAdPage';
-import ForgotPassword from '../Authentication/ForgotPassword';
-import EmailValidation from '../Authentication/EmailValidation';
-import UserUpdate from '../Authentication/UserUpdate';
-import EmailUpdate from '../Authentication/EmailUpdate';
-import PasswordUpdate from '../Authentication/PasswordUpdate';
-import AddressUpdate from '../Authentication/AddressUpdate';
-import NameUpdate from '../Authentication/NameUpdate';
+import ForgotPassword from '../Authentication/js/ForgotPassword';
+import EmailValidation from '../Authentication/js/EmailValidation';
+import UserUpdate from '../Authentication/js/UserUpdate';
+import EmailUpdate from '../Authentication/js/EmailUpdate';
+import PasswordUpdate from '../Authentication/js/PasswordUpdate';
+import AddressUpdate from '../Authentication/js/AddressUpdate';
+import NameUpdate from '../Authentication/js/NameUpdate';
+
 
 import MyDeals from '../deals/MyDeals';
-import Logout from '../Authentication/Logout';
+import Logout from '../Authentication/js/Logout';
+
 
 export default function RoutingConfig(props) {
 
@@ -35,8 +37,10 @@ export default function RoutingConfig(props) {
                 <Route exact path="/addressupdate" element={<AddressUpdate />}></Route>
                 <Route exact path="/nameupdate" element={<NameUpdate />}></Route>
                 <Route exact path="/post/:post_id" element={<IndividualAdPage />}></Route>
-                <Route exact path="/home/mydeals" element={<MyDeals />}></Route>
                 <Route exact path="/logout" element={<Logout />}></Route>
+                <Route exact path="/home/mydeals" element={<MyDeals />}></Route>
+                
+                
             </Routes>
         </Router>
     );

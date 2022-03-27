@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import './RegisterForm.css';
-import './LoginPage.css';
-import { Link } from "react-router-dom";
+import '../css/RegisterForm.css';
+import '../css/LoginPage.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TitleSection from '../home/TitleSection';
-import MenuSection from '../home/MenuSection';
-import FooterSection from '../home/FooterSection';
+import TitleSection from '../../home/TitleSection';
+import MenuSection from '../../home/MenuSection';
+import FooterSection from '../../home/FooterSection';
 import { ReactSession } from 'react-client-session';
 
 export default function EmailValidation(props) {
@@ -37,7 +36,8 @@ export default function EmailValidation(props) {
         email: email.value.toLowerCase()
       };
 
-      axios.post('http://0.0.0.0:8080/api/finduser', user).then((response) => {
+      const url= process.env.REACT_APP_BACKEND_URL + '/api/finduser';
+      axios.post(url, user).then((response) => {
 
         console.log(response.data);
         if (response.data.success) {
@@ -47,8 +47,9 @@ export default function EmailValidation(props) {
 
           ReactSession.setStoreType("localStorage");
 
-          ReactSession.set("securityquestionvalue", response.data.security_ques); 
-  
+          ReactSession.set("securityquestionvalue", response.data.security_ques);
+          ReactSession.set("email", email.value); 
+          
           
           navigate("/forgotpassword");
         }

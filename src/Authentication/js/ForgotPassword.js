@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import './RegisterForm.css';
-import './LoginPage.css';
-import { Link } from "react-router-dom";
+import '../css/RegisterForm.css';
+import '../css/LoginPage.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TitleSection from '../home/TitleSection';
-import MenuSection from '../home/MenuSection';
-import FooterSection from '../home/FooterSection';
+import TitleSection from '../../home/TitleSection';
+import MenuSection from '../../home/MenuSection';
+import FooterSection from '../../home/FooterSection';
 import { ReactSession } from 'react-client-session';
 
 export default function ForgotPassword(props) {
@@ -35,7 +34,7 @@ export default function ForgotPassword(props) {
 
     });
 
-  
+
   const securityquestionvalue = ReactSession.get("securityquestionvalue");
   console.log(securityquestionvalue);
 
@@ -52,14 +51,14 @@ export default function ForgotPassword(props) {
     if (isAllInputValid()) {
 
       const user = {
-        
         email: email,
         security_ans: securityanswer.value.toLowerCase(),
         password: password.value
-
       };
 
-      axios.post('http://0.0.0.0:8080/api/forgotpassword', user).then((response) => {
+      console.log(user);
+      const url = process.env.REACT_APP_BACKEND_URL + '/api/forgotpassword';
+      axios.post(url, user).then((response) => {
 
         console.log(response.data);
         if (response.data.success) {
@@ -74,8 +73,8 @@ export default function ForgotPassword(props) {
           alert(error.response.data.message);
         }
       });
-    } 
-      setdisablebutton(false);
+    }
+    setdisablebutton(false);
   }
 
 
@@ -159,7 +158,7 @@ export default function ForgotPassword(props) {
   return (
 
     <>
-      <TitleSection  />
+      <TitleSection />
       <MenuSection />
 
       <title> Login Form </title>
@@ -170,7 +169,7 @@ export default function ForgotPassword(props) {
             <nav className="userdata">
               <nav className="inputvalue">
                 <label className="inputdetails">Security Question</label>
-                <input type="text" name="securityquestion" value = {securityquestionvalue} readOnly></input>
+                <input type="text" name="securityquestion" value={securityquestionvalue} readOnly></input>
               </nav>
               <nav className="inputvalue">
                 <label className="inputdetails">Security Answer</label>

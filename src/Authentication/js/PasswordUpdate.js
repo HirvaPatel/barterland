@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import './RegisterForm.css';
-import './LoginPage.css';
-import { Link } from "react-router-dom";
+import '../css/RegisterForm.css';
+import '../css/LoginPage.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TitleSection from '../home/TitleSection';
-import MenuSection from '../home/MenuSection';
-import FooterSection from '../home/FooterSection';
+import TitleSection from '../../home/TitleSection';
+import MenuSection from '../../home/MenuSection';
+import FooterSection from '../../home/FooterSection';
 import { ReactSession } from 'react-client-session';
 
 export default function PasswordUpdate(props) {
@@ -54,7 +53,8 @@ export default function PasswordUpdate(props) {
         newpassword: newpassword.value,
       };
 
-      axios.post('http://0.0.0.0:8080/api/updatepassword', user).then((response) => {
+      const url= process.env.REACT_APP_BACKEND_URL + '/api/updatepassword';
+      axios.post(url, user).then((response) => {
 
         console.log(response.data);
         if (response.data.success) {
@@ -189,36 +189,10 @@ export default function PasswordUpdate(props) {
 }
 
 
-function validateEmail(email) {
-  return String(email)
-    .toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    );
-}
-
 function validatePassword(password) {
   return String(password).match(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/
 
   );
 }
 
-function validateFirstName(firstname) {
-  return String(firstname).match(
-    /^[A-Za-z ]+$/
 
-  );
-}
-
-function validateLastName(lastname) {
-  return String(lastname).match(
-    /^[A-Za-z ]+$/
-
-  );
-}
-
-function validateSecurityAnswer(securityanswer) {
-  return String(securityanswer).match(/^[a-zA-Z0-9]{5,}$/
-
-  );
-}
