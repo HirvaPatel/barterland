@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import './RegisterForm.css';
-import './LoginPage.css';
-import { Link } from "react-router-dom";
+import '../css/RegisterForm.css';
+import '../css/LoginPage.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TitleSection from '../home/js/TitleSection';
-import MenuSection from '../home/js/MenuSection';
-import FooterSection from '../home/js/FooterSection';
+import TitleSection from '../../home/js/TitleSection';
+import MenuSection from '../../home/js/MenuSection';
+import FooterSection from '../../home/js/FooterSection';
 import { ReactSession } from 'react-client-session';
 
 export default function NameUpdate(props) {
@@ -50,7 +49,9 @@ export default function NameUpdate(props) {
         last_name: lastname.value.toLowerCase(),
        
       };
-      axios.post('http://0.0.0.0:8080/api/updatename', user).then((response) => {
+
+      const url= process.env.REACT_APP_BACKEND_URL + '/api/updatename';
+      axios.post(url, user).then((response) => {
 
         console.log(response.data);
         if (response.data.success) {

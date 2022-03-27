@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import './RegisterForm.css';
-import './LoginPage.css';
-import { Link } from "react-router-dom";
+import '../css/LoginPage.css';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import TitleSection from '../home/js/TitleSection';
-import MenuSection from '../home/js/MenuSection';
-import FooterSection from '../home/js/FooterSection';
+import TitleSection from '../../home/js/TitleSection';
+import MenuSection from '../../home/js/MenuSection';
+import FooterSection from '../../home/js/FooterSection';
 import { ReactSession } from 'react-client-session';
 
-export default function EmailValidation(props) {
+export default function EmailUpdate(props) {
 
   const [disablebutton, setdisablebutton] = useState(false);
 
@@ -22,8 +20,11 @@ export default function EmailValidation(props) {
 
     });
 
+    ReactSession.setStoreType("localStorage");
 
-  
+    const user_id = ReactSession.get("user_id");
+    console.log(user_id);
+
   function isAllInputValid() {
     return (email.validinput)
   }
@@ -34,23 +35,21 @@ export default function EmailValidation(props) {
     if (isAllInputValid()) {
     
       const user = {
-        email: email.value.toLowerCase()
-      };
 
-      axios.post('http://0.0.0.0:8080/api/finduser', user).then((response) => {
+        user_id: user_id,
+        email: email.value.toLowerCase()
+
+      };
+      const url= process.env.REACT_APP_BACKEND_URL + '/api/updateemail';
+
+      axios.post(url, user).then((response) => {
 
         console.log(response.data);
         if (response.data.success) {
-          const userid = response.data.user_id;
-          console.log(userid);
-          alert('User Verified!!');
+          alert(response.data.message);
 
-          ReactSession.setStoreType("localStorage");
-
-          ReactSession.set("securityquestionvalue", response.data.security_ques); 
-  
-          
-          navigate("/forgotpassword");
+          ReactSession.set("email",response.data.email);
+          navigate("/userupdate");
         }
       }).catch((error) => {
         console.log(error.response);
@@ -67,7 +66,6 @@ export default function EmailValidation(props) {
 
   const handleChange = (event) => {
     let emailStateValue = email;
-
     const err = []
     const { name, value } = event.target;
 
@@ -100,26 +98,28 @@ export default function EmailValidation(props) {
   }
 
   return (
+
     <>
       <TitleSection />
       <MenuSection />
-
-      <title> Login Form </title>
-      <nav className="containerform">
-        {/* <nav className="title">Registration Form</nav> */}
-        <nav className="content">
-          <form onSubmit={handleSubmit}>
-            <nav className="userdata">
-              <nav className="inputvalue">
-                <label className="inputdetails">Email</label>
-                <input type="text" name="email" value={email.value} onChange={handleChange} id="email" placeholder="Enter your email" />
-                <label className="errorvalues">{email.error.join()}</label>
+      <nav>
+        <title> Login Form </title>
+        <nav className="containerform">
+          <nav className="title">Update Email Form</nav>
+          <nav className="content">
+            <form onSubmit={handleSubmit}>
+              <nav className="userdata">
+                <nav className="inputvalue">
+                  <label className="inputdetails">Email</label>
+                  <input type="text" name="email" value={email.value} onChange={handleChange} id="email" placeholder="Enter your email" />
+                  <label className="errorvalues">{email.error.join()}</label>
+                </nav>
               </nav>
               <nav className="buttonContainer">
-                <button className='button-body1' id='submitbutton'  disabled={disablebutton}> Submit</button>
+                <button className='button-body' id='submitbutton' disabled={disablebutton}> Update</button>
               </nav>
-            </nav>
-          </form>
+            </form>
+          </nav>
         </nav>
       </nav>
       <FooterSection />
@@ -128,7 +128,6 @@ export default function EmailValidation(props) {
   );
 }
 
-
 function validateEmail(email) {
   return String(email)
     .toLowerCase()
@@ -136,4 +135,3 @@ function validateEmail(email) {
       /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 }
-
