@@ -1,5 +1,5 @@
 import React from "react";
-import './HomePage.css';
+import '../css/HomePage.css';
 import { Link } from "react-router-dom";
 
 export default function MenuSection(props) {
@@ -8,7 +8,7 @@ export default function MenuSection(props) {
         <nav>
             <nav className="container2">
                 <nav className="box1">
-                    <Link to={"/comingsoon"} > <label>Categories</label></Link>
+                    <Link to={"/home/mydeals"} > <label>My Deals</label></Link>
                 </nav>
                 <nav className="box1">
                     <Link to={"/comingsoon"} >   <label>Post Ads</label></Link>
@@ -20,7 +20,10 @@ export default function MenuSection(props) {
                     <Link to={"/comingsoon"} >   <label>My Ads</label></Link>
                 </nav>
                 <nav className="box1">
-                    <Link to={"/comingsoon"} >   <label>Blogs</label></Link>
+                    <Link to={"/wishlist"} >   <label>WishList</label></Link>
+                </nav>
+                <nav className="box1">
+                    <Link to={"/userupdate"} >   <label>Blog</label></Link>
                 </nav>
                 <nav className="box1">
                     <Link to={"/comingsoon"} >   <label>Feedback</label></Link>
