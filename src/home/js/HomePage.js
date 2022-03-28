@@ -9,6 +9,9 @@ import MenuSection from "./MenuSection";
 import FooterSection from "./FooterSection";
 import axios from "axios";
 import { ReactSession } from 'react-client-session';
+import { Checkbox } from "@material-ui/core";
+import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
+import Favorite from "@material-ui/icons/Favorite";
 
 
 
@@ -42,9 +45,9 @@ function HomePage(props) {
             email: email,
             first_name: first_name
         }
-        if(userData && userData.user_id){
+        if (userData && userData.user_id) {
             setUserData(userData);
-        }        
+        }
     }, []);
 
     const data = userData;
@@ -139,6 +142,31 @@ class MainSectionGenerator extends React.Component {
 function MainSectionBox(props) {
     const ad_details = props.ad_details;
     const nextPage = '/post/' + ad_details.ad_id;
+
+    // method to add the item to wishlist
+    const handleClickAdd = async (e) => {
+
+        e.preventDefault();
+        const id = await parseInt(e.target.getAttribute('id'));
+
+        let api_url = process.env.REACT_APP_BACKEND_URL + '/wishlist/add/' + id;
+
+        let config = {
+            headers: {
+                user_id: "5c7b8740-0917-42bd-9c47-74700fa575fb"
+            }
+        };
+
+        axios.put(api_url, "", config)
+            .then((response) => {
+                alert("Item added to wishlist!!");
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+    };
+
     return (
 
         <main className="box">
@@ -148,6 +176,7 @@ function MainSectionBox(props) {
             <Link to={nextPage}>
                 <button className="ads-button">Trade Now</button>
             </Link>
+            <label>Add to Wishlist<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} id={ad_details.ad_id} onClick={handleClickAdd} /></label>
         </main >
     );
 }
