@@ -78,7 +78,7 @@ function MainSectionOneAdRow(props) {
 
     return (
         <main>
-            <main className="wrapper">
+            <main className="wrapper-home">
                 <MainSectionBox content={
                     {
                         'title': ads[0].ad_details.title,
@@ -124,7 +124,7 @@ class MainSectionGenerator extends React.Component {
 
         if (result.length < 1) {
             return (
-                <main className="box">
+                <main className="box-home">
                     <h2>No Ads to display!</h2>
                 </main >
             );
@@ -169,9 +169,9 @@ function MainSectionBox(props) {
 
     return (
 
-        <main className="box">
+        <main className="box-home">
             <h2>{props.content.title}</h2>
-            <img src={ad_details.ad_details.image_url} alt="" className="img-ad" />
+            <img src={ad_details.ad_details.image_url} alt="" className="img-ad-home" />
             <p>{props.content.desp}</p>
             <Link to={nextPage}>
                 <button className="ads-button">Trade Now</button>

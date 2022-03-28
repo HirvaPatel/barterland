@@ -355,7 +355,7 @@ function AdPageBody(props) {
     return (
         <section>
             <div className="wrapper-individual">
-                <div className="main-box">
+                <div className="main-box-individual">
                     <h2>{ad.data.ad_details.title}</h2>
                     <img src={ad.data.ad_details.image_url} alt="" className="img-ad-individual" />
                     <p><b>Description</b>
@@ -374,7 +374,7 @@ function AdPageBody(props) {
                         :
                         ad.data.deals.length < 1 ? 'No one has made a propose for this Ad ! Be the first one!' : '1 Person has made a proposal!'} </h3>
                 </div>
-                <div className="main-box">
+                <div className="main-box-individual">
                     <h2> {ad.isDealProposed === false ? 'Propose a deal' : ''} </h2>
                     {renderForm()}
                 </div>
