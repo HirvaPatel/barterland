@@ -1,3 +1,5 @@
+/* Author : Vikram Babu Rajendran */
+
 import React from "react";
 import '../css/IndividualAdPage.css'
 import { Link, useNavigate } from "react-router-dom";
@@ -12,7 +14,7 @@ import FooterSection from "../../home/js/FooterSection";
 import axios from "axios";
 import { ReactSession } from 'react-client-session';
 
-
+/* Component that renders the individual Ad page. */
 function IndividualAdPage(props) {
 
     let location = useLocation();
@@ -31,6 +33,7 @@ function IndividualAdPage(props) {
 
     }, [userData]);
 
+    // Fetch user details from localstorage and set in session
     useEffect(() => {
 
         ReactSession.setStoreType("localStorage");
@@ -46,6 +49,7 @@ function IndividualAdPage(props) {
             setUserData(userData);
         }
 
+        // Fetch the details of the Ad and set in state.
         let config = {
             headers: {
                 user_id: userData.user_id,
@@ -81,6 +85,7 @@ function IndividualAdPage(props) {
 
 }
 
+// Component that renders the Ad Page Body.
 function AdPageBody(props) {
     const ad = props.ad;
     const userData = props.userData;
@@ -104,6 +109,7 @@ function AdPageBody(props) {
     const [dealProposed, setDealProposed] = useState(false);
     const [updateDeal, setUpdateDeal] = useState(false);
 
+    // Reload page after the deal is proposed.
     useEffect(() => {
         if (dealProposed === true) {
             window.location.reload();
@@ -264,6 +270,7 @@ function AdPageBody(props) {
         navigate("/loginpage");
     }
 
+    // Conditional Rendering based on deal state.
     const renderForm = () => {
 
         console.log(!userData || !userData.user_id);
@@ -355,7 +362,7 @@ function AdPageBody(props) {
     return (
         <section>
             <div className="wrapper-individual">
-                <div className="main-box">
+                <div className="main-box-individual">
                     <h2>{ad.data.ad_details.title}</h2>
                     <img src={ad.data.ad_details.image_url} alt="" className="img-ad-individual" />
                     <p><b>Description</b>
@@ -374,7 +381,7 @@ function AdPageBody(props) {
                         :
                         ad.data.deals.length < 1 ? 'No one has made a propose for this Ad ! Be the first one!' : '1 Person has made a proposal!'} </h3>
                 </div>
-                <div className="main-box">
+                <div className="main-box-individual">
                     <h2> {ad.isDealProposed === false ? 'Propose a deal' : ''} </h2>
                     {renderForm()}
                 </div>

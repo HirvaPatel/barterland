@@ -1,21 +1,4 @@
-@charset "UTF-8";
-
-@import url('https://fonts.googleapis.com/css?family=Rajdhani:400,700&display=swap');
-
-.img-ad-individual{
- border: 1px groove #001633;
- object-fit: contain;
- display: block;
- border-radius: 4px;
- width:400px;
- height: 400px;
- max-width:450px;
- max-height: 450px;
- -moz-box-shadow: inset 0 0 10px #001633;
- -webkit-box-shadow: inset 0 0 10px  #001633;
- box-shadow: inset 0 0 10px  rgba(29,42,120,0.6);
-}
-
+/* Author : Vikram Babu Rajendran */
 
 .wrapper-deal {
    display: contents;
@@ -57,13 +40,11 @@
 
 .main-box-deal h2 {
 text-align: left;
-align-items: left;
 color: #1D2A78;
 }
 
 .main-box-deal h3 {
 text-align: left;
-align-items: left;
 color: #1D2A78;
 margin-block-start: 10px;
 margin-block-end: 10px;
@@ -71,7 +52,6 @@ margin-block-end: 10px;
 
 .main-box-deal h4 {
   text-align: left;
-  align-items: left;
   color: #e70e0e;
   margin-block-start: 10px;
   margin-block-end: 10px;
@@ -79,7 +59,6 @@ margin-block-end: 10px;
 
 .main-box-deal p{
   text-align: left;
-  align-items: left;
   border: 0px 	solid black;
   border-radius: 4px;
   width: 150px;
@@ -146,7 +125,7 @@ margin-block-end: 10px;
   }
 
   .box {
-    display: flexbox;    
+    display: flex;    
   }
 
   .box p {

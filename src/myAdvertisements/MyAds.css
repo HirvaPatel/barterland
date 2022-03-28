@@ -1,51 +1,33 @@
 @charset "UTF-8";
-@import url('https://fonts.googleapis.com/css?family=Rajdhani:400,700&display=swap');
 
-/* Author : Vikram Babu Rajendran */
+@import url("https://fonts.googleapis.com/css?family=Rajdhani:400,700&display=swap");
 
-.loader {
-  border: 16px solid #001633;
-  border-top: 16px solid #F5D200; 
-  border-bottom: 16px solid #F5D200;
-  border-radius: 50%;
-  width: 75px;
-  height: 75px;
-  animation: spin 2s linear infinite;
-  margin: -76px 0 0 -76px;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-body{
+body {
   background-color: #001633;
   margin: auto;
-  font-family: 'Rajdhani', sans-serif;
-  font-size:1vw;
+  padding: auto;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 1vw;
 }
 
 .container {
-  display: flex; 
+  display: flex;
   height: 6vh;
   text-align: justify;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
   overflow: hidden;
   background-color: #ffffff;
   padding: 20px 10px;
   border-radius: 6px;
-  border: 1px 	solid black;
-  -moz-box-shadow:    inset 0 0 10px #001633;
-  -webkit-box-shadow: inset 0 0 10px  #001633;
-  box-shadow:         inset 0 0 10px  rgba(29,42,120,0.6);
+  border: 1px solid black;
+  -moz-box-shadow: inset 0 0 10px #001633;
+  -webkit-box-shadow: inset 0 0 10px #001633;
+  box-shadow: inset 0 0 10px rgba(29, 42, 120, 0.6);
 }
 
-.box1{   
-  zoom: 1;  
+.box1 {
+  zoom: 1;
   text-align: center;
   text-decoration: none;
   font-size: 18px;
@@ -55,8 +37,8 @@ body{
   padding: 1px;
   padding-left: 6%;
 }
-.box2{
-  zoom: 1;  
+.box2 {
+  zoom: 1;
   text-align: center;
   text-decoration: none;
   font-size: 18px;
@@ -66,18 +48,17 @@ body{
   padding: 1px;
   padding-left: 8%;
 }
-.box3{
-    zoom: 1;  
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    line-height: 25px;
-    border-radius: 4px;
-    margin-left: 1em;
-    padding: 1px;
-    padding-left: 6%;
+.box3 {
+  zoom: 1;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+  margin-left: 1em;
+  padding: 1px;
+  padding-left: 6%;
 }
-
 
 .box5 {
   display: inline-block;
@@ -93,9 +74,9 @@ body{
   padding-right: 4em;
 }
 
-.container label{
+.container label {
   float: left;
-  color: #6d76a8;
+  color: #1d2a78;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -104,9 +85,9 @@ body{
   border-radius: 4px;
 }
 
-.container input{
+.container input {
   float: left;
-  color: #01030f;
+  color: #1d2a78;
   text-align: center;
   text-decoration: none;
   font-size: 18px;
@@ -114,7 +95,6 @@ body{
   border-radius: 4px;
   height: 43px;
   width: 50%;
-  
 }
 
 .container label.logo {
@@ -124,7 +104,7 @@ body{
 
 .container label:hover {
   background-color: #ddd;
-  color: #1D2A78;
+  color: #1d2a78;
   cursor: pointer;
 }
 
@@ -133,23 +113,24 @@ body{
   color: white;
 }
 
-
 .container2 {
-  display: flex;   
+  display: flex;
   height: 6vh;
   text-align: center;
-   overflow: hidden;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
+  overflow: hidden;
   background-color: #f1f1f1;
   padding: 20px 10px;
   margin-top: 20px;
   border-radius: 6px;
-  border: 1px 	solid black;
-    -moz-box-shadow:    inset 0 0 10px #001633;
-  -webkit-box-shadow: inset 0 0 10px  #001633;
-  box-shadow:         inset 0 0 10px  rgba(29,42,120,0.6);
+  border: 1px solid black;
+  -moz-box-shadow: inset 0 0 10px #001633;
+  -webkit-box-shadow: inset 0 0 10px #001633;
+  box-shadow: inset 0 0 10px rgba(29, 42, 120, 0.6);
 }
 
-.container2 label{
+.container2 label {
   float: left;
   text-align: center;
   padding: 12px;
@@ -157,34 +138,36 @@ body{
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
-  color: #1D2A78;
+  color: #1d2a78;
 }
 
 .container2 label:hover {
   background-color: #ddd;
-  color: #1D2A78;
+  color: #1d2a78;
   cursor: pointer;
 }
 
 .container3 {
-  display: flex;   
+  display: flex;
   height: 6vh;
   text-align: justify;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
   overflow: hidden;
   padding: 20px 10px;
   margin-top: 50px;
   background-color: #ffffff;
   border-radius: 6px;
   border: 1px solid black;
-    -moz-box-shadow:    inset 0 0 10px #001633;
-  -webkit-box-shadow: inset 0 0 10px  #001633;
-  box-shadow:         inset 0 0 10px  rgba(29,42,120,0.6);
+  -moz-box-shadow: inset 0 0 10px #001633;
+  -webkit-box-shadow: inset 0 0 10px #001633;
+  box-shadow: inset 0 0 10px rgba(29, 42, 120, 0.6);
   margin-bottom: 2em;
 }
 
-.container3 a{
+.container3 a {
   float: left;
-  color: #1D2A78;
+  color: #1d2a78;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -195,31 +178,33 @@ body{
 
 .container3 a:hover {
   background-color: #ddd;
-  color: #1D2A78;
+  color: #1d2a78;
 }
 
 .container4 {
-  display: flex;   
+  display: flex;
   height: 7vh;
   text-align: justify;
-   overflow: hidden;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
+  overflow: hidden;
   padding-top: 20px;
   padding-left: 21px;
   background-color: #ffffff;
-    -moz-box-shadow:    inset 0 0 10px #001633;
-  -webkit-box-shadow: inset 0 0 10px  #001633;
-  box-shadow:         inset 0 0 10px  rgba(29,42,120,0.6);
+  -moz-box-shadow: inset 0 0 10px #001633;
+  -webkit-box-shadow: inset 0 0 10px #001633;
+  box-shadow: inset 0 0 10px rgba(29, 42, 120, 0.6);
 }
 
-.container4 label{
+.container4 label {
   float: left;
-  color: #1D2A78;
+  color: #1d2a78;
   text-align: center;
   padding: 2px;
   text-decoration: none;
   font-size: 18px;
   line-height: 25px;
-  border-radius: 4px;  
+  border-radius: 4px;
 }
 
 .container4 label.logo-box {
@@ -228,14 +213,14 @@ body{
   width: 21vh;
 }
 
-.container4 label:hover { 
-  color: #1D2A78;
+.container4 label:hover {
+  color: #1d2a78;
   cursor: pointer;
 }
 
-.container4 label{
+.container4 label {
   float: left;
- color: #1D2A78;
+  color: #1d2a78;
   text-align: center;
   padding: 2px;
   text-decoration: none;
@@ -246,29 +231,27 @@ body{
   width: 66vh;
 }
 
-.logo-box{
-  zoom: 1;  
+.logo-box {
+  zoom: 1;
   color: black;
   text-align: center;
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
-  
 }
 
-.backtotop { 
-  zoom: 1; 
+.backtotop {
+  zoom: 1;
   background-color: #ffffff;
   text-align: center;
   text-decoration: none;
   font-size: 18px;
   line-height: 25px;
-  border-radius: 4px;  
-  
+  border-radius: 4px;
 }
 
-.container4 .box5 label{
-    cursor: default;
+.container4 .box5 label {
+  cursor: default;
 }
 
 .text-block {
@@ -281,82 +264,85 @@ body{
   padding-right: 20px;
 }
 
-.img-ad-home{ 
- border: 0px;
- object-fit: contain; 
- display: block;
- border-radius: 4px;
- width:300px;
- height: 250px;
- max-width:300px;
- max-height: 250px;  
+.img-ad {
+  width: 50%;
+  border: 1px groove #001633;
+  object-fit: contain;
+  height: 100%;
+  display: block;
+  border-radius: 4px;
+  max-width: 100%;
+  -moz-box-shadow: inset 0 0 10px #001633;
+  -webkit-box-shadow: inset 0 0 10px #001633;
+  box-shadow: inset 0 0 10px rgba(29, 42, 120, 0.6);
 }
 
-
-.wrapper-home {
-   display: flex;
-   justify-content: center;
-   padding: 2em;
-   height: 35em;
-   width: 96%;  
-   border: 1px solid black;
-   margin-top: 1em;
-   margin-bottom: 1em;
-   border-radius: 6px;
-   background-color: #001633;
+.wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2em;
+  height: 33em;
+  width: 96%;
+  border: 1px solid black;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border-radius: 6px;
+  background-color: #001633;
 }
-.box-home {
+.box {
   text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center; 
+  align-items: center;
   padding: 1em;
   position: relative;
-  border: 1px 	solid black;
+  border: 1px solid black;
   border-radius: 6px;
   margin: 2em;
   object-fit: contain;
   background-color: #ffffff;
-  -moz-box-shadow:    inset 0 0 10px #001633;
-  -webkit-box-shadow: inset 0 0 10px  #001633;
-  box-shadow:         inset 0 0 10px  rgba(29,42,120,0.6);
+  -moz-box-shadow: inset 0 0 10px #001633;
+  -webkit-box-shadow: inset 0 0 10px #001633;
+  box-shadow: inset 0 0 10px rgba(29, 42, 120, 0.6);
 }
-
-.box-home h2 {
-text-align: left;
-color: #1D2A78;
-}
-
-.box-home p{
-  text-align: left;
-  border: 1px 	solid black;
-  border-radius: 4px;
-  width: 190px;
-  height: 60px;
+.box p {
+  height: 1em;
   padding: 1em;
-  color: #1D2A78;
+  font-size: large;
+}
+.adDetail {
+  padding: 2px;
+  display: flex;
 }
 
+.Favorite {
+  margin-top: 10%;
+  margin-left: 50%;
+}
 
-.ads-button{
-	text-align: center;	
-	font: normal normal bold 14px/35px Rajdhani !important;
-	letter-spacing: 2.1px !important;
-	color: #090971 !important;
-	background-color: #F5D200;  
-	font-weight: 700;
-	letter-spacing: 0.2em;
- 	padding: .6em;
-	border-radius: 6px;
-	color: #fff;
- 	font-size: 20px;
-	text-decoration: none;
- 	border: none;	
- 	box-shadow: 0px 0px 20px rgba(29,42,120,0.6);
-	cursor: pointer;	  
+.box h2 {
+  text-align: left;
+  align-items: left;
+  color: #1d2a78;
+}
+.ads-button {
+  text-align: center;
+  font: normal normal bold 14px/35px Rajdhani !important;
+  letter-spacing: 2.1px !important;
+  color: #090971 !important;
+  background-color: #f5d200;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  padding: 0.6em;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 20px;
+  text-decoration: none;
+  border: none;
+  box-shadow: 0px 0px 20px rgba(29, 42, 120, 0.6);
+  cursor: pointer;
   object-fit: contain;
 }
-
 
 @media screen and (max-width: 500px) {
   .header a {
@@ -369,21 +355,21 @@ color: #1D2A78;
     padding-left: 49em;
   }
 
-  .container{
+  .container {
     display: block;
     height: 20vh;
   }
 
-  .container2{
+  .container2 {
     display: list-item;
     height: 13vh;
   }
 
-  .container3{
+  .container3 {
     display: list-item;
   }
 
-  .container4{
+  .container4 {
     display: block;
     height: 11vh;
   }
@@ -400,8 +386,8 @@ color: #1D2A78;
     padding-left: 0%;
   }
 
-  .box2{
-      display: grid;
+  .box2 {
+    display: grid;
   }
 
   .container3 {
@@ -412,7 +398,7 @@ color: #1D2A78;
   }
 
   .box {
-    display: flex;    
+    display: flexbox;
   }
 
   .box p {
@@ -421,8 +407,7 @@ color: #1D2A78;
     font-size: large;
   }
 
-  .box h2{
-      font-size: x-large;
-  } 
+  .box h2 {
+    font-size: x-large;
+  }
 }
-
