@@ -163,9 +163,12 @@ function MainSectionBox(props) {
 
         let api_url = process.env.REACT_APP_BACKEND_URL + '/wishlist/add/' + id;
 
+        ReactSession.setStoreType("localStorage");
+        const userid = ReactSession.get("user_id");
+
         let config = {
             headers: {
-                user_id: "5c7b8740-0917-42bd-9c47-74700fa575fb"
+                user_id: userid
             }
         };
 

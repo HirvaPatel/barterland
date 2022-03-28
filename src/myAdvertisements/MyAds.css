@@ -280,12 +280,12 @@ body {
 .wrapper {
   display: flex;
   justify-content: center;
-  padding: 2em;
   height: 33em;
   width: 96%;
   border: 1px solid black;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 2px;
+  margin-left: 10px;
+  margin-right: 10px;
   border-radius: 6px;
   background-color: #001633;
 }

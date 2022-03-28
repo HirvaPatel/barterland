@@ -1,50 +1,50 @@
 export const data = [
     {
-      name: 'Jan',
-      ActiveUser: 4000
+      name: 'Halifax',
+      Deals: 4000
     },
     {
-      name: 'Feb',
-      ActiveUser: 3000
+      name: 'Turoro',
+      Deals: 3000
     },
     {
-      name: 'March',
-      ActiveUser: 2000
+      name: 'Dartmouth',
+      Deals: 2000
     },
     {
-      name: 'April',
-      ActiveUser: 2780
+      name: 'kitchner',
+      Deals: 2780
     },
     {
-      name: 'May',
-      ActiveUser: 1890
+      name: 'toronto',
+      Deals: 1890
     },
     {
-      name: 'June',
-      ActiveUser: 2390
+      name: 'ottowa',
+      Deals: 2390
     },
     {
-      name: 'July',
-      ActiveUser: 5490
+      name: 'london',
+      Deals: 5490
     },
     {
-        name: 'August',
-        ActiveUser: 1490
+        name: 'sydney',
+        Deals: 1490
       },
       {
-        name: 'September',
-        ActiveUser: 2490
+        name: 'vancouver',
+        Deals: 2490
       },
       {
-        name: 'October',
-        ActiveUser: 8490
+        name: 'new york',
+        Deals: 8490
       },
       {
-        name: 'November',
-        ActiveUser: 3290
+        name: 'london',
+        Deals: 3290
       },
       {
-        name: 'December',
-        ActiveUser: 5490
+        name: 'paris',
+        Deals: 5490
       },
   ];

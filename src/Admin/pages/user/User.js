@@ -12,7 +12,7 @@ export default function User() {
     const [user,setUser] = useState([]);  
     const params=useParams();
     console.log(params)
-    const api_url=`http://localhost:8080/api/users/${params.userId}`;
+    const api_url=process.env.REACT_APP_BACKEND_URL+`/api/users/${params.userId}`;
     useEffect(()=>{
         fetch(api_url)
         .then(resp=>resp.json())
