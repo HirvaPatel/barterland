@@ -1,5 +1,6 @@
 import './chart.css'
-import { LineChart, Line, XAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+
 
 
 export default function Chart({title,data,dataKey,grid}) {
@@ -8,13 +9,24 @@ export default function Chart({title,data,dataKey,grid}) {
     <div className='chart'>
         <h3 className='chartTitle'>{title}</h3>
         <ResponsiveContainer width="100%" aspect={4/1}>
-            <LineChart data={data}>
-                <XAxis dataKey="name" stroke="green"></XAxis>
-                <Line type="monotone" dataKey={dataKey} stroke="green"  />
-                <Tooltip />
-                {grid && <CartesianGrid stroke="grey" strokeDasharray=" 5 5"/>}
-                
-            </LineChart>
+        <BarChart
+          width={500}
+          height={300}
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey='name' />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="Deals" fill="#090971" />
+        </BarChart>
         </ResponsiveContainer>
     </div>
   )
