@@ -34,24 +34,24 @@
                            ||                               ||                           ||
                            ||                               ||                           ||
     src/Admin/components   ||  charts/Chart.js              ||   Hardik Mesvania         ||
-    src/Admin/components   ||  charts/Chart.css             ||   Hardik Mesvania         ||
-    src/Admin/components   ||  featuredInfo/FeaturedInfo.css||   Hardik Mesvania 	     ||
+    src/Admin/css          ||  charts/Chart.css             ||   Hardik Mesvania         ||
+    src/Admin/css          ||  featuredInfo/FeaturedInfo.css||   Hardik Mesvania 	     ||
     src/Admin/components   ||  featuredInfo/FeaturedInfo.js ||   Hardik Mesvania 	     ||
     src/Admin/components   ||  Sidebar/Sidebar.js           ||   Hardik Mesvania 	     ||
     src/Admin/components   ||  Sidebar/Sidebar.css          ||   Hardik Mesvania         ||
-    src/Admin/components   ||  Titlebar/Titlebar.css        ||   Hardik Mesvania 	     ||
+    src/Admin/css          ||  Titlebar/Titlebar.css        ||   Hardik Mesvania 	     ||
     src/Admin/components   ||  Titlebar/Titlebar.js         ||   Hardik Mesvania 	     ||
     src/Admin/components   ||  widgetslg/widgetslg.js       ||   Hardik Mesvania 	     ||
-    src/Admin/components   ||  widgetslg/widgetslg.css      ||   Hardik Mesvania         ||
-    src/Admin/components   ||  widgetssm/widgetslg.css      ||   Hardik Mesvania         ||
+    src/Admin/css          ||  widgetslg/widgetslg.css      ||   Hardik Mesvania         ||
+    src/Admin/css          ||  widgetssm/widgetslg.css      ||   Hardik Mesvania         ||
     src/Admin/components   ||  widgetssm/widgetssm.js       ||   Hardik Mesvania 	     ||
                            ||                               ||                           ||    
     src/Admin/pages        ||  user/User.js                 ||   Hardik Mesvania 	     ||
-    src/Admin/pages        ||  user/user.css                ||   Hardik Mesvania 	     ||
-    src/Admin/pages        ||  userList/userList.css        ||   Hardik Mesvania         ||
+    src/Admin/css          ||  user/user.css                ||   Hardik Mesvania 	     ||
+    src/Admin/css          ||  userList/userList.css        ||   Hardik Mesvania         ||
     src/Admin/pages        ||  userList/UserList.js         ||   Hardik Mesvania 	     ||
     src/Admin/pages        ||  home.js                      ||   Hardik Mesvania 	     ||
-    src/Admin/pages        ||  home.css                     ||   Hardik Mesvania 	     ||
+    src/Admin/css          ||  home.css                     ||   Hardik Mesvania 	     ||
                            ||                               ||                           ||
     src/Wishlist           ||  Wishlist.js                  ||   Shivam Barot   	     ||
     src/Wishlist           ||  WishlistProducts.js          ||   Shivam Barot   	     ||
