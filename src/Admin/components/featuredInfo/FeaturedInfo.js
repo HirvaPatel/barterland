@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 
 export default function FeaturedInfo() {
   const [users,setUser] = useState([]);  
-    const api_url="http://localhost:8080/api/users";
+    const api_url=process.env.REACT_APP_BACKEND_URL + '/api/users';
     useEffect(()=>{
         fetch(api_url)
         .then(resp=>resp.json())
