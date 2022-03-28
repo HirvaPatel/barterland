@@ -7,6 +7,9 @@ import { useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import TitleSection from "../home/js/TitleSection";
+import MenuSection from "../home/js/MenuSection";
+import FooterSection from "../home/js/FooterSection";
 
 function MyIndividualAd(props) {
   let location = useLocation();
@@ -37,186 +40,6 @@ function MyIndividualAd(props) {
   );
 }
 
-function TitleSection(props) {
-  const [searchValue, setSearchValue] = useState("");
-
-  let toProfile = "/register";
-  let linkName = "Register Now";
-  if (props.isRegistered && props.userData) {
-    toProfile = "/profile";
-    if (props.userData) {
-      linkName = "Profile of " + props.userData.f_name.value;
-    }
-  }
-
-  const handleChange = (e) => {
-    let value = searchValue;
-    value = e.target.value;
-    setSearchValue(value);
-  };
-
-  return (
-    <header>
-      <nav className="container">
-        <nav className="box1">
-          <Link to={"/"}>
-            <label className="logo">BarterLand</label>{" "}
-          </Link>
-        </nav>
-        <nav className="box2">
-          {/* <Link to={"/comingsoon"} target="_blank" rel="noopener noreferrer" > <label>Location</label> </Link> */}
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Location</label>{" "}
-          </Link>
-        </nav>
-        <nav className="box1">
-          <input
-            placeholder="Search"
-            value={searchValue}
-            onChange={handleChange}
-          />
-          <Link to={"/comingsoon"}>
-            {" "}
-            <button
-              className="ads-button"
-              disabled={searchValue === "" ? true : false}
-              type="submit"
-            >
-              Search
-            </button>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Wishlist</label>{" "}
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"} state={{ data: props.userData }}>
-            <label>{linkName}</label>
-          </Link>
-        </nav>
-      </nav>
-    </header>
-  );
-}
-
-function MenuSection(props) {
-  return (
-    <nav>
-      <nav className="container2">
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Categories</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Post Ads</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Notifications</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>My Ads</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Blogs</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Feedback</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Contact Us</label>
-          </Link>
-        </nav>
-      </nav>
-    </nav>
-  );
-}
-
-class FooterSection extends React.Component {
-  render() {
-    return (
-      <footer>
-        <nav>
-          <nav className="container3">
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>About Us</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Contact Us</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Give Feedback</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Report an issue</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Read of blogs</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Meet out team</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Rate Us</label>
-              </Link>
-            </nav>
-          </nav>
-        </nav>
-        <nav className="container4">
-          <nav className="backtotop">
-            <Link to={"/home"}>
-              <label>Back to top</label>
-            </Link>
-          </nav>
-          <nav className="logo-box">
-            <Link to={"/home"}>
-              <label>BarterLand</label>
-            </Link>
-          </nav>
-          <section className="box5">
-            <label> Developed by Humans </label>
-          </section>
-        </nav>
-      </footer>
-    );
-  }
-}
-
 function MyAd(props) {
   const location = useLocation();
   const [adData, setAdData] = useState(location.state.adData);
@@ -234,9 +57,9 @@ function MyAd(props) {
     navigate("/myads");
   };
   const handleDelete = () => {
-    console.log("Deleting the ad!!", adData.ad_id);
+    const url = process.env.REACT_APP_BACKEND_URL + "/deletemyad";
     axios
-      .delete("http://localhost:8080/deletemyad", {
+      .delete(url, {
         data: {
           ad_id: adData.ad_id,
         },
@@ -244,14 +67,13 @@ function MyAd(props) {
       .then((response) => {
         setAdData(response.data.data);
       });
-    console.log("ad data after deleted: " + adData);
     renderIndividualAd();
   };
   return (
     <section>
       <div className="wrapper">
         <div className="main-box">
-          <h2>{adData.productName}</h2>
+          <h2>{adData.ad_details.title}</h2>
           <img src={adData.ad_details.image_url} alt="" className="myAdImg" />
         </div>
         <div className="main-box">

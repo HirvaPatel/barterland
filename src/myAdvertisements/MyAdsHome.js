@@ -1,255 +1,105 @@
 import React from "react";
 import "./MyAds.css";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
-import { adData } from "./AdData.js";
+import { useState, useEffect } from "react";
 import { Ad } from "./Ad";
 import { useNavigate } from "react-router-dom";
+import TitleSection from "../home/js/TitleSection";
+import MenuSection from "../home/js/MenuSection";
+import FooterSection from "../home/js/FooterSection";
+import { ReactSession } from "react-client-session";
+import axios from "axios";
 
 function MyAdsHome(props) {
-  let location = useLocation();
-  const [isRegistered, setIsRegistered] = useState(false);
   const [userData, setUserData] = useState();
+  const [adData, setAdData] = useState([]);
+  let navigate = useNavigate();
 
   useEffect(() => {
-    if (userData) {
-      return () => {};
-    }
-    if (location.state) {
-      let data = userData;
-      data = location.state.data;
-      setUserData(data);
-      if (location.state.data.f_name.valid) {
-        setIsRegistered(true);
-      }
+    if (userData && userData.user_id) {
+      return;
     }
   }, [userData]);
+
+  useEffect(() => {
+    ReactSession.setStoreType("localStorage");
+    const user_id = ReactSession.get("user_id");
+    const email = ReactSession.get("email");
+    const first_name = ReactSession.get("first_name");
+    const userData = {
+      user_id: user_id,
+      email: email,
+      first_name: first_name,
+    };
+    if (userData && userData.user_id) {
+      setUserData(userData);
+    }
+
+    let config = {
+      headers: {
+        user_id: userData.user_id,
+      },
+    };
+
+    const url = process.env.REACT_APP_BACKEND_URL + "/myads";
+    axios
+      .get(url, config)
+      .then(({ data }) => {
+        setAdData(data.ads);
+      })
+      .catch(() => {
+        alert("No Advertisements Found!");
+        navigate("/home");
+      });
+  }, []);
+
+  console.log("advertisements:", adData);
+  if (!adData) {
+    return <div className="loader"></div>;
+  }
 
   const data = userData;
 
   return (
     <>
-      <TitleSection isRegistered={isRegistered} userData={data} />
+      <TitleSection />
       <MenuSection />
-      <MainSectionGenerator />
+      <MyAdvertisements adData={adData} userData={data} />
       <FooterSection />
     </>
   );
 }
 
-function TitleSection(props) {
-  const [searchValue, setSearchValue] = useState("");
-
-  let toProfile = "/register";
-  let linkName = "Register Now";
-  if (props.isRegistered && props.userData) {
-    toProfile = "/profile";
-    if (props.userData) {
-      linkName = "Profile of " + props.userData.f_name.value;
-    }
-  }
-
-  const handleChange = (e) => {
-    let value = searchValue;
-    value = e.target.value;
-    setSearchValue(value);
-  };
-
-  return (
-    <header>
-      <nav className="container">
-        <nav className="box1">
-          <Link to={"/"}>
-            <label className="logo">BarterLand</label>{" "}
-          </Link>
-        </nav>
-        <nav className="box2">
-          {/* <Link to={"/comingsoon"} target="_blank" rel="noopener noreferrer" > <label>Location</label> </Link> */}
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Location</label>{" "}
-          </Link>
-        </nav>
-        <nav className="box1">
-          <input
-            placeholder="Search"
-            value={searchValue}
-            onChange={handleChange}
-          />
-          <Link to={"/comingsoon"}>
-            {" "}
-            <button
-              className="ads-button"
-              disabled={searchValue === "" ? true : false}
-              type="submit"
-            >
-              Search
-            </button>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Wishlist</label>{" "}
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"} state={{ data: props.userData }}>
-            <label>{linkName}</label>
-          </Link>
-        </nav>
-      </nav>
-    </header>
-  );
-}
-
-function MenuSection(props) {
-  return (
-    <nav>
-      <nav className="container2">
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Categories</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Post Ads</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Notifications</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>My Ads</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Blogs</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Feedback</label>
-          </Link>
-        </nav>
-        <nav className="box1">
-          <Link to={"/comingsoon"}>
-            {" "}
-            <label>Contact Us</label>
-          </Link>
-        </nav>
-      </nav>
-    </nav>
-  );
-}
-
-class FooterSection extends React.Component {
-  render() {
-    return (
-      <footer>
-        <nav>
-          <nav className="container3">
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>About Us</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Contact Us</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Give Feedback</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Report an issue</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Read of blogs</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Meet out team</label>
-              </Link>
-            </nav>
-            <nav className="box3">
-              <Link to={"/comingsoon"}>
-                <label>Rate Us</label>
-              </Link>
-            </nav>
-          </nav>
-        </nav>
-        <nav className="container4">
-          <nav className="backtotop">
-            <Link to={"/home"}>
-              <label>Back to top</label>
-            </Link>
-          </nav>
-          <nav className="logo-box">
-            <Link to={"/home"}>
-              <label>BarterLand</label>
-            </Link>
-          </nav>
-          <section className="box5">
-            <label> Developed by Humans </label>
-          </section>
-        </nav>
-      </footer>
-    );
-  }
-}
-
-class MainSectionGenerator extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return <MyAdvertisements></MyAdvertisements>;
-  }
-}
-
 function MyAdvertisements(props) {
+  const adData = props.adData;
+  const userData = props.userData;
   let navigate = useNavigate();
 
-  const [adData, setAdData] = useState([]);
+  const handleRedirectLogin = (e) => {
+    e.preventDefault();
+    navigate("/loginpage");
+  };
+
+  if (!userData || !userData.user_id) {
+    return (
+      <section>
+        <div className="wrapper-deal">
+          <div className="main-box-deal">
+            <h2>Login to view your Advertisements!</h2>
+            <button onClick={(e) => handleRedirectLogin(e)}>Login</button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   const renderIndividualAd = (props) => {
     let path = `myadpage`;
     navigate(path, { state: { adData: props } });
   };
-  React.useEffect(() => {
-    fetch("http://localhost:8080/myads")
-      .catch((error) => {
-        console.log(error);
-      })
-      .then((res) => res.json())
-      .then((data) => {
-        setAdData(data.ads);
-      });
-  }, []);
+
   return (
     <main className="wrapper">
+      {console.log("addata in the render page: ", adData)}
       {adData.map((product) => (
         <main className="box" onClick={() => renderIndividualAd(product)}>
           <Ad data={product} />

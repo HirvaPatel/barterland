@@ -2,6 +2,26 @@
 
 @import url('https://fonts.googleapis.com/css?family=Rajdhani:400,700&display=swap');
 
+.loader {
+  border: 16px solid #001633;
+  border-top: 16px solid #F5D200; 
+  border-bottom: 16px solid #F5D200;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  animation: spin 2s linear infinite;
+  margin: -76px 0 0 -76px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 body{
   background-color: #001633;
   margin: auto;
@@ -77,7 +97,7 @@ body{
 
 .container label{
   float: left;
-  color: #1D2A78;
+  color: #6d76a8;
   text-align: center;
   padding: 12px;
   text-decoration: none;
@@ -88,7 +108,7 @@ body{
 
 .container input{
   float: left;
-  color: #1D2A78;
+  color: #01030f;
   text-align: center;
   text-decoration: none;
   font-size: 18px;
@@ -269,17 +289,15 @@ body{
   padding-right: 20px;
 }
 
-.img-ad{
- width:60%;
- border: 1px groove #001633;
- object-fit: contain;
- height: 60%; 
+.img-ad{ 
+ border: 0px;
+ object-fit: contain; 
  display: block;
  border-radius: 4px;
- max-width:100%;
- -moz-box-shadow: inset 0 0 10px #001633;
- -webkit-box-shadow: inset 0 0 10px  #001633;
- box-shadow: inset 0 0 10px  rgba(29,42,120,0.6);
+ width:300px;
+ height: 250px;
+ max-width:300px;
+ max-height: 250px;  
 }
 
 
@@ -287,15 +305,15 @@ body{
    display: flex;
    justify-content: center;
    padding: 2em;
-   height: 100%;
+   height: 35em;
+   width: 96%;  
    border: 1px solid black;
    margin-top: 1em;
    margin-bottom: 1em;
    border-radius: 6px;
    background-color: #001633;
 }
-
-.main-box {
+.box {
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -312,58 +330,41 @@ body{
   box-shadow:         inset 0 0 10px  rgba(29,42,120,0.6);
 }
 
-.main-box h2 {
+.box h2 {
 text-align: left;
 align-items: left;
 color: #1D2A78;
 }
 
-.main-box h3 {
-text-align: left;
-align-items: left;
-color: #1D2A78;
-}
-
-.main-box p{
+.box p{
   text-align: left;
   align-items: left;
   border: 1px 	solid black;
   border-radius: 4px;
-  width: 70%;
-  height: 25%;
+  width: 190px;
+  height: 60px;
   padding: 1em;
   color: #1D2A78;
 }
 
-.main-box input{
-  color: #1D2A78;
-  text-align: center;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
-  height: 43px;  
-}
 
-
-.main-box button{
-	
+.ads-button{
 	text-align: center;	
 	font: normal normal bold 14px/35px Rajdhani !important;
+	letter-spacing: 2.1px !important;
 	color: #090971 !important;
-	background-color: #F5D200;
+	background-color: #F5D200;  
 	font-weight: 700;
 	letter-spacing: 0.2em;
-	padding: .6em;
-	border-radius: 4px;
+ 	padding: .6em;
+	border-radius: 6px;
 	color: #fff;
-	font-size: 20px;
+ 	font-size: 20px;
 	text-decoration: none;
-	border: none;	
-	box-shadow: 0px 0px 20px rgba(29,42,120,0.6);
-	cursor: pointer;
-	width:90%;
-	margin: 6%;	
+ 	border: none;	
+ 	box-shadow: 0px 0px 20px rgba(29,42,120,0.6);
+	cursor: pointer;	  
+  object-fit: contain;
 }
 
 
@@ -434,3 +435,4 @@ color: #1D2A78;
       font-size: x-large;
   } 
 }
+

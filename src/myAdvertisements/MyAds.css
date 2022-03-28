@@ -280,12 +280,12 @@ body {
 .wrapper {
   display: flex;
   justify-content: center;
-  padding: 2em;
-  height: 35em;
+  height: 33em;
   width: 96%;
   border: 1px solid black;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 2px;
+  margin-left: 10px;
+  margin-right: 10px;
   border-radius: 6px;
   background-color: #001633;
 }
@@ -305,8 +305,13 @@ body {
   -webkit-box-shadow: inset 0 0 10px #001633;
   box-shadow: inset 0 0 10px rgba(29, 42, 120, 0.6);
 }
-
+.box p {
+  height: 1em;
+  padding: 1em;
+  font-size: large;
+}
 .adDetail {
+  padding: 2px;
   display: flex;
 }
 
