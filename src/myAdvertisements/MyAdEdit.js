@@ -1,6 +1,6 @@
 import React from "react";
 import "./MyIndividualAdEdit.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";

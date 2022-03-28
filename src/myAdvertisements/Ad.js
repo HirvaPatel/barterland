@@ -5,10 +5,6 @@ import Favorite from "@mui/icons-material/Favorite";
 import "./MyAds.css";
 
 export class Ad extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const productData = this.props.data;
     console.log(productData);
