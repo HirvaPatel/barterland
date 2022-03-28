@@ -20,6 +20,9 @@ import Wishlist from "../Wishlist/Wishlist";
 import MyAdsHome from "../myAdvertisements/MyAdsHome";
 import MyIndividualAd from "../myAdvertisements/MyIndividualAd";
 import MyAdEdit from "../myAdvertisements/MyAdEdit";
+import Home from "../Admin/pages/Home";
+import UserList from "../Admin/pages/userList/UserList";
+import User from "../Admin/pages/user/User";
 
 export default function RoutingConfig(props) {
   return (
@@ -64,6 +67,9 @@ export default function RoutingConfig(props) {
           element={<MyIndividualAd />}
         ></Route>
         <Route exact path="/myads/myadpage/edit" element={<MyAdEdit />}></Route>
+        <Route exact path='/admin' element={<Home/>}></Route>
+          <Route exact path='/admin/users' element={<UserList/>}></Route>
+          <Route path='/admin/users/:userId' element={<User/>}></Route>
       </Routes>
     </Router>
   );
