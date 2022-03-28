@@ -1,5 +1,5 @@
 import React from 'react'
-import "./sidebar.css"
+import "../../css/sidebar.css"
 import PersonIcon from '@mui/icons-material/Person';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 import {Link} from "react-router-dom"
