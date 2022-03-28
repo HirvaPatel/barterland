@@ -2,21 +2,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Rajdhani:400,700&display=swap');
 
-.img-ad-individual{
- border: 1px groove #001633;
- object-fit: contain;
- display: block;
- border-radius: 4px;
- width:400px;
- height: 400px;
- max-width:450px;
- max-height: 450px;
- -moz-box-shadow: inset 0 0 10px #001633;
- -webkit-box-shadow: inset 0 0 10px  #001633;
- box-shadow: inset 0 0 10px  rgba(29,42,120,0.6);
-}
-
-
 .wrapper-deal {
    display: contents;
    justify-content: center;
