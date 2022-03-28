@@ -1,3 +1,5 @@
+//Author: Sowjanya Mani
+
 import React, { useState } from 'react';
 import '../css/RegisterForm.css';
 import '../css/LoginPage.css';
@@ -53,6 +55,7 @@ export default function PasswordUpdate(props) {
         newpassword: newpassword.value,
       };
 
+      //Make a API call to backend to update the password of the user
       const url = process.env.REACT_APP_BACKEND_URL + '/api/updatepassword';
       axios.post(url, user).then((response) => {
 
@@ -194,7 +197,7 @@ export default function PasswordUpdate(props) {
   );
 }
 
-
+//Password Validation
 function validatePassword(password) {
   return String(password).match(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/
 

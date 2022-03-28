@@ -1,3 +1,5 @@
+//Author: Sowjanya Mani
+
 import React, { useState } from 'react';
 import '../css/RegisterForm.css';
 import '../css/LoginPage.css';
@@ -57,6 +59,9 @@ export default function ForgotPassword(props) {
       };
 
       console.log(user);
+
+      //Make a API call to backend to verify the security answer and update the password
+
       const url = process.env.REACT_APP_BACKEND_URL + '/api/forgotpassword';
       axios.post(url, user).then((response) => {
 
@@ -200,13 +205,13 @@ export default function ForgotPassword(props) {
   );
 }
 
-
+//password validation
 function validatePassword(password) {
   return String(password).match(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/
 
   );
 }
-
+//security answer validation
 function validateSecurityAnswer(securityanswer) {
   return String(securityanswer).toLowerCase().match(/^[a-zA-Z0-9]{5,}$/
 

@@ -1,3 +1,5 @@
+//Author: Sowjanya Mani
+
 import React, { useState } from 'react';
 import '../css/LoginPage.css';
 import { Link } from "react-router-dom";
@@ -42,6 +44,8 @@ export default function LoginPage(props) {
         password: password.value
 
       };
+
+      // Make a backend API call to allow the user to login 
 
       const url= process.env.REACT_APP_BACKEND_URL + '/api/login';
 
@@ -170,6 +174,7 @@ export default function LoginPage(props) {
   );
 }
 
+//email validation function
 function validateEmail(email) {
   return String(email)
     .toLowerCase()
@@ -178,6 +183,8 @@ function validateEmail(email) {
     );
 }
 
+
+//password validation
 function validatePassword(password) {
   return String(password).match(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/
 
