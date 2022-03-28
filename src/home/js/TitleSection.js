@@ -1,3 +1,5 @@
+/* Author : Vikram Babu Rajendran */
+
 import React from "react";
 import '../css/HomePage.css';
 import { Link } from "react-router-dom";
@@ -5,7 +7,7 @@ import { useState } from "react";
 import { ReactSession } from 'react-client-session';
 import { useEffect } from "react/cjs/react.development";
 
-
+/* Component that renders the Title Section of the application */
 export default function TitleSection(props) {
 
     const [searchValue, setSearchValue] = useState('');
@@ -18,6 +20,7 @@ export default function TitleSection(props) {
         }
     }, [userData]);
 
+    // Fetch user details from localstorage and set in session.
     useEffect(() => {
         ReactSession.setStoreType("localStorage");
         const user_id = ReactSession.get("user_id");
@@ -34,6 +37,7 @@ export default function TitleSection(props) {
     }, []);
 
 
+    // Render the title section based on user logged in state
     function renderAuthentication() {
         if (userData && userData.user_id && userData.first_name) {
             const displayName = 'Profile of ' + userData.first_name;

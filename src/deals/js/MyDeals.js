@@ -1,3 +1,5 @@
+/* Author : Vikram Babu Rajendran */
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -10,7 +12,7 @@ import '../css/MyDeals.css';
 import axios from "axios";
 import { ReactSession } from 'react-client-session';
 
-
+/* Deals page component that will list all the deals made by the users. */
 export default function MyDeals(props) {
 
     const [deals, setDeals] = useState();
@@ -24,6 +26,7 @@ export default function MyDeals(props) {
         }
     }, [userData]);
 
+    // Fetch the user details from localstorage and set in state
     useEffect(() => {
         ReactSession.setStoreType("localStorage");
         const user_id = ReactSession.get("user_id");
@@ -38,6 +41,8 @@ export default function MyDeals(props) {
             setUserData(userData);
         }
 
+
+        // Make API Call to backend to get the list of deals.
         let config = {
             headers: {
                 user_id: userData.user_id,
@@ -52,6 +57,7 @@ export default function MyDeals(props) {
         });
     }, []);
 
+    // Show loader till the deals are fetched.
     if (!deals) {
         return (
             <div className="loader"></div>
@@ -71,6 +77,7 @@ export default function MyDeals(props) {
     );
 }
 
+// Component that will render the list of deals.
 function DealsList(props) {
 
     const deals = props.deals;
@@ -82,6 +89,7 @@ function DealsList(props) {
         navigate("/loginpage");
     }
 
+    // Ask user to login if user details not available
     if (!userData || !userData.user_id) {
         return (
             <section>
@@ -107,6 +115,7 @@ function DealsList(props) {
         );
     }
 
+    // For each deal in the list of deals, render a Deal component and add to list.
     let results = []
     for (let i = 0; i < deals.length; i++) {
         results.push(<Deal key={i} deal={deals[i]} />);
@@ -122,6 +131,7 @@ function DealsList(props) {
 
 }
 
+// Component that will render one deal.
 function Deal(props) {
 
     const dealsList = props.deal.deals;
