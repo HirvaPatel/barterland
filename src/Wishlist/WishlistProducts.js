@@ -1,5 +1,5 @@
 import React from 'react';
-import './WishlistProducts.css';
+import '../Wishlist/css/WishlistProducts.css';
 import Grid from '@material-ui/core/Grid';
 import { Card, CardActions, CardContent, CardMedia, Button, Typography, Box } from '@material-ui/core';
 import { Checkbox } from "@material-ui/core";

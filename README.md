@@ -55,7 +55,7 @@
                            ||                               ||                           ||
     src/Wishlist           ||  Wishlist.js                  ||   Shivam Barot   	     ||
     src/Wishlist           ||  WishlistProducts.js          ||   Shivam Barot   	     ||
-    src/Wishlist           ||  WishlistProducts.css         ||   Shivam Barot   	     ||
+    src/Wishlist/cs        ||  WishlistProducts.css         ||   Shivam Barot   	     ||
     src/home/js            ||  HomePage.js                  ||   Shivam Barot   	     ||
                            ||  (Only handleclickadd())      ||                           ||
 
