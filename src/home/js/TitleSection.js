@@ -26,14 +26,16 @@ export default function TitleSection(props) {
         const user_id = ReactSession.get("user_id");
         const email = ReactSession.get("email");
         const first_name = ReactSession.get("first_name");
+        const role = ReactSession.get("role");
         const userData = {
             user_id: user_id,
             email: email,
-            first_name: first_name
+            first_name: first_name,
+            role: role
         }
-        if(userData && userData.user_id){
+        if (userData && userData.user_id) {
             setUserData(userData);
-        }        
+        }
     }, []);
 
 
@@ -61,6 +63,20 @@ export default function TitleSection(props) {
             </>);
     }
 
+    function renderAdmin() {
+        if (userData && userData.role && userData.role === 'ADMIN') {
+            return (
+                <>
+                    <nav className="box1">
+                        <Link to={"/admin"}>   <label>Admin</label></Link>
+                    </nav>
+                </>
+            )
+        }
+
+        return;
+    }
+
     const handleChange = (e) => {
         let value = searchValue;
         value = e.target.value;
@@ -81,6 +97,7 @@ export default function TitleSection(props) {
                 <Link to={"/comingsoon"} > <button className="ads-button" disabled={searchValue === '' ? true : false} type="submit">Search</button></Link>
             </nav>
             {renderAuthentication()}
+            {renderAdmin()}
         </nav>
     </header>);
 }
