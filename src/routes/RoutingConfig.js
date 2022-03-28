@@ -23,6 +23,7 @@ import MyAdEdit from "../myAdvertisements/MyAdEdit";
 import Home from "../Admin/pages/Home";
 import UserList from "../Admin/pages/userList/UserList";
 import User from "../Admin/pages/user/User";
+// import NewUser from "../Admin/pages/user/User";
 
 export default function RoutingConfig(props) {
   return (

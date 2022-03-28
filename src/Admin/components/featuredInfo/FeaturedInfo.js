@@ -1,4 +1,4 @@
-import   './featuredInfo.css'
+import   '../../css/featuredInfo.css'
 import { useState,useEffect } from "react";
 
 export default function FeaturedInfo() {
