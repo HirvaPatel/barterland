@@ -12,11 +12,6 @@ export default function Sidebar() {
         <div className='sidebarMenu'>
            
             <ul className='sidebarList'>
-            <Link to="/admin" className='link'>
-                <li className='sidebarListItem '>
-                        <LineStyle  className='sidebarIcons'/> Home
-                </li>
-                </Link>
                 <Link to="/admin/users" className='link'>
                 <li className='sidebarListItem '>
                         <PersonIcon  className='sidebarIcons'/> Users
