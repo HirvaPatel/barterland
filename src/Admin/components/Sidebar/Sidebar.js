@@ -1,6 +1,5 @@
 import React from 'react'
 import "./sidebar.css"
-import { LineStyle} from '@mui/icons-material';
 import PersonIcon from '@mui/icons-material/Person';
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
 import {Link} from "react-router-dom"
@@ -17,9 +16,13 @@ export default function Sidebar() {
                         <PersonIcon  className='sidebarIcons'/> Users
                 </li>
                 </Link>
+                <Link to="/myads" className='link'>
                 <li className='sidebarListItem'>
                         <ProductionQuantityLimitsIcon className='sidebarIcons'/> Advertisement
                 </li>
+                </Link>
+                
+                
             </ul>
         </div>
         </div>
