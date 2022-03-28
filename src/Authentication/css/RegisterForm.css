@@ -1,7 +1,8 @@
+/* Author: Sowjanya Mani */
+
 select#securityquestion {
     font-size: 18px;
     margin-bottom: 34px;
-    text-size-adjust: 7;
     text-align: inherit;
     text-size-adjust: auto;
     width: 128%;
@@ -14,10 +15,8 @@ select#securityquestion {
     margin-left: 92px;
     padding-top: 33px;
     cursor: pointer;
-    width: -20px;
-    padding-right: -15px;
     padding-left: 19px;
-    width: -webkit-fill-available;
+    
 }
 
 .excistingvalue2 label{
@@ -33,14 +32,11 @@ select#securityquestion {
     font: normal normal bold 14px/35px Rajdhani !important;
     letter-spacing: 2.1px !important;
     color: #090971 !important;
-    background-color: #F5D200;
-    padding: -2em;
-    margin-left: 35em;
-    box-shadow: violet;
+    background-color: #F5D200;  
+    margin-left: 35em; 
     width: 131px;
     margin-left: 0em;
-    margin-top: -23px;
-    size: 10px;
+    margin-top: -23px;  
     font-family: 'cursive',sans-serif;
     padding-bottom: 5px;
     background-color: #F5D200;

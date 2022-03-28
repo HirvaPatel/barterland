@@ -1,3 +1,5 @@
+//Author: Sowjanya Mani
+
 import React, { useState } from 'react';
 import '../css/LoginPage.css';
 import axios from "axios";
@@ -40,6 +42,8 @@ export default function EmailUpdate(props) {
         email: email.value.toLowerCase()
 
       };
+
+      //Make a API call to backend to update the email of the user
       const url= process.env.REACT_APP_BACKEND_URL + '/api/updateemail';
 
       axios.post(url, user).then((response) => {
@@ -128,6 +132,7 @@ export default function EmailUpdate(props) {
   );
 }
 
+//email validation
 function validateEmail(email) {
   return String(email)
     .toLowerCase()

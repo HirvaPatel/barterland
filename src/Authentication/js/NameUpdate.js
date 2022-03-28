@@ -1,3 +1,5 @@
+//Author: Sowjanya Mani
+
 import React, { useState } from 'react';
 import '../css/RegisterForm.css';
 import '../css/LoginPage.css';
@@ -50,6 +52,7 @@ export default function NameUpdate(props) {
        
       };
 
+      //Make a API call to backend to update the name of the user
       const url= process.env.REACT_APP_BACKEND_URL + '/api/updatename';
       axios.post(url, user).then((response) => {
 
@@ -165,7 +168,7 @@ export default function NameUpdate(props) {
   );
 }
 
-
+//First Name validation
 function validateFirstName(firstname) {
   return String(firstname).toLowerCase().match(
     /^[A-Za-z ]+$/
@@ -173,6 +176,7 @@ function validateFirstName(firstname) {
   );
 }
 
+//Last Name Validation
 function validateLastName(lastname) {
   return String(lastname).toLowerCase().match(
     /^[A-Za-z ]+$/

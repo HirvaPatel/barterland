@@ -1,3 +1,5 @@
+//Author: Sowjanya Mani
+
 import React, { useState } from 'react';
 import '../css/RegisterForm.css';
 import '../css/LoginPage.css';
@@ -85,6 +87,7 @@ export default function RegisterForm(props) {
         address: address.value.toLowerCase()
       };
 
+      //Make a API call to backend to register the user to the application
       const url= process.env.REACT_APP_BACKEND_URL + '/api/register';
       axios.post(url, user).then((response) => {
 
@@ -346,7 +349,7 @@ export default function RegisterForm(props) {
   );
 }
 
-
+//Email Validation
 function validateEmail(email) {
   return String(email)
     .toLowerCase()
@@ -355,12 +358,14 @@ function validateEmail(email) {
     );
 }
 
+//Password Vaidation
 function validatePassword(password) {
   return String(password).match(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/
 
   );
 }
 
+//First Name Validation
 function validateFirstName(firstname) {
   return String(firstname).toLowerCase().match(
     /^[A-Za-z ]+$/
@@ -368,6 +373,7 @@ function validateFirstName(firstname) {
   );
 }
 
+//Last Name Validation
 function validateLastName(lastname) {
   return String(lastname).toLowerCase().match(
     /^[A-Za-z ]+$/
@@ -375,6 +381,7 @@ function validateLastName(lastname) {
   );
 }
 
+//Security Answer Validation
 function validateSecurityAnswer(securityanswer) {
   return String(securityanswer).toLowerCase().match(/^[a-zA-Z0-9]{5,}$/
 
