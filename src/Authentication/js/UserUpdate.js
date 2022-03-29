@@ -1,3 +1,5 @@
+//Author: Sowjanya Mani
+
 import React from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -20,9 +22,6 @@ export default function UserUpdate(props) {
   const address = ReactSession.get("address");
   const user_id= ReactSession.get("user_id");
 
-
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
     
@@ -31,6 +30,8 @@ export default function UserUpdate(props) {
         user_id: user_id
       };
 
+
+     //Make a API call to backend to delete the user account 
       const url= process.env.REACT_APP_BACKEND_URL + '/api/delete';
       axios.post(url, user).then((response) => {
 

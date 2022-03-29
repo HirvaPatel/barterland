@@ -1,3 +1,5 @@
+//Author: Sowjanya Mani
+
 import React, { useState } from 'react';
 import '../css/LoginPage.css';
 import { Link } from "react-router-dom";
@@ -43,6 +45,8 @@ export default function LoginPage(props) {
 
       };
 
+      // Make a backend API call to allow the user to login 
+
       const url= process.env.REACT_APP_BACKEND_URL + '/api/login';
 
       axios.post(url, user).then((response) => {
@@ -58,6 +62,7 @@ export default function LoginPage(props) {
           ReactSession.set("first_name",response.data.first_name);
           ReactSession.set("last_name",response.data.last_name);
           ReactSession.set("address",response.data.address);
+          ReactSession.set("role",response.data.role);
 
           navigate("/home");
         }
@@ -170,6 +175,7 @@ export default function LoginPage(props) {
   );
 }
 
+//email validation function
 function validateEmail(email) {
   return String(email)
     .toLowerCase()
@@ -178,6 +184,8 @@ function validateEmail(email) {
     );
 }
 
+
+//password validation
 function validatePassword(password) {
   return String(password).match(/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z]).{8,}$/
 

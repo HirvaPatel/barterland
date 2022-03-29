@@ -1,7 +1,10 @@
+/* Author : Vikram Babu Rajendran */
+
 import React from "react";
 import '../css/HomePage.css';
 import { Link } from "react-router-dom";
 
+/* Component that renders the Footer section of the application */ 
 export default class FooterSection extends React.Component {
 
     render() {

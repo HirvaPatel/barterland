@@ -1,6 +1,7 @@
 @charset "UTF-8";
-
 @import url('https://fonts.googleapis.com/css?family=Rajdhani:400,700&display=swap');
+
+/* Author : Vikram Babu Rajendran */
 
 .loader {
   border: 16px solid #001633;
@@ -25,7 +26,6 @@
 body{
   background-color: #001633;
   margin: auto;
-  padding: auto;
   font-family: 'Rajdhani', sans-serif;
   font-size:1vw;
 }
@@ -34,9 +34,7 @@ body{
   display: flex; 
   height: 6vh;
   text-align: justify;
-  -ms-text-justify: distribute-all-lines;
-  text-justify: distribute-all-lines;
-   overflow: hidden;
+  overflow: hidden;
   background-color: #ffffff;
   padding: 20px 10px;
   border-radius: 6px;
@@ -140,8 +138,6 @@ body{
   display: flex;   
   height: 6vh;
   text-align: center;
-  -ms-text-justify: distribute-all-lines;
-  text-justify: distribute-all-lines;
    overflow: hidden;
   background-color: #f1f1f1;
   padding: 20px 10px;
@@ -174,8 +170,6 @@ body{
   display: flex;   
   height: 6vh;
   text-align: justify;
-  -ms-text-justify: distribute-all-lines;
-  text-justify: distribute-all-lines;
   overflow: hidden;
   padding: 20px 10px;
   margin-top: 50px;
@@ -208,8 +202,6 @@ body{
   display: flex;   
   height: 7vh;
   text-align: justify;
-  -ms-text-justify: distribute-all-lines;
-  text-justify: distribute-all-lines;
    overflow: hidden;
   padding-top: 20px;
   padding-left: 21px;
@@ -289,7 +281,7 @@ body{
   padding-right: 20px;
 }
 
-.img-ad{ 
+.img-ad-home{ 
  border: 0px;
  object-fit: contain; 
  display: block;
@@ -301,7 +293,7 @@ body{
 }
 
 
-.wrapper {
+.wrapper-home {
    display: flex;
    justify-content: center;
    padding: 2em;
@@ -313,7 +305,7 @@ body{
    border-radius: 6px;
    background-color: #001633;
 }
-.box {
+.box-home {
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -330,15 +322,13 @@ body{
   box-shadow:         inset 0 0 10px  rgba(29,42,120,0.6);
 }
 
-.box h2 {
+.box-home h2 {
 text-align: left;
-align-items: left;
 color: #1D2A78;
 }
 
-.box p{
+.box-home p{
   text-align: left;
-  align-items: left;
   border: 1px 	solid black;
   border-radius: 4px;
   width: 190px;
@@ -422,7 +412,7 @@ color: #1D2A78;
   }
 
   .box {
-    display: flexbox;    
+    display: flex;    
   }
 
   .box p {

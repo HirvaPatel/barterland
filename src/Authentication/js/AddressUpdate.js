@@ -1,3 +1,5 @@
+//Author: Sowjanya Mani
+
 import React, { useState } from 'react';
 import '../css/RegisterForm.css';
 import '../css/LoginPage.css';
@@ -41,6 +43,7 @@ export default function AddressUpdate(props) {
         address: address.value.toLowerCase()
       };
 
+      //Make a API call to backend to update the address of the user
       const url= process.env.REACT_APP_BACKEND_URL + '/api/updateaddress';
       axios.post(url, user).then((response) => {
 

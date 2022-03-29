@@ -1,14 +1,4 @@
-@charset "UTF-8";
-
-@import url('https://fonts.googleapis.com/css?family=Rajdhani:400,700&display=swap');
-
-body {
-	background-color: #001633;
-	margin: auto;
-	padding: auto;
-	font-family: 'Rajdhani', sans-serif;	
-}
-
+/* Author : Vikram Babu Rajendran */
 
 .mainholder {
 	width: 50%;
@@ -33,82 +23,6 @@ body {
 	padding-top: 3vh;
 }
 
-.message-text {
-	padding-bottom: 55px;
-	font: normal normal normal 24px/36px Rajdhani;
-	font-weight: 200;
-	color: #1D2A78;
-	width: 100%;
-	text-align: center;
-	margin-left: -43px;
-	margin-right: auto;
-}
-
-.table {
-	width: 100%;
-	text-align: justify;
-	margin-right: auto;
-	margin-top: auto;
-	margin-bottom: auto;
-	margin-left: 160px;
-}
-
-.table-data{
-	width: 100%;
-	text-align: left;
-}
-
-.error-style{
-	text-align: left;
-	color: #e60f0f !important;
-}
-
-.form-field-text {
-	padding-bottom: 55px;
-	font: normal normal normal 24px/36px Rajdhani;
-	font-weight: 200;
-	color: #1D2A78;
-	width: 200%;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-
-.input-style{
-	text-align: left;
-	font: normal normal normal 14px/25px Rajdhani !important;
-	letter-spacing: 0px !important;
-	color: #AAAAAA !important;
-	font-weight: 200 !important;
-	border-radius: 5px;
-	border-style: none;
-  	box-sizing: border-box;
- 	box-shadow: 0px 0px 30px rgba(29,42,120,0.3);
-	margin-bottom: 10px;
-	padding: .5em; 
-	}
-
-#submit{
-	text-align: center;
-	text-align: center;
-	font: normal normal bold 14px/35px Rajdhani !important;
-	letter-spacing: 2.1px !important;
-	color: #090971 !important;
-	width: 50%;
- 	background-color: #F5D200;
-	font-weight: 700;
-	letter-spacing: 0.2em;
- 	padding: .6em;
-	border-radius: 5px;
-	color: #fff;
- 	font-size: 20px;
-	text-decoration: none;
- 	border: none;	
- 	box-shadow: 0px 0px 30px rgba(29,42,120,0.6);
-	 cursor: pointer;
-
-}
 
 @media screen and (max-width: 500px) {
 

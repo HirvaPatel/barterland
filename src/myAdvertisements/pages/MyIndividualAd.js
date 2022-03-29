@@ -1,5 +1,8 @@
+/**
+ * @author Hirva Patel hirva.patel@dal.ca
+ */
 import React from "react";
-import "./MyIndividualAd.css";
+import "../css/MyIndividualAd.css";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -7,9 +10,9 @@ import { useEffect } from "react";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import TitleSection from "../home/js/TitleSection";
-import MenuSection from "../home/js/MenuSection";
-import FooterSection from "../home/js/FooterSection";
+import TitleSection from "../../home/js/TitleSection";
+import MenuSection from "../../home/js/MenuSection";
+import FooterSection from "../../home/js/FooterSection";
 
 function MyIndividualAd(props) {
   let location = useLocation();

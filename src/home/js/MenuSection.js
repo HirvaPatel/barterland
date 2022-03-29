@@ -1,7 +1,10 @@
+/* Author : Vikram Babu Rajendran */
+
 import React from "react";
 import "../css/HomePage.css";
 import { Link } from "react-router-dom";
 
+/* Component that  renders the Menu Section of the application */
 export default function MenuSection(props) {
   return (
     <nav>

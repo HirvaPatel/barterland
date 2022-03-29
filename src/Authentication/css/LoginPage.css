@@ -1,3 +1,5 @@
+/* Author: Sowjanya Mani */
+
 .containerform {
   max-width: 384px;
   background-color: rgb(255, 255, 255);
@@ -26,13 +28,11 @@
     font: normal normal bold 14px/35px Rajdhani !important;
     letter-spacing: 2.1px !important;
     color: #090971 !important;
-    background-color: #F5D200;
-    padding: -2em;
+    background-color: #F5D200;   
     margin-left: 35em;
     width: 113px;
     margin-left: 3em;
     margin-top: -31px;
-    size: 7px;
     font-family: 'cursive',sans-serif;
     padding-bottom: 5px;
     background-color: #F5D200;

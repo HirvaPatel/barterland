@@ -1,3 +1,5 @@
+//Author: Sowjanya Mani
+
 import React, { useState } from 'react';
 import '../css/RegisterForm.css';
 import '../css/LoginPage.css';
@@ -35,6 +37,9 @@ export default function EmailValidation(props) {
       const user = {
         email: email.value.toLowerCase()
       };
+
+
+      //Make a API call to backend to check if the user is a registerd member of the application.
 
       const url= process.env.REACT_APP_BACKEND_URL + '/api/finduser';
       axios.post(url, user).then((response) => {
@@ -129,7 +134,7 @@ export default function EmailValidation(props) {
   );
 }
 
-
+//email validation
 function validateEmail(email) {
   return String(email)
     .toLowerCase()
