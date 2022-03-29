@@ -1,3 +1,4 @@
+//Author: Hardik Mesvania
 import "../css/home.css";
 import FeaturedInfo from '../components/featuredInfo/FeaturedInfo'
 import Chart from "../components/charts/Chart";
