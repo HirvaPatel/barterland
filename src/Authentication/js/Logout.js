@@ -1,8 +1,8 @@
 //Author: Sowjanya Mani
 
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react/cjs/react.development";
+
 
 export default function Logout(props) {
 
