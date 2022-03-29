@@ -1,3 +1,4 @@
+//Author: Hardik Mesvania
 import '../../css/chart.css'
 
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
