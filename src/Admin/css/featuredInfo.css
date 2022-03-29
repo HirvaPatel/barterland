@@ -1,0 +1,36 @@
+/* Author: Hardik Mesvania */
+.featured{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.featuredItem{
+    flex: 1;
+    margin: 0px 20px;
+    padding: 30px;
+    border-radius:10px ;
+    cursor: pointer;
+    -webkit-box-shadow: 23px 7px 7px 3px #8E8E8E; 
+    box-shadow: 23px 7px 7px 3px #8E8E8E;
+}
+
+.featuredTitle{
+    font-size: 20px;
+}
+
+.featuredUserContainer{
+    margin: 10px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.featuredUser{
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.featuredSub{
+    font-size: 15px;
+    color: grey;
+}

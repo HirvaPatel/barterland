@@ -1,0 +1,140 @@
+/* Author : Vikram Babu Rajendran */
+
+.wrapper-deal {
+   display: contents;
+   justify-content: center;
+   padding: 2em;
+   height: 100%;
+   border: 0px solid black;
+   margin-top: 1em;
+   margin-bottom: 1em;
+   border-radius: 6px;
+   background-color: #001633;
+
+}
+
+.main-box-deal {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  padding: 1em;
+  position: relative;
+  border: 1px 	solid black;
+  border-radius: 6px;
+  margin: 2em;
+  object-fit: contain;
+  background-color: #ffffff;
+  -moz-box-shadow:    inset 0 0 10px #001633;
+  -webkit-box-shadow: inset 0 0 10px  #001633;
+  box-shadow:         inset 0 0 10px  rgba(29,42,120,0.6);
+  width: 20%;
+  height: 500px;
+  max-height: 400px;
+  max-height: 400px;
+  flex-wrap: nowrap;
+  align-content: center;
+  margin-left: 35em;
+  justify-content: space-evenly;
+}
+
+.main-box-deal h2 {
+text-align: left;
+color: #1D2A78;
+}
+
+.main-box-deal h3 {
+text-align: left;
+color: #1D2A78;
+margin-block-start: 10px;
+margin-block-end: 10px;
+}
+
+.main-box-deal h4 {
+  text-align: left;
+  color: #e70e0e;
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+  }
+
+.main-box-deal p{
+  text-align: left;
+  border: 0px 	solid black;
+  border-radius: 4px;
+  width: 150px;
+  height: 300px;
+  max-height: 300px;
+  max-width: 150px;
+  padding: 0em;
+  color: #1D2A78;
+  word-wrap: break-word;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* number of lines to show */
+  -webkit-box-orient: vertical;
+
+}
+
+.main-box-deal input{
+  color: #1D2A78;
+  text-align: left;
+  text-indent: 10%;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 20px;
+  border-radius: 4px;
+  height: 43px;  
+}
+
+.main-box-deal textarea{
+  color: #1D2A78;
+  text-align: left;
+  text-indent: 10%;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 20px;
+  border-radius: 4px;  
+}
+
+
+.main-box-deal button{	
+	text-align: center;	
+	font: normal normal bold 14px/35px Rajdhani !important;
+	color: #090971 !important;
+	background-color: #F5D200;
+	font-weight: 700;
+	letter-spacing: 0.2em;
+	padding: .6em;
+	border-radius: 4px;
+	color: #fff;
+	font-size: 20px;
+	text-decoration: none;
+	border: none;	
+	box-shadow: 0px 0px 20px rgba(29,42,120,0.6);
+	cursor: pointer;
+	width:90%;
+	margin: 20px;	
+}
+
+
+@media screen and (max-width: 500px) {  
+  .wrapper {
+    display: contents;
+  }
+
+  .box {
+    display: flex;    
+  }
+
+  .box p {
+    height: 3em;
+    padding: 1em;
+    font-size: large;
+  }
+
+  .box h2{
+      font-size: x-large;
+  } 
+}

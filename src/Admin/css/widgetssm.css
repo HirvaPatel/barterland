@@ -1,0 +1,63 @@
+/* //Author: Hardik Mesvania */
+.Widgetssm{
+    flex: 1;
+    -webkit-box-shadow: 23px 7px 7px 3px #8E8E8E; 
+    box-shadow: 23px 7px 7px 3px #8E8E8E;
+    padding: 20px;
+    margin: 20px;
+}
+
+.WidgetssmTitle{
+    font-size:22px ;
+    font-weight:600 ;
+}
+
+.WidgetssmUserImage{
+    width: 40px;
+    font: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.WidgetssmList{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.WidgetssmListUsers{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.WidgetssmUser{
+    display: flex;
+    flex-direction: column;
+}
+
+.WidgetssmUsersName{
+    font-weight:600 ;
+}
+
+.WidgetssmUsersTitle{
+    font-weight:600 ;
+}
+
+.WidgetssmButton{
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    padding: 7px 10px;
+    background-color: #eeeef7;
+    color: #8E8E8E;
+    cursor: pointer;
+}
+
+.widgetSmIcon{
+    font-size: 16px !important;
+    margin-right: 5px;
+}
