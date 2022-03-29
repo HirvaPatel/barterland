@@ -1,3 +1,6 @@
+/**
+ * @author Hirva Patel hirva.patel@dal.ca
+ */
 import React from "react";
 import { Checkbox } from "@material-ui/core";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";

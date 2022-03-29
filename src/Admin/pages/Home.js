@@ -11,7 +11,10 @@ import FooterSection from '../../home/js/FooterSection';
 
 
 export default function Home() {
-  
+  ReactSession.setStoreType("localStorage");
+ 
+  ReactSession.set("email","admin@gmail.com");
+  ReactSession.set("first_name","Admin");
   return (
     <div>
       <Titlebar />

@@ -1,3 +1,6 @@
+/**
+ * @author Hirva Patel hirva.patel@dal.ca
+ */
 import React from "react";
 import "../css/MyAds.css";
 import { useState, useEffect } from "react";
@@ -41,10 +44,9 @@ function MyAdsHome(props) {
     };
 
     const url = process.env.REACT_APP_BACKEND_URL.concat(
-      email.includes("admin") ? "/ads" : "/myads"
+      !email ? "/myads" : email.includes("admin") ? "/ads" : "/myads"
     );
 
-    console.log("url generated: ", url);
     axios
       .get(url, config)
       .then(({ data }) => {
@@ -56,7 +58,6 @@ function MyAdsHome(props) {
       });
   }, []);
 
-  console.log("advertisements:", adData);
   if (!adData) {
     return <div className="loader"></div>;
   }

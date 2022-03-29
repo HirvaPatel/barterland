@@ -1,3 +1,6 @@
+/**
+ * @author Hirva Patel hirva.patel@dal.ca
+ */
 import React from "react";
 import "../css/MyIndividualAd.css";
 import { Link } from "react-router-dom";

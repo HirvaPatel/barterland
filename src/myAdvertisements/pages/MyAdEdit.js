@@ -1,3 +1,6 @@
+/**
+ * @author Hirva Patel hirva.patel@dal.ca
+ */
 import React from "react";
 import "../css/MyIndividualAdEdit.css";
 import { useNavigate } from "react-router-dom";
