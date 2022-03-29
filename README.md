@@ -20,6 +20,21 @@
 
 - Deployment URL: https://barterland.herokuapp.com/
 
+# List of Files :
+
+    ====================================================================================
+            Folder		||	File Name		||      Author		||
+    ====================================================================================
+	src/myAdvertisements/js ||	Ad.js			|| Hirva Patel		||
+	src/myAdvertisements/js ||	MyAdEdit.js	 	|| Hirva Patel		||
+	src/myAdvertisements/js	||	MyAdsHome.js 		|| Hirva Patel		||
+	src/myAdvertisements/js ||	MyIndividualAd.js	|| Hirva Patel		||
+				|| 		        	|| 		    	||
+	src/myAdvertisements/css||	MyAds.css		|| Hirva Patel		||
+	src/myAdvertisements/css||	MyIndividualAd.css	|| Hirva Patel		||
+	src/myAdvertisements/css||	MyIndividualAdEdit.css	|| Hirva Patel		||
+				|| 				|| 		     	||
+
 ## Feature Developed:
 
 - MyAdvertisement
@@ -30,19 +45,6 @@
 - View any Advertisement
 - Edit Advertisement
 - Delete Advertisement
-
-# List of Files :
-
-Folder 		        	|| File Name 		   	  || Author      ||
-src/myAdvertisements/js || Ad.js 			  	  || Hirva Patel ||
-src/myAdvertisements/js || MyAdEdit.js 		 	  || Hirva Patel ||
-src/myAdvertisements/js || MyAdsHome.js 		  || Hirva Patel ||
-src/myAdvertisements/js || MyIndividualAd.js	  || Hirva Patel ||
-						|| 		        		  || 		     ||
-src/myAdvertisements/css|| MyAds.css 		  	  || Hirva Patel ||
-src/myAdvertisements/css|| MyIndividualAd.css 	  || Hirva Patel ||
-src/myAdvertisements/css|| MyIndividualAdEdit.css || Hirva Patel ||
-						|| 				  		  || 		     ||
 
 # Getting Started with Create React App
 
