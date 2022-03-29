@@ -8,6 +8,7 @@ import Widgetslg from "../components/widgetsLg/Widgetslg";
 import Sidebar from "../components/Sidebar/Sidebar";
 import Titlebar from "../components/TitleBar/Titlebar";
 import FooterSection from '../../home/js/FooterSection';
+import { ReactSession } from 'react-client-session';
 
 
 export default function Home() {
