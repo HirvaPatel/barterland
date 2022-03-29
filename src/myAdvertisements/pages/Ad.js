@@ -2,7 +2,7 @@ import React from "react";
 import { Checkbox } from "@material-ui/core";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-import "./MyAds.css";
+import "../css/MyAds.css";
 
 export class Ad extends React.Component {
   render() {
