@@ -1,11 +1,11 @@
 /* Author : Vikram Babu Rajendran */
 
-import React from "react";
+import React, { useEffect } from "react";
 import '../css/HomePage.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { ReactSession } from 'react-client-session';
-import { useEffect } from "react/cjs/react.development";
+
 
 /* Component that renders the Title Section of the application */
 export default function TitleSection(props) {
