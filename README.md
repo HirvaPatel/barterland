@@ -63,6 +63,14 @@
     src/myAdvertisements/css||  MyIndividualAd.css           ||   Hirva Patel             ||
     src/myAdvertisements/css||  MyIndividualAdEdit.css       ||   Hirva Patel             ||
 
+                            ||                               ||                           ||
+     src/Wishlist           ||  Wishlist.js                  ||   Shivam Barot            ||
+     src/Wishlist           ||  WishlistProducts.js          ||   Shivam Barot            ||
+     src/Wishlist/css       ||  WishlistProducts.css         ||   Shivam Barot            ||
+     src/home/js            ||  HomePage.js                  ||   Shivam Barot            ||
+                            ||  (Only handleclickadd())      ||                           ||
+                            ||                               ||                           ||
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
