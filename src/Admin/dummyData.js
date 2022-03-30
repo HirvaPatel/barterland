@@ -1,3 +1,4 @@
+//Author: Hardik Mesvania
 export const data = [
     {
       name: 'Halifax',
@@ -47,4 +48,8 @@ export const data = [
         name: 'paris',
         Deals: 5490
       },
+<<<<<<< HEAD
   ];
+=======
+  ];
+>>>>>>> origin/develop

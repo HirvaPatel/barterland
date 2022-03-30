@@ -1,3 +1,4 @@
+/* //Author: Hardik Mesvania */
 .sidebar{
     flex: 1;
     background-color:#090971 !important;;
@@ -37,4 +38,8 @@
 .sidebarIcons{
     margin-right: 5px;
     font-size: 25px !important;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop

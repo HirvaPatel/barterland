@@ -1,3 +1,4 @@
+/* //Author: Hardik Mesvania */
 .Widgetssm{
     flex: 1;
     -webkit-box-shadow: 23px 7px 7px 3px #8E8E8E; 
@@ -59,4 +60,8 @@
 .widgetSmIcon{
     font-size: 16px !important;
     margin-right: 5px;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/develop

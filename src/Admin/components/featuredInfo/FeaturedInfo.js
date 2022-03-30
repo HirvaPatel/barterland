@@ -1,3 +1,4 @@
+//Author: Hardik Mesvania
 import "../../css/featuredInfo.css";
 import { useState, useEffect } from "react";
 
