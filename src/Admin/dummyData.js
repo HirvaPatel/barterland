@@ -48,4 +48,8 @@ export const data = [
         name: 'paris',
         Deals: 5490
       },
+<<<<<<< HEAD
   ];
+=======
+  ];
+>>>>>>> origin/develop

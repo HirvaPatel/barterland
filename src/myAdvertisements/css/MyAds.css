@@ -117,6 +117,11 @@ body {
   display: flex;
   height: 6vh;
   text-align: center;
+<<<<<<< HEAD
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
+=======
+>>>>>>> origin/develop
   overflow: hidden;
   background-color: #f1f1f1;
   padding: 20px 10px;
@@ -149,6 +154,11 @@ body {
   display: flex;
   height: 6vh;
   text-align: justify;
+<<<<<<< HEAD
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
+=======
+>>>>>>> origin/develop
   overflow: hidden;
   padding: 20px 10px;
   margin-top: 50px;
@@ -181,6 +191,11 @@ body {
   display: flex;
   height: 7vh;
   text-align: justify;
+<<<<<<< HEAD
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
+=======
+>>>>>>> origin/develop
   overflow: hidden;
   padding-top: 20px;
   padding-left: 21px;
@@ -316,6 +331,10 @@ body {
 
 .box h2 {
   text-align: left;
+<<<<<<< HEAD
+  align-items: left;
+=======
+>>>>>>> origin/develop
   color: #1d2a78;
 }
 .ads-button {
@@ -391,7 +410,11 @@ body {
   }
 
   .box {
+<<<<<<< HEAD
+    display: flexbox;
+=======
     display: flex;
+>>>>>>> origin/develop
   }
 
   .box p {
