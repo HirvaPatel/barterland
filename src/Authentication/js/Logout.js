@@ -3,21 +3,16 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Logout(props) {
+  let navigate = useNavigate();
 
-    let navigate = useNavigate();
+  //clear the session variables
+  useEffect(() => {
+    console.log("Here");
+    localStorage.clear();
+    sessionStorage.removeItem("user_id");
+    navigate("/home");
+  }, []);
 
-    //clear the session variables
-    useEffect(() => {
-        console.log('Here');
-        localStorage.clear();
-        sessionStorage.removeItem('user_id');
-        navigate("/home");
-    }, []);
-
-    return (
-        <nav>
-        </nav>
-    );
+  return <nav></nav>;
 }
