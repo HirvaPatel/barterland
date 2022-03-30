@@ -13,11 +13,12 @@ import TitleSection from "../../home/js/TitleSection";
 import MenuSection from "../../home/js/MenuSection";
 import FooterSection from "../../home/js/FooterSection";
 
+//Edit individual advertisement
 function MyAdEdit(props) {
   let location = useLocation();
-  const [isRegistered, setIsRegistered] = useState(false);
   const [userData, setUserData] = useState();
 
+  // set the userdata state
   useEffect(() => {
     if (userData) {
       return () => {};
@@ -26,16 +27,13 @@ function MyAdEdit(props) {
       let data = userData;
       data = location.state.data;
       setUserData(data);
-      //   if (location.state.data.f_name.valid) {
-      //     setIsRegistered(true);
-      //   }
     }
   }, []);
   const data = userData;
 
   return (
     <>
-      <TitleSection isRegistered={isRegistered} userData={data} />
+      <TitleSection userData={data} />
       <MenuSection />
       <AdEdit />
       <FooterSection />
@@ -43,6 +41,7 @@ function MyAdEdit(props) {
   );
 }
 
+//Advertisement edit components
 function AdEdit(props) {
   const location = useLocation();
   const [adData, setAdData] = useState(location.state.adData);
@@ -53,10 +52,13 @@ function AdEdit(props) {
   const [validTill, setValidTill] = useState(adData.ad_details.valid_till);
 
   let navigate = useNavigate();
+
+  //navigate to the ads page after updation
   const renderIndividualAd = () => {
     navigate("/myads");
   };
 
+  //communicating with the backend to update the ad details in the database
   const handleEdit = () => {
     const url = process.env.REACT_APP_BACKEND_URL + "/updatemyad";
     axios
@@ -74,6 +76,8 @@ function AdEdit(props) {
     alert("Advertisement Successfully Updated!!");
     renderIndividualAd();
   };
+
+  //call the ad page when discard button is clicked
   const handleDiscard = () => {
     renderIndividualAd();
   };

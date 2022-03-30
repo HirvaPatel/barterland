@@ -12,17 +12,20 @@ import FooterSection from "../../home/js/FooterSection";
 import { ReactSession } from "react-client-session";
 import axios from "axios";
 
+//display all ads for the logged in user
 function MyAdsHome(props) {
   const [userData, setUserData] = useState();
   const [adData, setAdData] = useState([]);
   let navigate = useNavigate();
 
+  //set the userdata session state
   useEffect(() => {
     if (userData && userData.user_id) {
       return;
     }
   }, [userData]);
 
+  //fetch the user details and set it to the session
   useEffect(() => {
     ReactSession.setStoreType("localStorage");
     const user_id = ReactSession.get("user_id");
@@ -43,10 +46,12 @@ function MyAdsHome(props) {
       },
     };
 
+    //generate URL on the basis of user logged in
     const url = process.env.REACT_APP_BACKEND_URL.concat(
       !email ? "/myads" : email.includes("admin") ? "/ads" : "/myads"
     );
 
+    //connect to database to get the advertisements
     axios
       .get(url, config)
       .then(({ data }) => {
@@ -74,16 +79,19 @@ function MyAdsHome(props) {
   );
 }
 
+//My advertisements component
 function MyAdvertisements(props) {
   const adData = props.adData;
   const userData = props.userData;
   let navigate = useNavigate();
 
+  //navigate to the login page
   const handleRedirectLogin = (e) => {
     e.preventDefault();
     navigate("/loginpage");
   };
 
+  //if user data is not set then display the dialog to redirect user to login page
   if (!userData || !userData.user_id) {
     return (
       <section>
@@ -97,6 +105,7 @@ function MyAdvertisements(props) {
     );
   }
 
+  //render individual ad when clicked on one of the advertisements
   const renderIndividualAd = (props) => {
     let path = `myadpage`;
     navigate(path, { state: { adData: props } });
@@ -104,7 +113,7 @@ function MyAdvertisements(props) {
 
   return (
     <main className="wrapper">
-      {console.log("addata in the render page: ", adData)}
+      {/* loop on the advertisement data to render each advertisement */}
       {adData.map((product) => (
         <main className="box" onClick={() => renderIndividualAd(product)}>
           <Ad data={product} />
