@@ -1,72 +1,64 @@
-This file contains the list of files and their authors.
+# Assignment 3
 
-===========================================================================================
-        Folder             ||      File Name                ||      Author               ||
-===========================================================================================
-    src/home/js             ||  HomePage.js                  ||  Vikram Babu Rajendran    ||
-    src/home/js             ||  TitleSection.js              ||  Vikram Babu Rajendran    ||
-    src/home/js             ||  MenuSection.js               ||  Vikram Babu Rajendran    ||
-    src/home/js             ||  FooterSection.js             ||  Vikram Babu Rajendran    ||
-    src/home/js             ||  ComingSoonPage.js            ||  Vikram Babu Rajendran    ||
-                            ||                               ||                           || 
-    src/home/css            ||  HomePage.css                 ||  Vikram Babu Rajendran    ||
-    src/home/css            ||  ComingSoon.css               ||  Vikram Babu Rajendran    ||
-                            ||                               ||                           || 
-    src/individual_ad/js    ||  IndividualAdPage.js          ||  Vikram Babu Rajendran    ||
-    src/individual_ad/css   ||  IndividualAdPage.css         ||  Vikram Babu Rajendran    ||
-                            ||                               ||                           ||
-    src/deals/js            ||   MyDeals.js                  ||  Vikram Babu Rajendran    ||
-    src/deals/css           ||   MyDeals.css                 ||  Vikram Babu Rajendran    ||
-                            ||                               ||                           ||
-    src/Authentication/js   ||   LoginPage.js                ||   Sowjanya Mani           ||
-    src/Authentication/js   ||   RegisterForm.js             ||   Sowjanya Mani           ||
-    src/Authentication/js   ||   EmailValidation.js          ||   Sowjanya Mani           ||
-    src/Authentication/js   ||   ForgotPassword.js           ||   Sowjanya Mani           ||
-    src/Authentication/js   ||   UserUpdate.js               ||   Sowjanya Mani           ||
-    src/Authentication/js   ||   EmailUpdate.js              ||   Sowjanya Mani           || 
-    src/Authentication/js   ||   AddressUpdate.js            ||   Sowjanya Mani           ||
-    src/Authentication/js   ||   PasswordUpdate.js           ||   Sowjanya Mani           ||
-    src/Authentication/js   ||   NameUpdate.js               ||   Sowjanya Mani           ||  
-    src/Authentication/js   ||   Logout.js                   ||   Sowjanya Mani           ||                  
-                            ||                               ||                           ||
-    src/Autentication/css   ||   LoginPage.css               ||   Sowjanya Mani           ||
-    src/Autentication/css   ||   RegisterForm.css            ||   Sowjanya Mani           ||
-    src/Autentication/css   ||   UserUpdate.css              ||   Sowjanya Mani           ||
-                            ||                               ||                           ||
-    src/Admin/components    ||  charts/Chart.js              ||   Hardik Mesvania         ||
-    src/Admin/components    ||  charts/Chart.css             ||   Hardik Mesvania         ||
-    src/Admin/components    ||  featuredInfo/FeaturedInfo.css||   Hardik Mesvania 	  ||
-    src/Admin/components    ||  featuredInfo/FeaturedInfo.js ||   Hardik Mesvania         ||
-    src/Admin/components    ||  Sidebar/Sidebar.js           ||   Hardik Mesvania 	  ||
-    src/Admin/components    ||  Sidebar/Sidebar.css          ||   Hardik Mesvania         ||
-    src/Admin/components    ||  Titlebar/Titlebar.css        ||   Hardik Mesvania 	  ||
-    src/Admin/components    ||  Titlebar/Titlebar.js         ||   Hardik Mesvania 	  ||
-    src/Admin/components    ||  widgetslg/widgetslg.js       ||   Hardik Mesvania 	  || 
-    src/Admin/components    ||  widgetslg/widgetslg.css      ||   Hardik Mesvania         ||
-    src/Admin/components    ||  widgetssm/widgetslg.css      ||   Hardik Mesvania         ||
-    src/Admin/components    ||  widgetssm/widgetssm.js       ||   Hardik Mesvania 	  ||
-                            ||                               ||                           ||    
-    src/Admin/pages         ||  user/User.js                 ||   Hardik Mesvania 	  ||
-    src/Admin/pages         ||  user/user.css                ||   Hardik Mesvania 	  ||
-    src/Admin/pages         ||  userList/userList.css        ||   Hardik Mesvania         ||
-    src/Admin/pages         ||  userList/UserList.js         ||   Hardik Mesvania 	  ||
-    src/Admin/pages         ||  home.js                      ||   Hardik Mesvania 	  ||
-    src/Admin/pages         ||  home.css                     ||   Hardik Mesvania 	  ||
-                            ||                               ||                           ||
-                            ||                               ||                           ||
-    src/myAdvertisements/js ||  Ad.js                        ||   Hirva Patel             ||
-    src/myAdvertisements/js ||  MyAdEdit.js                  ||   Hirva Patel             ||
-    src/myAdvertisements/js ||  MyAdsHome.js                 ||   Hirva Patel             ||
-    src/myAdvertisements/js ||  MyIndividualAd.js            ||   Hirva Patel             ||
-                            ||                               ||                           ||
-    src/myAdvertisements/css||  MyAds.css                    ||   Hirva Patel             ||
-    src/myAdvertisements/css||  MyIndividualAd.css           ||   Hirva Patel             ||
-    src/myAdvertisements/css||  MyIndividualAdEdit.css       ||   Hirva Patel             ||
+- _Date Created_: 24 Mar 2022
+- _Last Modification Date_: 29 Mar 2022
+- _Frontend Git URL_: https://git.cs.dal.ca/vrajendran/group_16csci5709/-/tree/hirva
+- _Backend Git URL_: https://git.cs.dal.ca/vrajendran/group_16csci5709_backend/-/tree/hirva
 
-                            ||                               ||                           ||
-     src/Wishlist           ||  Wishlist.js                  ||   Shivam Barot            ||
-     src/Wishlist           ||  WishlistProducts.js          ||   Shivam Barot            ||
-     src/Wishlist/css       ||  WishlistProducts.css         ||   Shivam Barot            ||
-     src/home/js            ||  HomePage.js                  ||   Shivam Barot            ||
-                            ||  (Only handleclickadd())      ||                           ||
-                            ||                               ||                           ||
+## Authors
+
+- [Hirva Patel](hirva.patel@dal.ca) - _(Maintainer)_
+
+## Getting Started
+
+- npm install react --save
+
+### Installing
+
+- Download and install nodejs from https://nodejs.org/en/
+
+## Deployment
+
+- Deployment URL: https://barterland.herokuapp.com/
+
+# List of Files :
+
+    ====================================================================================
+            Folder		||	File Name		||      Author		||
+    ====================================================================================
+    src/myAdvertisements/js ||	Ad.js			|| Hirva Patel		||
+    src/myAdvertisements/js ||	MyAdEdit.js	 	|| Hirva Patel		||
+    src/myAdvertisements/js	||	MyAdsHome.js 		|| Hirva Patel		||
+    src/myAdvertisements/js ||	MyIndividualAd.js	|| Hirva Patel		||
+    			|| 		        	|| 		    	||
+    src/myAdvertisements/css||	MyAds.css		|| Hirva Patel		||
+    src/myAdvertisements/css||	MyIndividualAd.css	|| Hirva Patel		||
+    src/myAdvertisements/css||	MyIndividualAdEdit.css	|| Hirva Patel		||
+    			|| 				|| 		     	||
+
+## Feature Developed:
+
+- MyAdvertisement
+  - The advertisements added by the user is displayed in the MyAds web page. The ads webpage enables the user to open any particular advertisement and perform edit, delete operations on their advertisement.
+
+### Tasks Developed
+
+- View Advertisements
+- View any Advertisement
+- Edit Advertisement
+- Delete Advertisement
+
+## Integration
+
+- The component is integrated with the template and the home page. From the main menu of the home page MyAds page is redirected.
+- The webpage is developed using the template for the header manu page and the footer component.
+- The user session management is integrated with the local storage where the user database is stored.
+- If and viewer of the website opens the MyAds page without logging in, the user will be asked to login first and they will have an option to redirect to the login or the home page.
+
+## Image References
+
+- https://www.google.co.in/imgres?imgurl=https%3A%2F%2Fdynamic.brandcrowd.com%2Fasset%2Flogo%2F4d45d323-391a-4243-9fc1-7d4bf8305937%2Flogo-search-grid-desktop%3Fv%3D637649238610270000&imgrefurl=https%3A%2F%2Fwww.brandcrowd.com%2Fmaker%2Ftag%2Fbuy-and-sell&tbnid=6Sx_pe_sou3aiM&vet=1&docid=0mlvXcMx-LGHtM&w=278&h=222&source=sh%2Fx%2Fim
+- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.apple.com%2Fca%2Fshop%2Fbuy-iphone%2Fiphone-11%2F6.1-inch-display-64gb-black&psig=AOvVaw3IlypjfckVpIbRr-Q6aajQ&ust=1643983410913000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCNjI0svZ4_UCFQAAAAAdAAAAABAG
+- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.ca%2FMaster-Your-Focus-Practical-Chasing-ebook%2Fdp%2FB07Y364MTR&psig=AOvVaw0jBe-9gla0hL4UGIdLp-Oj&ust=1643981914626000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCODYvoLU4_UCFQAAAAAdAAAAABAM
+- https://cdn.shopify.com/s/files/1/2235/7925/products/Littmann-Classic-III-Stethoscope-Medical-Clinic-Supplies-MOBB-Grey-3M5621GR-2_740x.jpg?v=1638459276
+- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bestbuy.com%2Fsite%2Fdell-inspiron-7000-2-in-1-14-touch-screen-laptop-amd-ryzen-7-16gb-memory-512gb-solid-state-drive-blue%2F6458906.p%3FskuId%3D6458906&psig=AOvVaw0fpXXkq_q-o7JbYZI9favj&ust=1643986740654000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCODb-bLn4_UCFQAAAAAdAAAAABAK
