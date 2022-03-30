@@ -1,3 +1,5 @@
+//Author: Shivam Barot
+
 import React from 'react';
 import FooterSection from '../home/js/FooterSection';
 import MenuSection from '../home/js/MenuSection';
