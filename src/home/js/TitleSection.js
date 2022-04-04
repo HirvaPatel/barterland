@@ -2,7 +2,7 @@
 
 import React from "react";
 import '../css/HomePage.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { ReactSession } from 'react-client-session';
 import { useEffect } from "react/cjs/react.development";
@@ -13,6 +13,8 @@ export default function TitleSection(props) {
     const [searchValue, setSearchValue] = useState('');
 
     const [userData, setUserData] = useState({});
+
+    let navigate = useNavigate();
 
     useEffect(() => {
         if (userData && userData.user_id) {
@@ -31,9 +33,9 @@ export default function TitleSection(props) {
             email: email,
             first_name: first_name
         }
-        if(userData && userData.user_id){
+        if (userData && userData.user_id) {
             setUserData(userData);
-        }        
+        }
     }, []);
 
 
@@ -67,18 +69,25 @@ export default function TitleSection(props) {
         setSearchValue(value);
     }
 
+    const handleOnSearch = (e) => {
+        e.preventDefault();
+        const toSearch = '/home?search=' + searchValue;
+        navigate(toSearch);
+        window.location.reload();
+    }
+
     return (<header>
         <nav className="container">
             <nav className="box1">
-                <Link to={"/"} ><label className="logo">BarterLand</label> </Link>
+                <Link to={"/home"} ><label className="logo">BarterLand</label> </Link>
             </nav>
             <nav className="box2">
                 {/* <Link to={"/comingsoon"} target="_blank" rel="noopener noreferrer" > <label>Location</label> </Link> */}
-                <Link to={"/comingsoon"} > <label>Location</label> </Link>
+                <Link to={"/home"} > <label>Home</label> </Link>
             </nav>
             <nav className="box1">
                 <input placeholder="Search" value={searchValue} onChange={handleChange} />
-                <Link to={"/comingsoon"} > <button className="ads-button" disabled={searchValue === '' ? true : false} type="submit">Search</button></Link>
+                <button className="ads-button" type="submit" onClick={(e) => handleOnSearch(e)}>Search</button>
             </nav>
             {renderAuthentication()}
         </nav>
