@@ -1,11 +1,14 @@
+/**
+ * @author Hirva Patel hirva.patel@dal.ca
+ */
 import React from "react";
-import "./MyAds.css";
+import "../css/MyAds.css";
 import { useState, useEffect } from "react";
 import { Ad } from "./Ad";
 import { useNavigate } from "react-router-dom";
-import TitleSection from "../home/js/TitleSection";
-import MenuSection from "../home/js/MenuSection";
-import FooterSection from "../home/js/FooterSection";
+import TitleSection from "../../home/js/TitleSection";
+import MenuSection from "../../home/js/MenuSection";
+import FooterSection from "../../home/js/FooterSection";
 import { ReactSession } from "react-client-session";
 import axios from "axios";
 
@@ -40,7 +43,10 @@ function MyAdsHome(props) {
       },
     };
 
-    const url = process.env.REACT_APP_BACKEND_URL + "/myads";
+    const url = process.env.REACT_APP_BACKEND_URL.concat(
+      !email ? "/myads" : email.includes("admin") ? "/ads" : "/myads"
+    );
+
     axios
       .get(url, config)
       .then(({ data }) => {
@@ -52,7 +58,6 @@ function MyAdsHome(props) {
       });
   }, []);
 
-  console.log("advertisements:", adData);
   if (!adData) {
     return <div className="loader"></div>;
   }
