@@ -1,6 +1,9 @@
+/**
+ * @author Hirva Patel hirva.patel@dal.ca
+ */
 .main-box {
-  width: 80%;
-  height: 80%;
+  width: 40%;
+  height: 110%;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -50,8 +53,8 @@
   color: #1d2a78;
   text-align: left;
   text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
+  font-size: 15px;
+  line-height: 20px;
   border-radius: 4px;
   height: 20px;
 }

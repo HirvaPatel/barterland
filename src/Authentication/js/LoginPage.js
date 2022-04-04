@@ -62,6 +62,7 @@ export default function LoginPage(props) {
           ReactSession.set("first_name",response.data.first_name);
           ReactSession.set("last_name",response.data.last_name);
           ReactSession.set("address",response.data.address);
+          ReactSession.set("role",response.data.role);
 
           navigate("/home");
         }

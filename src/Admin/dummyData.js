@@ -1,3 +1,4 @@
+//Author: Hardik Mesvania
 export const data = [
     {
       name: 'Halifax',

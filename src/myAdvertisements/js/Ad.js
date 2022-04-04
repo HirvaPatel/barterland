@@ -1,13 +1,16 @@
+/**
+ * @author Hirva Patel hirva.patel@dal.ca
+ */
 import React from "react";
 import { Checkbox } from "@material-ui/core";
 import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
 import Favorite from "@mui/icons-material/Favorite";
-import "./MyAds.css";
+import "../css/MyAds.css";
 
+//Advertisement card on the myads page
 export class Ad extends React.Component {
   render() {
     const productData = this.props.data;
-    console.log(productData);
     return (
       <div className="col">
         <div className="card shadow-sm">
@@ -20,14 +23,17 @@ export class Ad extends React.Component {
             preserveAspectRatio="xMidYMid slice"
             focusable="true"
           >
+            {/* advertisement image is fetched from the database */}
             <image
               width="100%"
               height="225"
               xlinkHref={productData.ad_details.image_url}
             ></image>
           </svg>
+          {/* advertisement title is fetched from the database */}
           <div className="card-body">
             <h2 className="card-text">{productData.ad_details.title}</h2>
+            {/* advertisement category is fetched from the database */}
             <div className="adDetail">
               <p className="card-category">{productData.ad_details.category}</p>
               <div className="Favorite">
