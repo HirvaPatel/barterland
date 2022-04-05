@@ -369,6 +369,8 @@ function AdPageBody(props) {
                         <br></br>
                         {ad.data.ad_details.description}
                         <br></br><br></br>
+                        <b>Ad Status: </b> {ad.data.ad_details.status?ad.data.ad_details.status:'OPEN'}
+                        <br></br>
                         <b>Category: </b> {ad.data.ad_details.category}
                         <br></br>
                         <b>Location: </b> {ad.data.ad_details.location}

@@ -22,7 +22,7 @@ function MyIndividualAd(props) {
   //set userdata state
   useEffect(() => {
     if (userData) {
-      return () => {};
+      return () => { };
     }
     if (location.state) {
       let data = userData;
@@ -48,7 +48,6 @@ function MyAd(props) {
   const [adData, setAdData] = useState(location.state.adData);
 
   let navigate = useNavigate();
-
   //navigate to the advertisement edit page
   const renderEditAd = (props) => {
     let path = `edit`;
@@ -75,6 +74,10 @@ function MyAd(props) {
       });
     renderIndividualAd();
   };
+
+  const handleViewDeals = () => {
+    navigate("/ads/deals/" + adData.ad_id);
+  }
 
   return (
     <section>
@@ -123,6 +126,14 @@ function MyAd(props) {
               onClick={() => handleDelete()}
             >
               Delete
+            </Button>
+            <Button
+              variant="outlined"
+              style={{ backgroundColor: "#A52A2A" }}
+              className="delete-button"
+              onClick={() => handleViewDeals()}
+            >
+              View Deals
             </Button>
           </div>
         </div>

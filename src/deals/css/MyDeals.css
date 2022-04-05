@@ -28,13 +28,8 @@
   -moz-box-shadow:    inset 0 0 10px #001633;
   -webkit-box-shadow: inset 0 0 10px  #001633;
   box-shadow:         inset 0 0 10px  rgba(29,42,120,0.6);
-  width: 20%;
-  height: 500px;
-  max-height: 400px;
-  max-height: 400px;
   flex-wrap: nowrap;
   align-content: center;
-  margin-left: 35em;
   justify-content: space-evenly;
 }
 
@@ -60,21 +55,10 @@ margin-block-end: 10px;
 .main-box-deal p{
   text-align: left;
   border: 0px 	solid black;
-  border-radius: 4px;
-  width: 150px;
-  height: 300px;
-  max-height: 300px;
-  max-width: 150px;
+  border-radius: 4px; 
   padding: 0em;
   color: #1D2A78;
   word-wrap: break-word;
-
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 4; /* number of lines to show */
-  -webkit-box-orient: vertical;
-
 }
 
 .main-box-deal input{
@@ -117,6 +101,17 @@ margin-block-end: 10px;
 	width:90%;
 	margin: 20px;	
 }
+
+.deal-img{ 
+  border: 0px;
+  object-fit: contain; 
+  display: block;
+  border-radius: 4px;
+  width:300px;
+  height: 250px;
+  max-width:300px;
+  max-height: 250px;  
+ }
 
 
 @media screen and (max-width: 500px) {  
