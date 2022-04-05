@@ -100,15 +100,20 @@ function DealPageBody(props) {
     }
 
     const handleAccept = (e) => {
-        e.preventDefault();       
+        e.preventDefault();
+        let config = {
+            headers: {
+                user_id: userData.user_id,
+            }
+        }
         const url = process.env.REACT_APP_BACKEND_URL + '/deals/mydeals/' + ad.ad_id + '/' + deal.deal_id;
         const requestBody = {
-            status : 'ACCEPTED'
+            status: 'ACCEPTED'
         }
-        axios.post(url, requestBody).then((res) => {
+        axios.post(url, requestBody, config).then((res) => {
             console.log(res);
             if (res.data.success === true) {
-                alert('Deal Accepted successfully!');               
+                alert('Deal Accepted successfully!');
                 return;
             }
         }).catch((err) => {
@@ -129,13 +134,18 @@ function DealPageBody(props) {
 
     const handleReject = (e) => {
         e.preventDefault();
+        let config = {
+            headers: {
+                user_id: userData.user_id,
+            }
+        }
         const url = process.env.REACT_APP_BACKEND_URL + '/deals/mydeals/' + ad.ad_id + '/' + deal.deal_id;
         const requestBody = {
-            status : 'REJECTED'
+            status: 'REJECTED'
         }
-        axios.post(url, requestBody).then((res) => {
+        axios.post(url, requestBody, config).then((res) => {
             if (res.data.success === true) {
-                alert('Deal Rejected successfully!');               
+                alert('Deal Rejected successfully!');
                 return;
             }
         }).catch((err) => {
@@ -166,17 +176,17 @@ function DealPageBody(props) {
         if (deal.deal_details.status && deal.deal_details.status === 'REJECTED') {
             return (
                 <>
-                <br></br>
-                <b>You Have Rejected this Deal.</b>
-                <button onClick={(e) => { if (window.confirm('Accept this deal?')) { handleAccept(e); } }}>Accept Deal</button>
+                    <br></br>
+                    <b>You Have Rejected this Deal.</b>
+                    <button onClick={(e) => { if (window.confirm('Accept this deal?')) { handleAccept(e); } }}>Accept Deal</button>
                 </>
-                
+
             );
         } else if (deal.deal_details.status && deal.deal_details.status === 'ACCEPTED') {
             return (
                 <>
-                <br></br><b>You Have Accepted this Deal.</b>
-                <button onClick={(e) => { if (window.confirm('Reject this deal?')) { handleReject(e); } }}>Reject Deal</button>
+                    <br></br><b>You Have Accepted this Deal.</b>
+                    <button onClick={(e) => { if (window.confirm('Reject this deal?')) { handleReject(e); } }}>Reject Deal</button>
                 </>
             );
         } else {

@@ -350,10 +350,10 @@ function AdPageBody(props) {
                     <h3> <b>Location: </b> {ad.proposedDeal.deal_details.location} </h3>
                     <h3> <b>Title: </b> {ad.proposedDeal.deal_details.title} </h3>
                     <h3> <b>Description: </b>{ad.proposedDeal.deal_details.description} </h3>
+                    <h3> <b>Deal Status: </b>{ad.proposedDeal.deal_details.status?ad.proposedDeal.deal_details.status:'OPEN'} </h3>
                     <button onClick={(e) => handleUpdate(e)}>Update Deal</button>
                     <button onClick={(e) => { if (window.confirm('Delete this deal?')) { handleDelete(e); } }}>Delete Deal</button>
                 </>
-
             );
         }
     };

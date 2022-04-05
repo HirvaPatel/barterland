@@ -25,6 +25,7 @@ import UserList from "../Admin/pages/userList/UserList";
 import User from "../Admin/pages/user/User";
 import ListDealsOfAd from "../deals/js/ListDealsOfAd";
 import IndividualDealPage from "../individual_ad/js/IndividualDealPage";
+import Notifications from "../home/js/Notifications";
 // import NewUser from "../Admin/pages/user/User";
 
 export default function RoutingConfig(props) {
@@ -77,6 +78,7 @@ export default function RoutingConfig(props) {
 
         <Route exact path="/ads/deals/:post_id" element={<ListDealsOfAd />}></Route>
         <Route exact path="/deals/:post_id/:deal_id" element={<IndividualDealPage />}></Route>
+        <Route exact path="/notifications" element={<Notifications />}></Route>
 
       </Routes>
     </Router>
