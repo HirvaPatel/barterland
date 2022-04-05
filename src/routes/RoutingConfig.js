@@ -23,6 +23,8 @@ import MyAdEdit from "../myAdvertisements/js/MyAdEdit";
 import Home from "../Admin/pages/Home";
 import UserList from "../Admin/pages/userList/UserList";
 import User from "../Admin/pages/user/User";
+import ContactUs from "../ContactUs/contactus";
+import AboutUs from "../AboutUs/aboutus";
 // import NewUser from "../Admin/pages/user/User";
 
 export default function RoutingConfig(props) {
@@ -71,6 +73,9 @@ export default function RoutingConfig(props) {
         <Route exact path="/admin" element={<Home />}></Route>
         <Route exact path="/admin/users" element={<UserList />}></Route>
         <Route path="/admin/users/:userId" element={<User />}></Route>
+
+        <Route path="/contactus" element={<ContactUs />}></Route>
+        <Route path="/aboutus" element={<AboutUs />}></Route>
       </Routes>
     </Router>
   );
