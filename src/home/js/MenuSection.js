@@ -46,7 +46,7 @@ export default function MenuSection(props) {
           </Link>
         </nav>
         <nav className="box1">
-          <Link to={"/comingsoon"}>
+          <Link to={"/feedbacks"}>
             {" "}
             <label>Feedback</label>
           </Link>

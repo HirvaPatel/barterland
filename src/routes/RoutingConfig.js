@@ -17,12 +17,16 @@ import AddressUpdate from "../Authentication/js/AddressUpdate";
 import NameUpdate from "../Authentication/js/NameUpdate";
 import Logout from "../Authentication/js/Logout";
 import Wishlist from "../Wishlist/Wishlist";
-import MyAdsHome from "../myAdvertisements/js/MyAdsHome";
-import MyIndividualAd from "../myAdvertisements/js/MyIndividualAd";
-import MyAdEdit from "../myAdvertisements/js/MyAdEdit";
+import MyAdsHome from "../myAdvertisements/pages/MyAdsHome";
+import MyIndividualAd from "../myAdvertisements/pages/MyIndividualAd";
+import MyAdEdit from "../myAdvertisements/pages/MyAdEdit";
 import Home from "../Admin/pages/Home";
 import UserList from "../Admin/pages/userList/UserList";
 import User from "../Admin/pages/user/User";
+import ListFeedbacks from "../feedback/js/ListFeedbacks";
+import FeedbackEdit from "../feedback/js/FeedbackEdit";
+import NewFeedback from "../feedback/js/NewFeedback";
+
 // import NewUser from "../Admin/pages/user/User";
 
 export default function RoutingConfig(props) {
@@ -71,6 +75,10 @@ export default function RoutingConfig(props) {
         <Route exact path="/admin" element={<Home />}></Route>
         <Route exact path="/admin/users" element={<UserList />}></Route>
         <Route path="/admin/users/:userId" element={<User />}></Route>
+
+        <Route exact path="/feedbacks" element={<ListFeedbacks />}></Route>
+        <Route exact path="/feedbacks/edit" element={<FeedbackEdit />}></Route>
+        <Route exact path="/feedbacks/new" element={<NewFeedback />}></Route>
       </Routes>
     </Router>
   );
