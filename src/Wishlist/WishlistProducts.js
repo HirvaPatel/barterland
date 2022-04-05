@@ -3,7 +3,7 @@
 import React from 'react';
 import '../Wishlist/css/WishlistProducts.css';
 import Grid from '@material-ui/core/Grid';
-import { Card, CardActions, CardContent, CardMedia, Button, Typography, Box } from '@material-ui/core';
+import { Card, CardActions, CardContent, CardMedia, Typography, Box } from '@material-ui/core';
 import { Checkbox } from "@material-ui/core";
 import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import Favorite from "@material-ui/icons/Favorite";
@@ -15,7 +15,6 @@ import { ReactSession } from 'react-client-session';
 export default function WishlistProducts() {
 
     const [products, setProducts] = useState([]);
-
 
     // method to display all the items in the wishlist
     useEffect(() => {

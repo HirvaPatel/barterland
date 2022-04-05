@@ -23,6 +23,9 @@ import MyAdEdit from "../myAdvertisements/js/MyAdEdit";
 import Home from "../Admin/pages/Home";
 import UserList from "../Admin/pages/userList/UserList";
 import User from "../Admin/pages/user/User";
+import Blog from "../Blog/js/Blog";
+import AddBlog from "../Blog/js/AddBlog";
+import ShowArticle from "../Blog/js/ShowArticle";
 // import NewUser from "../Admin/pages/user/User";
 
 export default function RoutingConfig(props) {
@@ -62,6 +65,10 @@ export default function RoutingConfig(props) {
         <Route exact path="/home/mydeals" element={<MyDeals />}></Route>
         <Route exact path="/wishlist" element={<Wishlist />}></Route>
         <Route exact path="/myads" element={<MyAdsHome />}></Route>
+        <Route exact path="/blog" element={<Blog />}></Route>
+        <Route exact path="/addblog" element={<AddBlog />}></Route>
+        <Route exact path="/showarticle" element={<ShowArticle />}></Route>
+
         <Route
           exact
           path="/myads/myadpage"
