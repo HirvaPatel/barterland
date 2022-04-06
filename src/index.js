@@ -1,10 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import RoutingConfig from './routes/RoutingConfig';
+import React from "react";
+import ReactDOM from "react-dom";
+import RoutingConfig from "./routes/RoutingConfig";
 
 ReactDOM.render(
   <React.StrictMode>
-    <RoutingConfig /> 
+    <RoutingConfig />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );

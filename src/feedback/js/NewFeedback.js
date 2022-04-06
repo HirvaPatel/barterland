@@ -2,7 +2,7 @@
  * @author Hirva Patel hirva.patel@dal.ca
  */
 import React from "react";
-import "../css/MyIndividualAdEdit.css";
+import "../css/FeedbackEdit.css";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
@@ -13,12 +13,9 @@ import TitleSection from "../../home/js/TitleSection";
 import MenuSection from "../../home/js/MenuSection";
 import FooterSection from "../../home/js/FooterSection";
 
-//Edit individual advertisement
-function MyAdEdit(props) {
+function NewFeedback(props) {
   let location = useLocation();
-  const [userData, setUserData] = useState();
-
-  // set the userdata state
+  const [userData, setUserData] = useState(location.state.userData);
   useEffect(() => {
     if (userData) {
       return () => {};
@@ -29,118 +26,107 @@ function MyAdEdit(props) {
       setUserData(data);
     }
   }, []);
-  const data = userData;
 
+  const data = userData;
   return (
     <>
       <TitleSection userData={data} />
       <MenuSection />
-      <AdEdit />
+      <Create userData={data} />
       <FooterSection />
     </>
   );
 }
 
-//Advertisement edit components
-function AdEdit(props) {
-  const location = useLocation();
-  const [adData, setAdData] = useState(location.state.adData);
-
-  const [desc, setDesc] = useState(adData.ad_details.description);
-  const [adLocation, setAdLocation] = useState(adData.ad_details.location);
-  const [value, setValue] = useState(adData.ad_details.value);
-  const [validTill, setValidTill] = useState(adData.ad_details.valid_till);
+function Create(props) {
+  //   super.props();
+  console.log("user data: ", props.userData);
+  const [userData, setUserData] = useState(props.userData);
+  const [feedback, setFeedback] = useState("");
+  const [title, setTitle] = useState("");
+  const [productName, setProductName] = useState("");
+  const [sellerName, setSellerName] = useState("");
 
   let navigate = useNavigate();
-
-  //navigate to the ads page after updation
-  const renderIndividualAd = () => {
-    navigate("/myads");
+  const renderFeedbacks = () => {
+    navigate("/feedbacks");
   };
 
-  //communicating with the backend to update the ad details in the database
-  const handleEdit = () => {
-    const url = process.env.REACT_APP_BACKEND_URL + "/updatemyad";
-    axios
-      .put(url, {
-        ad_id: adData.ad_id,
-        description: desc,
-        location: adLocation,
-        value: value,
-        valid_till: validTill,
-      })
-      .then((response) => {
-        setAdData(response.data.data);
-      });
+  const handleSubmit = () => {
+    const url = process.env.REACT_APP_BACKEND_URL + "/createFeedback";
+    const reqBody = {
+      user_id: userData.user_id,
+      title: title,
+      feedback: feedback,
+      sellerName: sellerName,
+      productName: productName,
+    };
+    axios.post(url, reqBody).then((response) => {
+      setFeedback(response.data.data);
+    });
 
-    alert("Advertisement Successfully Updated!!");
-    renderIndividualAd();
+    alert("Feedback Successfully Updated!!");
+    renderFeedbacks();
   };
-
-  //call the ad page when discard button is clicked
   const handleDiscard = () => {
-    renderIndividualAd();
+    renderFeedbacks();
   };
 
   return (
     <section>
       <div className="wrapper">
         <div className="main-box">
-          <h2> Edit Advertise </h2>
+          <h2>Add New Feedback </h2>
           <form>
+            <div className="description">
+              <h3>Product name</h3>
+              <input
+                type="text"
+                value={productName}
+                onChange={(event) => {
+                  setProductName(event.target.value);
+                }}
+              />
+            </div>
+            <div className="description">
+              <h3>Seller name</h3>
+              <input
+                type="text"
+                value={sellerName}
+                onChange={(event) => {
+                  setSellerName(event.target.value);
+                }}
+              />
+            </div>
+            <div className="description">
+              <h3>Title</h3>
+              <input
+                type="text"
+                value={title}
+                onChange={(event) => {
+                  setTitle(event.target.value);
+                }}
+              />
+            </div>
             <div className="description">
               <h3>Description</h3>
               <input
                 type="text"
-                value={desc}
+                value={feedback}
                 onChange={(event) => {
-                  setDesc(event.target.value);
-                }}
-              />
-            </div>
-            <div className="location">
-              <h3>Location</h3>
-              <input
-                type="text"
-                value={adLocation}
-                onChange={(event) => {
-                  setAdLocation(event.target.value);
+                  setFeedback(event.target.value);
                 }}
               />
             </div>
 
-            <div className="valuation">
-              <h3>Valuation</h3>
-              <input
-                type="text"
-                value={value}
-                onChange={(event) => {
-                  setValue(event.target.value);
-                }}
-              />
-            </div>
-            <div className="valid-till">
-              <h3>Valid Till</h3>
-              <input
-                type="text"
-                value={validTill}
-                onChange={(event) => {
-                  setValidTill(event.target.value);
-                }}
-              />
-            </div>
-            <div className="upload-image">
-              <h3>Upload New Image</h3>
-              <input type="file" onFileChange={() => {}} />
-            </div>
             <div className="edit">
               <Button
                 variant="contained"
                 style={{ backgroundColor: "green" }}
                 className="edit-button"
-                onClick={() => handleEdit()}
+                onClick={() => handleSubmit()}
               >
-                Edit
+                Submit
               </Button>
               <Button
                 variant="outlined"
@@ -158,4 +144,4 @@ function AdEdit(props) {
   );
 }
 
-export default MyAdEdit;
+export default NewFeedback;
