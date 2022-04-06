@@ -28,7 +28,7 @@ function PostAds() {
   };
  
   const handleEdit = () => {
-    const url =  "http://localhost:8080/postmyad";
+    const url =  process.env.REACT_APP_BACKEND_URL +"/postmyad";
     const ads = {
       user_id:user_id,
       ad_details:{
