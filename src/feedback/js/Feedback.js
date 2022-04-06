@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 
 const Feedback = (props) => {
   const [feedbackData, setFeedbackData] = useState(props.feedbackData);
-  console.log(feedbackData);
   const [seller, setSeller] = useState([{}]);
   const [ads, setAds] = useState([{}]);
   let navigate = useNavigate();
@@ -34,25 +33,24 @@ const Feedback = (props) => {
         navigate("/home");
       });
 
-    var config = {
+    config = {
       headers: {
         ad_id: feedbackData.advertisement_id,
       },
     };
 
-    var url = process.env.REACT_APP_BACKEND_URL.concat("/advertisements");
+    url = process.env.REACT_APP_BACKEND_URL.concat("/advertisements");
 
     axios
       .get(url, config)
       .then(({ data }) => {
         setAds(data.advertisements[0]);
-        console.log("ad: ", data);
       })
       .catch(() => {
         alert("No Seller Found!");
         navigate("/home");
       });
-  }, [ads]);
+  }, []);
 
   // useEffect(() => {
   //   let config = {
@@ -104,7 +102,6 @@ const Feedback = (props) => {
           <h2 className="card-text">{feedbackData.title}</h2>
           <h3>{feedbackData.feedback}</h3>
           <h4>Seller: {seller.first_name}</h4>
-          {/* <h4>Product Bought: {ads.ad_details.title}</h4> */}
           <div className="edit">
             <ModeEditIcon onClick={() => handleEdit()}></ModeEditIcon>
             <DeleteIcon onClick={() => handleDelete()}></DeleteIcon>
