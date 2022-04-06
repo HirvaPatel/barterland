@@ -55,7 +55,7 @@ export default function MenuSection(props) {
           </Link>
         </nav>
         <nav className="box1">
-          <Link to={"/comingsoon"}>
+          <Link to={"/postads"}>
             {" "}
             <label>Post Ads</label>
           </Link>
@@ -79,13 +79,13 @@ export default function MenuSection(props) {
           </Link>
         </nav>
         <nav className="box1">
-          <Link to={"/comingsoon"}>
+          <Link to={"/blog"}>
             {" "}
             <label>Blog</label>
           </Link>
         </nav>
         <nav className="box1">
-          <Link to={"/comingsoon"}>
+          <Link to={"/feedbacks"}>
             {" "}
             <label>Feedback</label>
           </Link>
