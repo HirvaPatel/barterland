@@ -111,10 +111,9 @@ export default function TitleSection(props) {
           </Link>
         </nav>
         <nav className="box2">
-          {/* <Link to={"/comingsoon"} target="_blank" rel="noopener noreferrer" > <label>Location</label> </Link> */}
-          <Link to={"/comingsoon"}>
+          <Link to={"/aboutus"}>
             {" "}
-            <label>Location</label>
+            <label>About Us</label>
           </Link>
         </nav>
         <nav className="box1">

@@ -209,7 +209,7 @@ function MainSectionBox(props) {
     const handleClickAdd = async (e) => {
 
         e.preventDefault();
-        const id = await parseInt(e.target.getAttribute('id'));
+        const id = await e.target.getAttribute('id');
 
         let api_url = process.env.REACT_APP_BACKEND_URL + '/wishlist/add/' + id;
 

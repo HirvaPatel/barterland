@@ -9,21 +9,21 @@ import { Button } from "@material-ui/core";
 import axios from "axios";
 import { ReactSession } from "react-client-session";
 import { useNavigate } from 'react-router-dom';
-import  storage  from "../../individual_ad/js/firebase";
+import storage from "../../individual_ad/js/firebase";
 
 
 
 function PostAds() {
-  
-  const [title, setTitle]=useState('');
-  const [category, setCategory]=useState('');
-  const [description, setDescription]=useState('');
-  const [location, setLocation]=useState('');
-  const [valuation, setValue]=useState('');
-  const [validtill, setValidTill]=useState('');
-  
+
+  const [title, setTitle] = useState('');
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+  const [location, setLocation] = useState('');
+  const [valuation, setValue] = useState('');
+  const [validtill, setValidTill] = useState('');
+
   const [image, setImage] = useState('');
-    const [imageUrl, setUrl] = useState('');
+  const [imageUrl, setUrl] = useState('');
 
   let navigate = useNavigate();
   ReactSession.setStoreType("localStorage");
@@ -33,41 +33,41 @@ function PostAds() {
     e.preventDefault();
     navigate("/loginpage");
   };
- 
+
   function handleFileChange(e) {
     setImage(e.target.files[0]);
     if (image == null) {
-        console.log('Image is null');
-        return;
+      console.log('Image is null');
+      return;
     }
     storage.ref(`/barterland/${e.target.files[0].name}`).put(e.target.files[0])
-        .on("state_changed", () => {
+      .on("state_changed", () => {
 
-            // Getting Download Link
-            storage.ref("barterland").child(e.target.files[0].name).getDownloadURL()
-                .then((imageUrl) => {
-                    setUrl(imageUrl);
-                    console.log(imageUrl);
-                });
-        });
-}
+        // Getting Download Link
+        storage.ref("barterland").child(e.target.files[0].name).getDownloadURL()
+          .then((imageUrl) => {
+            setUrl(imageUrl);
+            console.log(imageUrl);
+          });
+      });
+  }
   const handleEdit = () => {
-    const url =  process.env.REACT_APP_BACKEND_URL +"/postmyad";
+    const url = process.env.REACT_APP_BACKEND_URL + "/postmyad";
     const ads = {
-      user_id:user_id,
-      ad_details:{
-          title: title.toLowerCase(),
-          category: category.toLowerCase(),
-          description: description.toLowerCase(),
-          location: location.toLowerCase(),
-          value: valuation.toLowerCase(),
-          valid_till: validtill.toLowerCase(),
-          image_url:imageUrl
+      user_id: user_id,
+      ad_details: {
+        title: title.toLowerCase(),
+        category: category.toLowerCase(),
+        description: description.toLowerCase(),
+        location: location.toLowerCase(),
+        value: valuation.toLowerCase(),
+        valid_till: validtill.toLowerCase(),
+        image_url: imageUrl
       }
     }
     console.log(ads)
     axios
-      .post(url,ads)
+      .post(url, ads)
       .then((response) => {
         console.log(response.data);
         if (response.data.success) {
@@ -86,127 +86,115 @@ function PostAds() {
   if (!user_id) {
     return (
       <>
-      <TitleSection />
+        <TitleSection />
         <MenuSection />
-      <section>
-        
-        <div className="wrapper-deal">
-          <div className="main-box-deal">
-            <h2>Login to view your Advertisements!</h2>
-            <button onClick={(e) => handleRedirectLogin(e)}>Login</button>
+        <section>
+
+          <div className="wrapper-deal">
+            <div className="main-box-deal">
+              <h2>Login to view your Advertisements!</h2>
+              <button onClick={(e) => handleRedirectLogin(e)}>Login</button>
+            </div>
           </div>
-        </div>
-      </section>
-      <FooterSection />
+        </section>
+        <FooterSection />
       </>
     );
-  }else{
-  return (
-    
-    <>
-    <TitleSection />
-      <MenuSection />
-      <section>
-      <div className="wrapper">
-        <div className="main-box">
-          <h2> Post Advertisement
-             </h2>
-          <form>
-          {/* <div>
-            <Link to='/mypicupload' >
-            <Button
-                variant="contained"
-                style={{ backgroundColor: "green"}}
-                className="edit-button"
-              >
-                Upload pic
-              </Button>
-            </Link>
-            
-          </div> */}
-            <div className="description">
-              <h3>title</h3>
-              <input
-                type="text"
-                value={title}
-                onChange={(event) => {
-                  setTitle(event.target.value);
-                }}
-              />
-            </div>
-            <div className="location">
-              <h3>category</h3>
-              <input
-                type="text"
-                value={category}
-                onChange={(event) => {
-                  setCategory(event.target.value);
-                }}
-              />
-            </div>
+  } else {
+    return (
 
-            <div className="valuation">
-              <h3>description</h3>
-              <input
-                type="text"
-                value={description}
-                onChange={(event) => {
-                  setDescription(event.target.value);
-                }}
-              />
+      <>
+        <TitleSection />
+        <MenuSection />
+        <section>
+          <div className="wrapper-individual">
+            <div className="main-box-individual">
+              <h2> Post Advertisement</h2>
+              <form>
+                <div className="description">
+                  <h3>Title</h3>
+                  <input
+                    type="text"
+                    value={title}
+                    onChange={(event) => {
+                      setTitle(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className="location">
+                  <h3>Category</h3>
+                  <input
+                    type="text"
+                    value={category}
+                    onChange={(event) => {
+                      setCategory(event.target.value);
+                    }}
+                  />
+                </div>
+
+                <div className="valuation">
+                  <h3>Description</h3>
+                  <textarea
+                    type="text"
+                    value={description}
+                    onChange={(event) => {
+                      setDescription(event.target.value);
+                    }}
+                  ></textarea>
+                </div>
+                <div className="valid-till">
+                  <h3>Location</h3>
+                  <input
+                    type="text"
+                    value={location}
+                    onChange={(event) => {
+                      setLocation(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className="value">
+                  <h3>Value</h3>
+                  <input type="text"
+                    value={valuation}
+                    onChange={(event) => {
+                      setValue(event.target.value);
+                    }} />
+                </div>
+                <div className="valid_till">
+                  <h3>Valid till</h3>
+                  <input type="text" value={validtill}
+                    onChange={(event) => {
+                      setValidTill(event.target.value);
+                      console.log(validtill)
+                    }} />
+                </div>
+                <h3> Upload Images </h3>
+                <input
+                  type='file'
+                  name='image'
+                  id='image'
+                  onChange={(e) => handleFileChange(e)}
+                />
+                <div className="edit">
+                  <Button
+                    variant="contained"
+                    style={{ backgroundColor: "green" }}
+                    className="edit-button"
+                    onClick={(e) => handleEdit(e)}
+                  >
+                    Post AD
+                  </Button>
+                  { }
+                </div>
+              </form>
             </div>
-            <div className="valid-till">
-              <h3>location</h3>
-              <input
-                type="text"
-                value={location}
-                onChange={(event) => {
-                  setLocation(event.target.value);
-                }}
-              />
-            </div>
-            <div className="value">
-              <h3>value</h3>
-              <input type="text" 
-              value={valuation}
-              onChange={(event) => {
-                setValue(event.target.value);
-              }} />
-            </div>
-            <div className="valid_till">
-              <h3>valid till</h3>
-              <input type="text"  value={validtill}
-              onChange={(event) => {
-                setValidTill(event.target.value);
-                console.log(validtill)
-              }}  />
-            </div>
-            <h3> Upload Images </h3>
-                    <input
-                        type='file'
-                        name='image'
-                        id='image'
-                        onChange={(e) => handleFileChange(e)}
-                    />
-            <div className="edit">
-              <Button
-                variant="contained"
-                style={{ backgroundColor: "green" }}
-                className="edit-button"
-                onClick={(e) => handleEdit(e)}
-              >
-                Post AD
-              </Button>
-              {}
-             </div>
-          </form>
-        </div>
-      </div>
-    </section>
-      <FooterSection />
-     
+          </div>
+        </section>
+        <FooterSection />
+
       </>
-  )
-}}
+    )
+  }
+}
 
 export default PostAds
