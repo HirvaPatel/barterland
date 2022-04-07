@@ -1,0 +1,32 @@
+/**
+ * @author Hirva Patel hirva.patel@dal.ca
+ */
+.main-box {
+  width: 40%;
+  height: 110%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1em;
+  position: relative;
+  margin: 2em;
+  background-color: #ffffff;
+  -moz-box-shadow: inset 0 0 10px #001633;
+  -webkit-box-shadow: inset 0 0 10px #001633;
+  box-shadow: inset 0 0 10px rgba(29, 42, 120, 0.6);
+}
+.edit {
+  margin: 1em 5px 0px 50%;
+  display: flex;
+}
+
+.main-box input {
+  color: #1d2a78;
+  text-align: left;
+  text-decoration: none;
+  font-size: 15px;
+  line-height: 20px;
+  border-radius: 4px;
+  height: 20px;
+}

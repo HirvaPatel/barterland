@@ -241,7 +241,7 @@ function MainSectionBox(props) {
             <Link to={nextPage}>
                 <button className="ads-button">Trade Now</button>
             </Link>
-            <label>Add to Wishlist<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} id={ad_details.ad_id} onClick={handleClickAdd} /></label>
+            <label>Add to Wishlist<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} id={ad_details.ad_id.toString()} onClick={handleClickAdd} /></label>
         </main >
     );
 }

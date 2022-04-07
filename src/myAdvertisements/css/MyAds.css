@@ -8,6 +8,7 @@
 body {
   background-color: #001633;
   margin: auto;
+  padding: auto;
   font-family: "Rajdhani", sans-serif;
   font-size: 1vw;
 }
@@ -16,6 +17,8 @@ body {
   display: flex;
   height: 6vh;
   text-align: justify;
+  -ms-text-justify: distribute-all-lines;
+  text-justify: distribute-all-lines;
   overflow: hidden;
   background-color: #ffffff;
   padding: 20px 10px;
@@ -316,6 +319,7 @@ body {
 
 .box h2 {
   text-align: left;
+  align-items: left;
   color: #1d2a78;
 }
 .ads-button {

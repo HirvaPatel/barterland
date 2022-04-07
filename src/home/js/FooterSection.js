@@ -4,7 +4,7 @@ import React from "react";
 import '../css/HomePage.css';
 import { Link } from "react-router-dom";
 
-/* Component that renders the Footer section of the application */ 
+/* Component that renders the Footer section of the application */
 export default class FooterSection extends React.Component {
 
     render() {
@@ -29,7 +29,7 @@ export default class FooterSection extends React.Component {
                             <Link to={"/comingsoon"} ><label>Read of blogs</label></Link>
                         </nav>
                         <nav className="box3">
-                            <Link to={"/comingsoon"} ><label>Meet out team</label></Link>
+                            <Link to={"/comingsoon"} ><label>Meet our team</label></Link>
                         </nav>
                         <nav className="box3">
                             <Link to={"/comingsoon"} ><label>Rate Us</label></Link>

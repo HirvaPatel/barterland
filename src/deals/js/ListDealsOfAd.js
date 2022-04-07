@@ -1,7 +1,7 @@
 /* Author : Vikram Babu Rajendran */
 
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -12,13 +12,13 @@ import '../css/MyDeals.css';
 import axios from "axios";
 import { ReactSession } from 'react-client-session';
 
-/* Deals page component that will list all the deals made by the users. */
-export default function MyDeals(props) {
+export default function ListDealsOfAd(props) {
 
-    const [deals, setDeals] = useState();
     const [userData, setUserData] = useState({});
-
+    const [deals, setDeals] = useState();
     let navigate = useNavigate();
+
+    let { post_id } = useParams();
 
     useEffect(() => {
         if (userData && userData.user_id) {
@@ -26,7 +26,6 @@ export default function MyDeals(props) {
         }
     }, [userData]);
 
-    // Fetch the user details from localstorage and set in state
     useEffect(() => {
         ReactSession.setStoreType("localStorage");
         const user_id = ReactSession.get("user_id");
@@ -41,14 +40,13 @@ export default function MyDeals(props) {
             setUserData(userData);
         }
 
-
         // Make API Call to backend to get the list of deals.
         let config = {
             headers: {
                 user_id: userData.user_id,
             }
         }
-        const url = process.env.REACT_APP_BACKEND_URL + '/deals/mydeals/';
+        const url = process.env.REACT_APP_BACKEND_URL + '/deals/mydeals/' + post_id;
         axios.get(url, config).then((res) => {
             setDeals(res.data);
         }).catch((err) => {
@@ -64,29 +62,46 @@ export default function MyDeals(props) {
         );
     }
 
-    const dealsArray = deals.results;
-    const data = userData;
+    const dealsList = deals.data;
 
     return (
         <>
             <TitleSection />
             <MenuSection />
-            <DealsList deals={dealsArray} userData={data} />
+            <DealsList deals={dealsList} userData={userData} />
             <FooterSection />
         </>
     );
 }
 
-// Component that will render the list of deals.
 function DealsList(props) {
 
     const deals = props.deals;
     const userData = props.userData;
+    console.log(deals);
     let navigate = useNavigate();
 
     const handleRedirectLogin = (e) => {
         e.preventDefault();
         navigate("/loginpage");
+    }
+
+    const handleRedirectHome = (e) => {
+        e.preventDefault();
+        navigate("/home");
+    }
+
+    if(deals && deals.user_id !== userData.user_id){
+        return (
+            <section>
+                <div className="wrapper-deal">
+                    <div className="main-box-deal">
+                        <h2>Not allowed to access this resource!</h2>
+                        <button onClick={(e) => handleRedirectHome(e)}>Go to Home</button>
+                    </div>
+                </div>
+            </section>
+        );
     }
 
     // Ask user to login if user details not available
@@ -103,7 +118,7 @@ function DealsList(props) {
         );
     }
 
-    if (deals.length < 1) {
+    if (!deals.deals || deals.deals.length < 1) {
         return (
             <section>
                 <div className="wrapper-deal">
@@ -117,8 +132,9 @@ function DealsList(props) {
 
     // For each deal in the list of deals, render a Deal component and add to list.
     let results = []
-    for (let i = 0; i < deals.length; i++) {
-        results.push(<Deal key={i} deal={deals[i]} />);
+    const dealsList = deals.deals;
+    for (let i = 0; i < dealsList.length; i++) {
+        results.push(<Deal key={i} ad_id={deals.ad_id} deal={dealsList[i]} />);
     }
 
     return (
@@ -131,14 +147,13 @@ function DealsList(props) {
 
 }
 
-// Component that will render one deal.
 function Deal(props) {
+    const deal = props.deal;
+    const deal_id = deal.deal_id;
+    const ad_id = props.ad_id;
+    const toLink = '/deals/' + ad_id + '/' + deal_id;
 
-    const dealsList = props.deal.deals;
-    const deal = props.deal.deals[dealsList.length - 1];
-
-    const ad_id = props.deal.ad_id;
-    const toLink = '/post/' + ad_id;
+    console.log(deal);
 
     return (
         <div className="main-box-deal">
