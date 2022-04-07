@@ -17,9 +17,9 @@ import AddressUpdate from "../Authentication/js/AddressUpdate";
 import NameUpdate from "../Authentication/js/NameUpdate";
 import Logout from "../Authentication/js/Logout";
 import Wishlist from "../Wishlist/Wishlist";
-import MyAdsHome from "../myAdvertisements/pages/MyAdsHome";
-import MyIndividualAd from "../myAdvertisements/pages/MyIndividualAd";
-import MyAdEdit from "../myAdvertisements/pages/MyAdEdit";
+import MyAdsHome from "../myAdvertisements/js/MyAdsHome";
+import MyIndividualAd from "../myAdvertisements/js/MyIndividualAd";
+import MyAdEdit from "../myAdvertisements/js/MyAdEdit";
 import Home from "../Admin/pages/Home";
 import UserList from "../Admin/pages/userList/UserList";
 import User from "../Admin/pages/user/User";
@@ -91,8 +91,16 @@ export default function RoutingConfig(props) {
         <Route exact path="/feedbacks/edit" element={<FeedbackEdit />}></Route>
         <Route exact path="/feedbacks/new" element={<NewFeedback />}></Route>
 
-        <Route exact path="/ads/deals/:post_id" element={<ListDealsOfAd />}></Route>
-        <Route exact path="/deals/:post_id/:deal_id" element={<IndividualDealPage />}></Route>
+        <Route
+          exact
+          path="/ads/deals/:post_id"
+          element={<ListDealsOfAd />}
+        ></Route>
+        <Route
+          exact
+          path="/deals/:post_id/:deal_id"
+          element={<IndividualDealPage />}
+        ></Route>
         <Route exact path="/notifications" element={<Notifications />}></Route>
       </Routes>
     </Router>

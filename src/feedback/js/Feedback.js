@@ -11,66 +11,49 @@ import { useNavigate } from "react-router-dom";
 const Feedback = (props) => {
   const [feedbackData, setFeedbackData] = useState(props.feedbackData);
   const [seller, setSeller] = useState([{}]);
-  const [ads, setAds] = useState([{}]);
+  const [ads, setAds] = useState({});
   let navigate = useNavigate();
 
   useEffect(() => {
-    var config = {
-      headers: {
-        seller_id: feedbackData.seller_id,
-      },
-    };
+    async function fetchData() {
+      var config = {
+        headers: {
+          seller_id: feedbackData.seller_id,
+        },
+      };
 
-    var url = process.env.REACT_APP_BACKEND_URL.concat("/seller");
+      var url = process.env.REACT_APP_BACKEND_URL.concat("/seller");
 
-    axios
-      .get(url, config)
-      .then(({ data }) => {
-        setSeller(data.seller[0]);
-      })
-      .catch(() => {
-        alert("No Seller Found!");
-        navigate("/home");
-      });
+      await axios
+        .get(url, config)
+        .then(({ data }) => {
+          setSeller(data.seller[0]);
+        })
+        .catch(() => {
+          alert("No Seller Found!");
+          navigate("/home");
+        });
 
-    config = {
-      headers: {
-        ad_id: feedbackData.advertisement_id,
-      },
-    };
+      config = {
+        headers: {
+          ad_id: feedbackData.advertisement_id,
+        },
+      };
+      console.log("config: ", config);
+      url = process.env.REACT_APP_BACKEND_URL.concat("/advertisements");
 
-    url = process.env.REACT_APP_BACKEND_URL.concat("/advertisements");
-
-    axios
-      .get(url, config)
-      .then(({ data }) => {
-        setAds(data.advertisements[0]);
-      })
-      .catch(() => {
-        alert("No Seller Found!");
-        navigate("/home");
-      });
+      await axios
+        .get(url, config)
+        .then(({ data }) => {
+          setAds(data.advertisements.ad_details);
+        })
+        .catch(() => {
+          alert("No products Found!");
+          navigate("/home");
+        });
+    }
+    fetchData();
   }, []);
-
-  // useEffect(() => {
-  //   let config = {
-  //     headers: {
-  //       ad_id: feedbackData.advertisement_id,
-  //     },
-  //   };
-
-  //   let url = process.env.REACT_APP_BACKEND_URL.concat("/advertisements");
-
-  //   axios
-  //     .get(url, config)
-  //     .then(({ data }) => {
-  //       setAds(data.advertisements[0]);
-  //     })
-  //     .catch(() => {
-  //       alert("No Seller Found!");
-  //       navigate("/home");
-  //     });
-  // }, []);
 
   const handleEdit = () => {
     let path = `edit`;
@@ -102,6 +85,7 @@ const Feedback = (props) => {
           <h2 className="card-text">{feedbackData.title}</h2>
           <h3>{feedbackData.feedback}</h3>
           <h4>Seller: {seller.first_name}</h4>
+          <h4>Product Bought: {ads.title}</h4>
           <div className="edit">
             <ModeEditIcon onClick={() => handleEdit()}></ModeEditIcon>
             <DeleteIcon onClick={() => handleDelete()}></DeleteIcon>
