@@ -158,7 +158,7 @@ function Deal(props) {
     return (
         <div className="main-box-deal">
             <h2>{deal.deal_details.title}</h2>
-            <img className="deal-img" src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6458/6458906cv12d.jpg" />
+            <img className="deal-img" src={deal.deal_details.image_url} />
             <p><b>Description</b>
                 <br></br>
                 {deal.deal_details.description}

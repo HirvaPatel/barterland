@@ -204,7 +204,7 @@ function DealPageBody(props) {
             <div className="wrapper-individual">
                 <div className="main-box-individual">
                     <h2>{deal.deal_details.title}</h2>
-                    <img src="https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6458/6458906cv12d.jpg" alt="" className="img-ad-individual" />
+                    <img src={deal.deal_details.image_url} alt="" className="img-ad-individual" />
                     <p><b>Description</b>
                         <br></br>
                         {deal.deal_details.description}

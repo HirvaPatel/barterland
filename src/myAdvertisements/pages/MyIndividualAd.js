@@ -20,7 +20,7 @@ function MyIndividualAd(props) {
   const [userData, setUserData] = useState();
   useEffect(() => {
     if (userData) {
-      return () => {};
+      return () => { };
     }
     if (location.state) {
       let data = userData;
@@ -72,6 +72,11 @@ function MyAd(props) {
       });
     renderIndividualAd();
   };
+
+  const handleViewDeals = () => {
+    navigate("/ads/deals/" + adData.ad_id);
+  }
+
   return (
     <section>
       <div className="wrapper">
@@ -117,6 +122,14 @@ function MyAd(props) {
               onClick={() => handleDelete()}
             >
               Delete
+            </Button>
+            <Button
+              variant="outlined"
+              style={{ backgroundColor: "#A52A2A" }}
+              className="delete-button"
+              onClick={() => handleViewDeals()}
+            >
+              View Deals
             </Button>
           </div>
         </div>

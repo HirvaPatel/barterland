@@ -14,6 +14,9 @@ import FooterSection from "../../home/js/FooterSection";
 import axios from "axios";
 import { ReactSession } from 'react-client-session';
 
+import storage from "./firebase";
+
+
 /* Component that renders the individual Ad page. */
 function IndividualAdPage(props) {
 
@@ -104,6 +107,8 @@ function AdPageBody(props) {
         location: "",
         description: ""
     });
+    const [image, setImage] = useState('');
+    const [Url, setUrl] = useState('');
 
     let navigate = useNavigate();
     const [dealProposed, setDealProposed] = useState(false);
@@ -119,6 +124,24 @@ function AdPageBody(props) {
     useEffect(() => {
 
     }, [updateDeal]);
+
+    function handleFileChange(e) {
+        setImage(e.target.files[0]);
+        if (image == null) {
+            console.log('Image is null');
+            return;
+        }
+        storage.ref(`/barterland/${e.target.files[0].name}`).put(e.target.files[0])
+            .on("state_changed", () => {
+
+                // Getting Download Link
+                storage.ref("barterland").child(e.target.files[0].name).getDownloadURL()
+                    .then((url) => {
+                        setUrl(url);
+                        console.log(url);
+                    });
+            });
+    }
 
     function handleChange(event) {
         const { name, value } = event.target;
@@ -181,20 +204,21 @@ function AdPageBody(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         let errors = validation;
         if (!isEmpty(errors.Name) || !isEmpty(errors.mobile) || !isEmpty(errors.title) || !isEmpty(errors.location) || !isEmpty(errors.description)) {
             alert('Invalid Inputs ! Please fix the errors!');
             return;
         }
 
+        console.log('URL - ' + Url);
         const requestBody = {
             "user_id": userData.user_id,
             "name": inputValues.Name,
             "mobile": inputValues.mobile,
             "title": inputValues.title,
             "location": inputValues.location,
-            "description": inputValues.description
+            "description": inputValues.description,
+            "image": Url
         }
         const url = process.env.REACT_APP_BACKEND_URL + '/home/posts/' + props.post_id + '/deals';
         axios.post(url, requestBody).then((res) => {
@@ -215,7 +239,26 @@ function AdPageBody(props) {
             }
             return;
         });
+
     };
+
+    const upload = () => {
+        if (image == null) {
+            console.log('Image is null');
+            return;
+        }
+        storage.ref(`/barterland/${image.name}`).put(image)
+            .on("state_changed", alert("success"), alert, () => {
+
+                // Getting Download Link
+                storage.ref("barterland").child(image.name).getDownloadURL()
+                    .then((url) => {
+                        setUrl(url);
+                        console.log(url);
+                    })
+            });
+
+    }
 
     const handleReset = (e) => {
         e.preventDefault();
@@ -269,6 +312,8 @@ function AdPageBody(props) {
         e.preventDefault();
         navigate("/loginpage");
     }
+
+
 
     // Conditional Rendering based on deal state.
     const renderForm = () => {
@@ -336,7 +381,9 @@ function AdPageBody(props) {
                     <input
                         type='file'
                         name='image'
-                        id='image' />
+                        id='image'
+                        onChange={(e) => handleFileChange(e)}
+                    />
                     <h3></h3>
                     <button onClick={(e) => handleSubmit(e)}>Send Proposal</button>
                     <button onClick={(e) => handleReset(e)}>Reset Form</button>
@@ -345,12 +392,13 @@ function AdPageBody(props) {
         } else {
             return (
                 <><h2>Deal Proposed!</h2>
+                    <img src={ad.proposedDeal.deal_details.image_url} alt="" className="img-ad-individual" />
                     <h3> <b>Name: </b> {ad.proposedDeal.deal_details.name} </h3>
                     <h3> <b>Mobile: </b> {ad.proposedDeal.deal_details.mobile} </h3>
                     <h3> <b>Location: </b> {ad.proposedDeal.deal_details.location} </h3>
                     <h3> <b>Title: </b> {ad.proposedDeal.deal_details.title} </h3>
                     <h3> <b>Description: </b>{ad.proposedDeal.deal_details.description} </h3>
-                    <h3> <b>Deal Status: </b>{ad.proposedDeal.deal_details.status?ad.proposedDeal.deal_details.status:'OPEN'} </h3>
+                    <h3> <b>Deal Status: </b>{ad.proposedDeal.deal_details.status ? ad.proposedDeal.deal_details.status : 'OPEN'} </h3>
                     <button onClick={(e) => handleUpdate(e)}>Update Deal</button>
                     <button onClick={(e) => { if (window.confirm('Delete this deal?')) { handleDelete(e); } }}>Delete Deal</button>
                 </>
@@ -369,7 +417,7 @@ function AdPageBody(props) {
                         <br></br>
                         {ad.data.ad_details.description}
                         <br></br><br></br>
-                        <b>Ad Status: </b> {ad.data.ad_details.status?ad.data.ad_details.status:'OPEN'}
+                        <b>Ad Status: </b> {ad.data.ad_details.status ? ad.data.ad_details.status : 'OPEN'}
                         <br></br>
                         <b>Category: </b> {ad.data.ad_details.category}
                         <br></br>
