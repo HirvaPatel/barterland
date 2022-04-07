@@ -1,11 +1,11 @@
 /* Author: Hardik Mesvania */
-.chart {
-  margin: 20px;
-  padding: 20px;
-  -webkit-box-shadow: 23px 7px 7px 3px #8e8e8e;
-  box-shadow: 23px 7px 7px 3px #8e8e8e;
+.chart{
+    margin: 20px;
+    padding: 20px;
+    -webkit-box-shadow: 23px 7px 7px 3px #8E8E8E; 
+    box-shadow: 23px 7px 7px 3px #8E8E8E;
 }
 
-.chartTitle {
-  margin-bottom: 20px;
+.chartTitle{
+    margin-bottom: 20px;
 }

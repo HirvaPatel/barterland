@@ -1,20 +1,16 @@
-/**
- * @author Hirva Patel hirva.patel@dal.ca
- */
-import React from "react";
-import "../css/MyAds.css";
-import { useState, useEffect } from "react";
-import { Ad } from "./Ad";
+import { React, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import TitleSection from "../../home/js/TitleSection";
-import MenuSection from "../../home/js/MenuSection";
 import FooterSection from "../../home/js/FooterSection";
-import { ReactSession } from "react-client-session";
+import MenuSection from "../../home/js/MenuSection";
+import TitleSection from "../../home/js/TitleSection";
 import axios from "axios";
+import { ReactSession } from "react-client-session";
+import Feedback from "./Feedback";
+import Button from "@mui/material/Button";
 
-function MyAdsHome(props) {
+function ListFeedbacks(props) {
   const [userData, setUserData] = useState();
-  const [adData, setAdData] = useState([]);
+  const [feedbackData, setFeedbackData] = useState([]);
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -43,22 +39,20 @@ function MyAdsHome(props) {
       },
     };
 
-    const url = process.env.REACT_APP_BACKEND_URL.concat(
-      !email ? "/myads" : email.includes("admin") ? "/ads" : "/myads"
-    );
+    const url = process.env.REACT_APP_BACKEND_URL.concat("/feedback");
 
     axios
       .get(url, config)
       .then(({ data }) => {
-        setAdData(data.ads);
+        setFeedbackData(data.feedbacks);
       })
       .catch(() => {
-        alert("No Advertisements Found!");
+        alert("No Feedbacks Found!");
         navigate("/home");
       });
   }, []);
 
-  if (!adData) {
+  if (!feedbackData) {
     return <div className="loader"></div>;
   }
 
@@ -68,14 +62,14 @@ function MyAdsHome(props) {
     <>
       <TitleSection />
       <MenuSection />
-      <MyAdvertisements adData={adData} userData={data} />
+      <Feedbacks feedbackData={feedbackData} userData={data} />
       <FooterSection />
     </>
   );
 }
 
-function MyAdvertisements(props) {
-  const adData = props.adData;
+function Feedbacks(props) {
+  const feedbackData = props.feedbackData;
   const userData = props.userData;
   let navigate = useNavigate();
 
@@ -89,7 +83,7 @@ function MyAdvertisements(props) {
       <section>
         <div className="wrapper-deal">
           <div className="main-box-deal">
-            <h2>Login to view your Advertisements!</h2>
+            <h2>Login to view your Feedbacks!</h2>
             <button onClick={(e) => handleRedirectLogin(e)}>Login</button>
           </div>
         </div>
@@ -97,21 +91,39 @@ function MyAdvertisements(props) {
     );
   }
 
-  const renderIndividualAd = (props) => {
-    let path = `myadpage`;
-    navigate(path, { state: { adData: props } });
+  const createFeedback = () => {
+    let path = `new`;
+    navigate(path, {
+      state: { feedbackData: feedbackData, userData: userData },
+    });
   };
-
   return (
     <main className="wrapper">
-      {console.log("addata in the render page: ", adData)}
-      {adData.map((product) => (
-        <main className="box" onClick={() => renderIndividualAd(product)}>
-          <Ad data={product} />
+      <h2 style={{ color: "white", fontSize: "30px", margin: "1%" }}>
+        Feedbacks
+      </h2>
+      <Button
+        sx={{
+          width: "10%",
+          float: "right",
+          border: "1px solid white",
+          color: "white",
+          margin: "2%",
+        }}
+        variant="outlined"
+        onClick={() => {
+          createFeedback();
+        }}
+      >
+        New Feedback
+      </Button>
+      {feedbackData.map((feedback) => (
+        <main className="box">
+          <Feedback feedbackData={feedback} userData={userData} />
         </main>
       ))}
     </main>
   );
 }
 
-export default MyAdsHome;
+export default ListFeedbacks;

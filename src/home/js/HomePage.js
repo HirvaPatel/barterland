@@ -16,11 +16,20 @@ import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
 import Favorite from "@material-ui/icons/Favorite";
 
 
+function useQuery() {
+    const { search } = useLocation();
+
+    return React.useMemo(() => new URLSearchParams(search), [search]);
+}
+
+
+
 /* Home Page component that will render and show the Home page of the application */
 function HomePage(props) {
     let location = useLocation();
     const [userData, setUserData] = useState({});
     const [adsList, setAdsList] = useState();
+    let query = useQuery();
 
     useEffect(() => {
 
@@ -32,12 +41,31 @@ function HomePage(props) {
 
     // Fetch Ads and store in the state.
     useEffect(() => {
-        const url = process.env.REACT_APP_BACKEND_URL + '/home/posts';
-        axios.get(url).then((res) => {
-            setAdsList(res.data.data);
-        }).catch((err) => {
-            console.log(err.response);
-        });
+
+        console.log(query.get('search'));
+        
+        if (query && query.get('search')) {
+
+            const ad = {
+                value: query.get('search')
+            };
+
+            const url = process.env.REACT_APP_BACKEND_URL + '/search/getad';
+            axios.post(url, ad).then((response) => {
+                console.log(response.data.data);
+                setAdsList(response.data.data);
+            }).catch((err) => {
+                console.log(err.response);
+            });
+
+        } else {
+            const url = process.env.REACT_APP_BACKEND_URL + '/home/posts';
+            axios.get(url).then((res) => {
+                setAdsList(res.data.data);
+            }).catch((err) => {
+                console.log(err.response);
+            });
+        }
 
         // Fetch user details from local storage and set in state.
         ReactSession.setStoreType("localStorage");
@@ -131,6 +159,28 @@ class MainSectionGenerator extends React.Component {
             }
         }
 
+        if (ads && ads.length < 3 && ads.length > 0 && result.length < 1) {
+
+            for (let i = 0; i < ads.length; i = i + 1) {
+                result.push(
+                    <MainSectionBox key={i} content={
+                        {
+                            'title': ads[i].ad_details.title,
+                            'desp': ads[i].ad_details.description
+                        }
+                    } ad_details={ads[i]} userData={userData} />
+                );
+            }
+
+            return (
+                <main>
+                    <main className="wrapper-home">
+                        {result}
+                    </main>
+                </main>
+            );
+        }
+
         if (result.length < 1) {
             return (
                 <main className="box-home">
@@ -159,7 +209,7 @@ function MainSectionBox(props) {
     const handleClickAdd = async (e) => {
 
         e.preventDefault();
-        const id = await parseInt(e.target.getAttribute('id'));
+        const id = await e.target.getAttribute('id');
 
         let api_url = process.env.REACT_APP_BACKEND_URL + '/wishlist/add/' + id;
 
@@ -191,7 +241,7 @@ function MainSectionBox(props) {
             <Link to={nextPage}>
                 <button className="ads-button">Trade Now</button>
             </Link>
-            <label>Add to Wishlist<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} id={ad_details.ad_id} onClick={handleClickAdd} /></label>
+            <label>Add to Wishlist<Checkbox icon={<FavoriteBorder />} checkedIcon={<Favorite />} id={ad_details.ad_id.toString()} onClick={handleClickAdd} /></label>
         </main >
     );
 }

@@ -4,7 +4,7 @@ import React from "react";
 import '../css/HomePage.css';
 import { Link } from "react-router-dom";
 
-/* Component that renders the Footer section of the application */ 
+/* Component that renders the Footer section of the application */
 export default class FooterSection extends React.Component {
 
     render() {
@@ -14,22 +14,22 @@ export default class FooterSection extends React.Component {
 
                     <nav className="container3">
                         <nav className="box3">
-                            <Link to={"/comingsoon"} ><label>About Us</label></Link>
+                            <Link to={"/aboutus"} ><label>About Us</label></Link>
                         </nav>
                         <nav className="box3">
-                            <Link to={"/comingsoon"} ><label>Contact Us</label></Link>
+                            <Link to={"/contactus"} ><label>Contact Us</label></Link>
                         </nav>
                         <nav className="box3">
-                            <Link to={"/comingsoon"} ><label>Give Feedback</label></Link>
+                            <Link to={"/feedbacks"} ><label>Give Feedback</label></Link>
                         </nav>
                         <nav className="box3">
-                            <Link to={"/comingsoon"} ><label>Report an issue</label></Link>
+                            <Link to={"/feedbacks"} ><label>Report an issue</label></Link>
                         </nav>
                         <nav className="box3">
-                            <Link to={"/comingsoon"} ><label>Read of blogs</label></Link>
+                            <Link to={"/blog"} ><label>Read of blogs</label></Link>
                         </nav>
                         <nav className="box3">
-                            <Link to={"/comingsoon"} ><label>Meet out team</label></Link>
+                            <Link to={"/comingsoon"} ><label>Meet our team</label></Link>
                         </nav>
                         <nav className="box3">
                             <Link to={"/comingsoon"} ><label>Rate Us</label></Link>

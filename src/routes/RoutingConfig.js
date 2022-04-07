@@ -23,7 +23,19 @@ import MyAdEdit from "../myAdvertisements/js/MyAdEdit";
 import Home from "../Admin/pages/Home";
 import UserList from "../Admin/pages/userList/UserList";
 import User from "../Admin/pages/user/User";
-// import NewUser from "../Admin/pages/user/User";
+import ContactUs from "../ContactUs/contactus";
+import AboutUs from "../AboutUs/aboutus";
+import Blog from "../Blog/js/Blog";
+import AddBlog from "../Blog/js/AddBlog";
+import ShowArticle from "../Blog/js/ShowArticle";
+import PostAds from "../feedback/js/PostAds";
+import ListFeedbacks from "../feedback/js/ListFeedbacks";
+import FeedbackEdit from "../feedback/js/FeedbackEdit";
+import NewFeedback from "../feedback/js/NewFeedback";
+
+import ListDealsOfAd from "../deals/js/ListDealsOfAd";
+import IndividualDealPage from "../individual_ad/js/IndividualDealPage";
+import Notifications from "../home/js/Notifications";
 
 export default function RoutingConfig(props) {
   return (
@@ -62,6 +74,11 @@ export default function RoutingConfig(props) {
         <Route exact path="/home/mydeals" element={<MyDeals />}></Route>
         <Route exact path="/wishlist" element={<Wishlist />}></Route>
         <Route exact path="/myads" element={<MyAdsHome />}></Route>
+        <Route exact path="/postads" element={<PostAds />}></Route>
+        <Route exact path="/blog" element={<Blog />}></Route>
+        <Route exact path="/addblog" element={<AddBlog />}></Route>
+        <Route exact path="/showarticle" element={<ShowArticle />}></Route>
+
         <Route
           exact
           path="/myads/myadpage"
@@ -71,6 +88,24 @@ export default function RoutingConfig(props) {
         <Route exact path="/admin" element={<Home />}></Route>
         <Route exact path="/admin/users" element={<UserList />}></Route>
         <Route path="/admin/users/:userId" element={<User />}></Route>
+
+        <Route path="/contactus" element={<ContactUs />}></Route>
+        <Route path="/aboutus" element={<AboutUs />}></Route>
+        <Route exact path="/feedbacks" element={<ListFeedbacks />}></Route>
+        <Route exact path="/feedbacks/edit" element={<FeedbackEdit />}></Route>
+        <Route exact path="/feedbacks/new" element={<NewFeedback />}></Route>
+
+        <Route
+          exact
+          path="/ads/deals/:post_id"
+          element={<ListDealsOfAd />}
+        ></Route>
+        <Route
+          exact
+          path="/deals/:post_id/:deal_id"
+          element={<IndividualDealPage />}
+        ></Route>
+        <Route exact path="/notifications" element={<Notifications />}></Route>
       </Routes>
     </Router>
   );
