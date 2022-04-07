@@ -26,12 +26,16 @@ import User from "../Admin/pages/user/User";
 import Blog from "../Blog/js/Blog";
 import AddBlog from "../Blog/js/AddBlog";
 import ShowArticle from "../Blog/js/ShowArticle";
-import PostAds from "../myAdvertisements/js/PostAds";
+import PostAds from "../feedback/js/PostAds";
 import ListFeedbacks from "../feedback/js/ListFeedbacks";
 import FeedbackEdit from "../feedback/js/FeedbackEdit";
 import NewFeedback from "../feedback/js/NewFeedback";
 
 // import NewUser from "../Admin/pages/user/User";
+
+import ListDealsOfAd from "../deals/js/ListDealsOfAd";
+import IndividualDealPage from "../individual_ad/js/IndividualDealPage";
+import Notifications from "../home/js/Notifications";
 
 export default function RoutingConfig(props) {
   return (
@@ -88,6 +92,10 @@ export default function RoutingConfig(props) {
         <Route exact path="/feedbacks" element={<ListFeedbacks />}></Route>
         <Route exact path="/feedbacks/edit" element={<FeedbackEdit />}></Route>
         <Route exact path="/feedbacks/new" element={<NewFeedback />}></Route>
+
+        <Route exact path="/ads/deals/:post_id" element={<ListDealsOfAd />}></Route>
+        <Route exact path="/deals/:post_id/:deal_id" element={<IndividualDealPage />}></Route>
+        <Route exact path="/notifications" element={<Notifications />}></Route>
       </Routes>
     </Router>
   );

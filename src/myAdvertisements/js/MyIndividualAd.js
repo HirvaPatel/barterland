@@ -14,10 +14,12 @@ import TitleSection from "../../home/js/TitleSection";
 import MenuSection from "../../home/js/MenuSection";
 import FooterSection from "../../home/js/FooterSection";
 
+//Individual advertisement component
 function MyIndividualAd(props) {
   let location = useLocation();
-  const [isRegistered, setIsRegistered] = useState(false);
   const [userData, setUserData] = useState();
+
+  //set userdata state
   useEffect(() => {
     if (userData) {
       return () => { };
@@ -26,16 +28,13 @@ function MyIndividualAd(props) {
       let data = userData;
       data = location.state.data;
       setUserData(data);
-      // if (location.state.data.f_name.valid) {
-      //   setIsRegistered(true);
-      // }
     }
   }, [userData]);
   const data = userData;
 
   return (
     <>
-      <TitleSection isRegistered={isRegistered} userData={data} />
+      <TitleSection userData={data} />
       <MenuSection />
       <MyAd />
       <FooterSection />
@@ -43,22 +42,25 @@ function MyIndividualAd(props) {
   );
 }
 
+//My advertisement component
 function MyAd(props) {
   const location = useLocation();
   const [adData, setAdData] = useState(location.state.adData);
-  console.log("AdData: ", adData);
 
   let navigate = useNavigate();
-
+  //navigate to the advertisement edit page
   const renderEditAd = (props) => {
     let path = `edit`;
     navigate(path, { state: { adData: props } });
   };
 
+  //navigate to the individual ad
   const renderIndividualAd = () => {
     alert("Advertisement Successfully Deleted!!");
     navigate("/myads");
   };
+
+  //connect to the database to delete the advertisement
   const handleDelete = () => {
     const url = process.env.REACT_APP_BACKEND_URL + "/deletemyad";
     axios
@@ -81,7 +83,9 @@ function MyAd(props) {
     <section>
       <div className="wrapper">
         <div className="main-box">
+          {/* fetch ad title from the database */}
           <h2>{adData.ad_details.title}</h2>
+          {/* fetch ad image from the database */}
           <img src={adData.ad_details.image_url} alt="" className="myAdImg" />
         </div>
         <div className="main-box">
