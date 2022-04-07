@@ -9,6 +9,9 @@ import { Button } from "@material-ui/core";
 import axios from "axios";
 import { ReactSession } from "react-client-session";
 import { useNavigate } from 'react-router-dom';
+import  storage  from "../../individual_ad/js/firebase";
+
+
 
 function PostAds() {
   
@@ -19,14 +22,35 @@ function PostAds() {
   const [valuation, setValue]=useState('');
   const [validtill, setValidTill]=useState('');
   
+  const [image, setImage] = useState('');
+    const [imageUrl, setUrl] = useState('');
+
   let navigate = useNavigate();
   ReactSession.setStoreType("localStorage");
   const user_id = ReactSession.get("user_id");
+  // const imageUrl=ReactSession.get("url")
   const handleRedirectLogin = (e) => {
     e.preventDefault();
     navigate("/loginpage");
   };
  
+  function handleFileChange(e) {
+    setImage(e.target.files[0]);
+    if (image == null) {
+        console.log('Image is null');
+        return;
+    }
+    storage.ref(`/barterland/${e.target.files[0].name}`).put(e.target.files[0])
+        .on("state_changed", () => {
+
+            // Getting Download Link
+            storage.ref("barterland").child(e.target.files[0].name).getDownloadURL()
+                .then((imageUrl) => {
+                    setUrl(imageUrl);
+                    console.log(imageUrl);
+                });
+        });
+}
   const handleEdit = () => {
     const url =  process.env.REACT_APP_BACKEND_URL +"/postmyad";
     const ads = {
@@ -38,7 +62,7 @@ function PostAds() {
           location: location.toLowerCase(),
           value: valuation.toLowerCase(),
           valid_till: validtill.toLowerCase(),
-          img_url:''
+          image_url:imageUrl
       }
     }
     console.log(ads)
@@ -48,6 +72,7 @@ function PostAds() {
         console.log(response.data);
         if (response.data.success) {
           alert("Advertisement Successfully Added!!");
+          navigate('/myads')
         }
       }).catch((error) => {
         console.log(error.response);
@@ -87,6 +112,18 @@ function PostAds() {
           <h2> Post Advertisement
              </h2>
           <form>
+          {/* <div>
+            <Link to='/mypicupload' >
+            <Button
+                variant="contained"
+                style={{ backgroundColor: "green"}}
+                className="edit-button"
+              >
+                Upload pic
+              </Button>
+            </Link>
+            
+          </div> */}
             <div className="description">
               <h3>title</h3>
               <input
@@ -144,29 +181,24 @@ function PostAds() {
                 console.log(validtill)
               }}  />
             </div>
-            <div className="upload-image">
-              <h3>Upload  Image</h3>
-              <input type="file" />
-              {/* <button >Upload</button> */}
-            </div>
+            <h3> Upload Images </h3>
+                    <input
+                        type='file'
+                        name='image'
+                        id='image'
+                        onChange={(e) => handleFileChange(e)}
+                    />
             <div className="edit">
               <Button
                 variant="contained"
                 style={{ backgroundColor: "green" }}
                 className="edit-button"
-                onClick={() => handleEdit()}
+                onClick={(e) => handleEdit(e)}
               >
                 Post AD
               </Button>
-              {/* <Button
-                variant="outlined"
-                style={{ backgroundColor: "#A52A2A" }}
-                className="delete-button"
-                // onClick={() => handleDiscard()}
-              >
-                Discard
-              </Button> */}
-            </div>
+              {}
+             </div>
           </form>
         </div>
       </div>

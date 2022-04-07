@@ -31,8 +31,6 @@ import ListFeedbacks from "../feedback/js/ListFeedbacks";
 import FeedbackEdit from "../feedback/js/FeedbackEdit";
 import NewFeedback from "../feedback/js/NewFeedback";
 
-// import NewUser from "../Admin/pages/user/User";
-
 import ListDealsOfAd from "../deals/js/ListDealsOfAd";
 import IndividualDealPage from "../individual_ad/js/IndividualDealPage";
 import Notifications from "../home/js/Notifications";
