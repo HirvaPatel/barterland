@@ -25,7 +25,7 @@ export default function AboutUs(props) {
                 <div className="holder">
                     <h2 style={divStyle}>BaterLand</h2>
                     <h3 style={divStyle}>Happy Exchanging!!</h3>
-                    <h3 style={divStyle}>We are here to help you exchange your items to soemthing you wish for!</h3>
+                    <h3 style={divStyle}>We are here to help you exchange your items to something you wish for!</h3>
                 </div>
             </div>  
 
