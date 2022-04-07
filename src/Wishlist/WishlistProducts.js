@@ -35,7 +35,7 @@ export default function WishlistProducts() {
     const handleClickRemove = async (e) => {
 
         e.preventDefault();
-        const id2 = await parseInt(e.target.getAttribute('id'));
+        const id2 = await e.target.getAttribute('id');
 
         let api_url = process.env.REACT_APP_BACKEND_URL + '/wishlist/remove/' + id2;
 
