@@ -56,7 +56,7 @@ const columns = [
         disableSelectionOnClick
         columns={columns}
         getRowId={(row) => row._id}
-        pageSize={5 }
+        pageSize={20 }
         rowsPerPageOptions={[11]}
         checkboxSelection
         className="DataGrid"
