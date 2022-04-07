@@ -125,10 +125,7 @@ function AdEdit(props) {
                 }}
               />
             </div>
-            <div className="upload-image">
-              <h3>Upload New Image</h3>
-              <input type="file" onFileChange={() => {}} />
-            </div>
+
             <div className="edit">
               <Button
                 variant="contained"

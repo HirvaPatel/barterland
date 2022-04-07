@@ -10,7 +10,6 @@ import "../css/MyAds.css";
 export class Ad extends React.Component {
   render() {
     const productData = this.props.data;
-    console.log(productData);
     return (
       <div className="col">
         <div className="card shadow-sm">
