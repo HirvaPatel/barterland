@@ -206,7 +206,7 @@ function AdPageBody(props) {
         e.preventDefault();
         let errors = validation;
         if (!isEmpty(errors.Name) || !isEmpty(errors.mobile) || !isEmpty(errors.title) || !isEmpty(errors.location) || !isEmpty(errors.description)) {
-            alert('Invalid Inputs ! Please fix the errors!');
+            alert('Please check if all the fields are filled and valid.');
             return;
         }
 
